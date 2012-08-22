@@ -1,15 +1,16 @@
 INCLUDE_DIRECTORIES(${QT_QTXML_INCLUDE_DIR})
-#LINK_DIRECTORIES()
 FIND_PACKAGE(Qt4 4.8.1 REQUIRED)
 
 SET(BINARY_NAME "MCSwitch")
 
 SET(MSRC
-	${SRC_DIR}/main.cpp
+    ${SRC_DIR}/main.cpp
+    ${SRC_DIR}/MainWindow.cpp
 	)
 
 SET(MHED
-	)
+    ${SRC_DIR}/MainWindow.hpp
+    )
 
 QT4_WRAP_CPP(HMOD ${MHED})
 QT4_ADD_RESOURCES(QRC ${SRC_DIR}/main.qrc)

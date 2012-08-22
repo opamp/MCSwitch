@@ -9,6 +9,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 */
 
 #include<QApplication>
+#include"MainWindow.hpp"
 #include"version.hpp"
 
 int main(int argc,char** argv){
@@ -17,6 +18,9 @@ int main(int argc,char** argv){
 	mcswitch.setApplicationName(app_name);
 	mcswitch.setApllicationVersion(app_ver);
 
+
+    MainWindow* window = new MainWindow();
+    window->show();
 
 	return mcswitch.exec();
 }
