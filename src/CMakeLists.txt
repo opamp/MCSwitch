@@ -23,10 +23,10 @@ INCLUDE(${QT_USE_FILE})
 SET(SRCS ${MSRC} ${HMOD} ${QRC})
 IF(APPLE) 
 
-	#SET(SRCS ${SRCS} ${PROJECT_SOURCE_DIR}/src/resource/icons/mac_icon.icns)
-	#SET(MACOSX_BUNDLE_ICON_FILE ${PROJECT_SOURCE_DIR}/src/resource/icons/mac_icon.icns)
-	#SET_SOURCE_FILES_PROPERTIES(mac_icon.icns PROPERTIES 
-	#    MACOSX_PACKAGE_LOCATION Resources)
+	SET(SRCS ${SRCS} ${PROJECT_SOURCE_DIR}/src/resources/icons/mac_icon.icns)
+	SET(MACOSX_BUNDLE_ICON_FILE ${PROJECT_SOURCE_DIR}/src/resources/icons/mac_icon.icns)
+	SET_SOURCE_FILES_PROPERTIES(mac_icon.icns PROPERTIES 
+	    MACOSX_PACKAGE_LOCATION Resources)
 	ADD_EXECUTABLE(${BINARY_NAME} MACOSX_BUNDLE ${SRCS})
 
 
