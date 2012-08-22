@@ -5,9 +5,10 @@
 #include"version.hpp"
 
 bool initMCSwitchDir(){//init data dir.
-	if(QDir(mcswitch_dir).exists()) return true;
-	if(QDir().mkdir(mcswitch_dir)) return true;
-	return false;
+	if(QDir(mcswitch_dir).exists() and QDir(mcswitch_dir_common).exists()) return true;
+	if(!QDir().mkdir(mcswitch_dir)) return false;
+	if(!QDir().mkdir(mcswitch_dir_common)) return false;
+	return true;
 }
 
 bool init(){ 
