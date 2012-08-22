@@ -12,6 +12,7 @@ I'm considering also about other platform support.
 	*First release.  
 	*MCSwitch is released under a MIT License.   
 	*There are many bugs.  
+	*This is in development.
 
 ## Dependencies   
    
