@@ -21,7 +21,7 @@ License is [LGPLv2](http://www.gnu.org/licenses/lgpl-2.1.html)
 If you will build this application from source,you have to install [CMake](http://www.cmake.org/).  
 
 
-## How to Build MCSwitch  
+## Compiling from source code.
 
 I think you might as well imitate general cmake way.   
 
