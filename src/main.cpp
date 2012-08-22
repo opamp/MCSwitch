@@ -21,7 +21,7 @@ int main(int argc,char** argv){
 
     if(!init()){ //Initialize if MCSwitch data dir is not initialized yet.
        std::cerr<<"ERROR::MCSwitch failed in initialization."<<std::endl;
-       mcswitch.exit(1);// error exit.
+       return 1;//error exit.
     }
     MainWindow* window = new MainWindow();
     window->show();
