@@ -9,7 +9,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 */
 
 #include<QApplication>
-#include<version.hpp>
+#include"version.hpp"
 
 int main(int argc,char** argv){
 	QApplication mcswitch(argc,argv);
