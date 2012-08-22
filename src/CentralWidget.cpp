@@ -1,6 +1,6 @@
 #include"CentralWidget.hpp"
 
-CentralWidget::CentralWidget(QWidget* parent = 0):
+CentralWidget::CentralWidget(QWidget* parent):
     QWidget(parent){
 
 }

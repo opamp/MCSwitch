@@ -9,8 +9,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 */
 
 #include<QApplication>
+#include<iostream>
 #include"MainWindow.hpp"
-#include"version.hpp"
+#include"initialize.hpp"
 
 int main(int argc,char** argv){
 	QApplication mcswitch(argc,argv);
@@ -18,7 +19,10 @@ int main(int argc,char** argv){
 	mcswitch.setApplicationName(app_name);
     mcswitch.setApplicationVersion(app_ver);
 
-
+    if(!init()){ //Initialize if MCSwitch data dir is not initialized yet.
+       std::cerr<<"ERROR::MCSwitch failed in initialization."<<std::endl;
+       mcswitch.exit(1);// error exit.
+    }
     MainWindow* window = new MainWindow();
     window->show();
 
