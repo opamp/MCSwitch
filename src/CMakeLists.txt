@@ -6,10 +6,12 @@ SET(BINARY_NAME "MCSwitch")
 SET(MSRC
     ${SRC_DIR}/main.cpp
     ${SRC_DIR}/MainWindow.cpp
+	${SRC_DIR}/CentralWidget.cpp
 	)
 
 SET(MHED
     ${SRC_DIR}/MainWindow.hpp
+	${SRC_DIR}/CentralWidget.hpp
     )
 
 QT4_WRAP_CPP(HMOD ${MHED})

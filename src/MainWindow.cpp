@@ -2,7 +2,8 @@
 
 
 MainWindow::MainWindow(){
-//  setCentralWidget();
+    cwidget = new CentralWidget();
+    setCentralWidget(cwidget);
     setWindowTitle(tr("MCSWitch"));
-//  setWindowIcon(QIcon(":"));
+    setWindowIcon(QIcon(":/Pictures/resources/icons/IconCandidate.png"));
 }

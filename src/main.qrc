@@ -1,2 +1,5 @@
 <RCC>
+    <qresource prefix="/Pictures">
+        <file>resources/icons/IconCandidate.png</file>
+    </qresource>
 </RCC>
