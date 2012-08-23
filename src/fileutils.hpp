@@ -17,7 +17,7 @@ namespace fileutils{
 		QStringList list = dir.entryList();
 		QStringListIterator i(list);
 		while(i.hasNext()){
-			if(FileInfo(i.next()).isDir()){
+			if(QFileInfo(i.next()).isDir()){
 				cp_R(i.next(),to + "/" + i.next());
 			}else{
 				QFile::copy(i.next(),to + "/" + i.next());
