@@ -1,6 +1,9 @@
 #ifndef MCENV_HPP
 #define MCENV_HPP
 #include<QObject>
+#include<QDir>
+#include<QFile>
+#include<QString>
 #include"version.hpp"
 
 class MCEnv : public QObject{

@@ -13,4 +13,9 @@ const QString mcswitch_dir_env = mcswitch_dir + "/env";
 
 const QString minecraft_dir = QDir::homePath() + "/Library/Application Support/minecraft";
 
+const QString eachEnvDataXmlName = ".mcswitch.xml";
+/*resource*/
+const QString license_text = ":/texts/resources/texts/LICENSE.txt";
+const QString tmp_xml1 = ":/xmls/resources/xmls/tmp1.xml";
+const QString tmp_xml2 = ":/xmls/resources/xmls/tmp2.xml";
 #endif

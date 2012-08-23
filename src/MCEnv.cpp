@@ -5,8 +5,8 @@ MCEnv::MCEnv(){
 }
 
 bool MCEnv::initEnv(const QString name, const QString dir_path){
-    if(name.isEmpty() or path.isEmpty()) return false;
-    if(!QDir(path).exists()) return false;
+    if(name.isEmpty() or dir_path.isEmpty()) return false;
+    if(!QDir(dir_path).exists()) return false;
     QDir envsdir(mcswitch_dir_env);
     QStringList envs = envsdir.entryList();
 
@@ -18,5 +18,14 @@ bool MCEnv::initEnv(const QString name, const QString dir_path){
         }
     }
 
-    if(!QDir.mkdir(dir_path + "/" + name)) return false;
+    if(!QDir().mkdir(dir_path + "/" + name)) return false;
+    if(!QFile::copy(tmp_xml1,dir_path + "/" + name + "/" + eachEnvDataXmlName)) return false;
+    QFile::setPermissions(dir_path + "/" + name + "/" + eachEnvDataXmlName,
+                          QFile::ReadOwner  |
+                          QFile::WriteOwner |
+                          QFile::ReadUser   |
+                          QFile::WriteUser
+                          );
+
+    return true;
 }
