@@ -10,7 +10,7 @@ public:
     QString name(){return envName;};
 
 
-    static bool initEnv(const QString name,const QString path = mcswitch_dir_env);
+    static bool initEnv(const QString name,const QString dir_path = mcswitch_dir_env);
 private:
     QString envName;
 };
