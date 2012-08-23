@@ -10,7 +10,7 @@ Environments::Environments(){
 bool Environments::createNewEnvironemnt(const QString name){
     if(name.isEmpty()) return false;
     QDir envsdir(mcswitch_dir_env);
-    QStringList envs = QDir.entryList();
+    QStringList envs = envsdir.entryList();
 
     QStringListIterator i(envs);
     while(i.hasNext()){
@@ -23,12 +23,12 @@ bool Environments::createNewEnvironemnt(const QString name){
 bool Environments::installNewEnvironment(const QString name){
     if(name.isEmpty()) return false;
     QDir envsdir(mcswitch_dir_env);
-    QStringList envs = QDir.entryList();
+    QStringList envs = envsdir.entryList();
 }
 
 bool Environments::removeEnvironment(const QString name){
     if(name.isEmpty()) return false;
     QDir envsdir(mcswitch_dir_env);
-    QStringList envs = QDir.entryList();
+    QStringList envs = envsdir.entryList();
 
 }

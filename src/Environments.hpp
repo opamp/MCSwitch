@@ -19,6 +19,6 @@ public:
     static bool removeEnvironment(const QString);
 
 private:
-    QVector* envsVector;
+    QVector<MCEnv> envsVector;
 };
 #endif

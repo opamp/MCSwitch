@@ -13,6 +13,6 @@ private:
     QPushButton* OKButton;
     QPushButton* ExitButton;
 
-    Environment* mcenv;
+    Environments* mcenvs;
 };
 #endif
