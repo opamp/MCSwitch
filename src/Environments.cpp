@@ -41,15 +41,17 @@ bool Environments::installNewEnvironment(const QString name,const QString path){
 
 
     }
-    QStringList idir = QDir(path).entryList();
 
-    /*同名のenvがないかチェック*/
+    /*
+    QStringList idir = QDir(path).entryList();
     QStringListIterator i(idir);
     while(i.hasNext()){
         if(i.next() == QString(".") or i.next() == QString("..")) continue;
         std::cout<<i.next().toStdString()<<std::endl;
         if(!QFile::copy(path + "/" + i.next(),mcswitch_dir_env + "/" + name + "/" + i.next())) return false;
-    }
+    }*/
+
+    if(!fileutils::cp_R(path,mcswitch_dir_env + "/" + name)) return false;
 
     return true;
 }
