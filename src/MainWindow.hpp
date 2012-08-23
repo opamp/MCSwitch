@@ -1,4 +1,5 @@
-#pragma onece
+#ifndef MAINWINDOW_HPP
+#define MAINWINDOW_HPP
 #include<QMainWindow>
 #include<QString>
 #include"CentralWidget.hpp"
@@ -11,3 +12,5 @@ public:
 private:
     CentralWidget* cwidget;
 };
+
+#endif

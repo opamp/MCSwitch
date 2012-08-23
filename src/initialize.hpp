@@ -1,8 +1,10 @@
-#pragma onece
+#ifndef INITIALIZE_HPP
+#define INITIALIZE_HPP
 #include<QString>
 #include<QFile>
 #include<QDir>
 #include"version.hpp"
+#include"Environment.hpp"
 
 bool initMCSwitchDir(){//init data dir.
 	if(QDir(mcswitch_dir).exists() and QDir(mcswitch_dir_common).exists() and QDir(mcswitch_dir_env).exists()) return true;
@@ -12,8 +14,16 @@ bool initMCSwitchDir(){//init data dir.
 	return true;
 }
 
+bool checkMinecraftDirExists(){ //return true if minecraft_dir exists.
+	return QFile::exists(minecraft_dir);
+}
+
 bool init(){ 
 	if(!initMCSwitchDir()) return false;
+	if(checkMinecraftDirExists()){
+		
+	}
 	return true;
 }
 
+#endif
