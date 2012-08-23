@@ -8,12 +8,14 @@ SET(MSRC
     ${SRC_DIR}/MainWindow.cpp
 	${SRC_DIR}/CentralWidget.cpp
 	${SRC_DIR}/Environments.cpp
+	${SRC_DIR}/MCEnv.cpp
 	)
 
 SET(MHED
     ${SRC_DIR}/MainWindow.hpp
 	${SRC_DIR}/CentralWidget.hpp
 	${SRC_DIR}/Environments.hpp
+	${SRC_DIR}/MCEnv.hpp
     )
 
 QT4_WRAP_CPP(HMOD ${MHED})

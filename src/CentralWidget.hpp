@@ -1,7 +1,7 @@
 #ifndef CENTRALWIDGET_HPP
 #define CENTRALWIDGET_HPP
 #include<QtGui>
-#include"Environment.hpp"
+#include"Environments.hpp"
 
 class CentralWidget : public QWidget {
 Q_OBJECT
