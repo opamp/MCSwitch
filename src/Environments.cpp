@@ -52,7 +52,6 @@ bool Environments::installNewEnvironment(const QString name,const QString path){
 
 bool Environments::removeEnvironment(const QString name){
     if(name.isEmpty()) return false;
-    QDir envsdir(mcswitch_dir_env);
-    QStringList envs = envsdir.entryList();
-
+    if(QDir().remove(mcswitch_dir_env + "/" + name)) return true;
+    return false;
 }
