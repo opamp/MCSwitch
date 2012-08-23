@@ -4,7 +4,7 @@
 #include<QFile>
 #include<QDir>
 #include"version.hpp"
-#include"Environment.hpp"
+#include"Environments.hpp"
 
 bool initMCSwitchDir(){//init data dir.
 	if(QDir(mcswitch_dir).exists() and QDir(mcswitch_dir_common).exists() and QDir(mcswitch_dir_env).exists()) return true;
