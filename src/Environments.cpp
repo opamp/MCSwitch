@@ -23,10 +23,31 @@ bool Environments::createNewEnvironemnt(const QString name){
     return true;
 }
 
-bool Environments::installNewEnvironment(const QString name){
-    if(name.isEmpty()) return false;
-    QDir envsdir(mcswitch_dir_env);
-    QStringList envs = envsdir.entryList();
+bool Environments::installNewEnvironment(const QString name,const QString path){
+    if(path.isEmpty() or !QDir().exists(path)) return false;
+    if(!MCEnv::initEnv(name,mcswitch_dir_env)) return false;
+
+    if(QFile::exists(path + "/" + eachEnvDataXmlName)){
+        QFile::remove(mcswitch_dir_env + "/" + name + "/" + eachEnvDataXmlName);
+        QFile::copy(path + "/" + eachEnvDataXmlName,mcswitch_dir_env + "/" + name + "/" + eachEnvDataXmlName);
+        QFile::setPermissions(mcswitch_dir_env + "/" + name + "/" + eachEnvDataXmlName,
+                                  QFile::ReadOwner  |
+                                  QFile::WriteOwner |
+                                  QFile::ReadUser   |
+                                  QFile::WriteUser
+                                  );
+
+
+    }
+    QStringList envs = QDir(path).entryList();
+
+    /*同名のenvがないかチェック*/
+    QStringListIterator i(envs);
+    while(i.hasNext()){
+        QFile::copy(i.next(),mcswitch_dir_env + "/" + name + "/" + i.next());
+    }
+
+    return true;
 }
 
 bool Environments::removeEnvironment(const QString name){
