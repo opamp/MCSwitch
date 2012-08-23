@@ -14,14 +14,10 @@ bool initMCSwitchDir(){//init data dir.
 	return true;
 }
 
-bool checkMinecraftDirExists(){ //return true if minecraft_dir exists.
-	return QFile::exists(minecraft_dir);
-}
-
 bool init(){ 
 	if(!initMCSwitchDir()) return false;
-	if(checkMinecraftDirExists()){
-		
+	if(!QFile::exists(minecraft_dir + "/" + eachEnvDataXmlName)){
+		if(!Environments::installNewEnvironment(QString("InitialEnv"),minecraft_dir)) return false;
 	}
 	return true;
 }

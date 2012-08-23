@@ -1,3 +1,4 @@
+#include<iostream>
 #include"Environments.hpp"
 #include"version.hpp"
 
@@ -39,12 +40,14 @@ bool Environments::installNewEnvironment(const QString name,const QString path){
 
 
     }
-    QStringList envs = QDir(path).entryList();
+    QStringList idir = QDir(path).entryList();
 
     /*同名のenvがないかチェック*/
-    QStringListIterator i(envs);
+    QStringListIterator i(idir);
     while(i.hasNext()){
-        QFile::copy(i.next(),mcswitch_dir_env + "/" + name + "/" + i.next());
+        if(i.next() == QString(".") or i.next() == QString("..")) continue;
+        std::cout<<i.next().toStdString()<<std::endl;
+        if(!QFile::copy(path + "/" + i.next(),mcswitch_dir_env + "/" + name + "/" + i.next())) return false;
     }
 
     return true;
