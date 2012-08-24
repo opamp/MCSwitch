@@ -2,7 +2,7 @@ MCSwitch
 ========
 
 ## About   
-MCSwitch provide you with environment to play plural minecraft versions. But,Now It supports mac only.  
+MCSwitch provide you with environment to play plural minecraft versions. But,Now It supports a mac only.  
 I'm considering also about other platform support.  
 
 
@@ -44,7 +44,7 @@ Second,run cmake command. Please also attach options to command if necesarry.
 
 	$ cmake ../  
 
-※ CMake will generate GNU Makefile.  
+※ CMake will generate a GNU Makefile.  
 ##### execute gnu make command  
 
 	$ make  
