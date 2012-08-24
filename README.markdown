@@ -32,6 +32,8 @@ Run this command...
 	$ git clone git://github.com/opamp/MCSwitch.git  
 
 and go in cloned directory.   
+Would you like to compile dev version?  
+You can build from dev branch. Please switch to dev branch.
 
 ##### Run cmake   
 First,make a directory for work.  
