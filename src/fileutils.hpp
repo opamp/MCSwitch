@@ -14,7 +14,7 @@ namespace fileutils{
 		if(!QDir().mkdir(to)) return false;
 
 		QDir dir(from);
-		QSringList list = dir.entryList();
+		QStringList list = dir.entryList();
 		QStringListIterator i(list);
 		QString b,bf;
 		while(i.hasNext()){
