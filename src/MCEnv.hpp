@@ -4,6 +4,7 @@
 #include<QDir>
 #include<QFile>
 #include<QString>
+#include"xml.hpp"
 #include"version.hpp"
 
 class MCEnv : public QObject{
