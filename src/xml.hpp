@@ -3,7 +3,6 @@
 #include<QString>
 #include<QFile>
 #include<QDir>
-#include<QtXml>
 
 class Xml{
 public:

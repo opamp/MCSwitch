@@ -3,13 +3,16 @@ FIND_PACKAGE(Qt4 4.8.1 REQUIRED)
 
 SET(BINARY_NAME "MCSwitch")
 
+ADD_LIBRARY(mcswitch_xml STATIC ${SRC_DIR}/xml.cpp)
+TARGET_LINK_LIBRARIES(mcswitch_xml ${QT_QTXML_LIBRARY})
+
 SET(MSRC
     ${SRC_DIR}/main.cpp
     ${SRC_DIR}/MainWindow.cpp
 	${SRC_DIR}/CentralWidget.cpp
 	${SRC_DIR}/Environments.cpp
 	${SRC_DIR}/MCEnv.cpp
-	${SRC_DIR}/xml.cpp
+	#${SRC_DIR}/xml.cpp
 	)
 
 SET(MHED
@@ -17,7 +20,7 @@ SET(MHED
 	${SRC_DIR}/CentralWidget.hpp
 	${SRC_DIR}/Environments.hpp
 	${SRC_DIR}/MCEnv.hpp
-	${SRC_DIR}/xml.cpp
+	#${SRC_DIR}/xml.cpp
     )
 
 QT4_WRAP_CPP(HMOD ${MHED})
@@ -51,4 +54,4 @@ ELSEIF(UNIX AND NOT APPLE)
 
 ENDIF()
 
-TARGET_LINK_LIBRARIES(${BINARY_NAME} ${QT_LIBRARIES} ${QT_QTXML_LIBRARY})
+TARGET_LINK_LIBRARIES(${BINARY_NAME} ${QT_LIBRARIES} mcswitch_xml)#${QT_QTXML_LIBRARY})
