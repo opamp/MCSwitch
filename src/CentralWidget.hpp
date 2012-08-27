@@ -9,6 +9,8 @@ public:
     CentralWidget(QWidget* parent = 0);
 
 private:
+    void initEnvironments();
+
     QSpinBox* selectEnvBox;
     QPushButton* OKButton;
     QPushButton* ExitButton;
