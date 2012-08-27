@@ -3,6 +3,10 @@
 #include<QString>
 #include<QFile>
 #include<QDir>
+#include<QDomDocument>
+#include<QDomElement>
+#include<QDomText>
+#include<QDomNode>
 
 class Xml{
 public:
