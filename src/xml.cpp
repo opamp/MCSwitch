@@ -23,7 +23,7 @@ bool Xml::open(const QString filename){
         return false;
     }
     QDomElement root = doc.documentElement();
-    if(root.tagName().toStdString() != rootTagName){
+    if(root.tagName() != rootTagName){
         return false;
     }
 
