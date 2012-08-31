@@ -2,6 +2,6 @@
 <MCSwitch_Env>
 	<name>InitialEnv</name>
 	<version>unknown</version>
-	<mods="false" />
+	<mods enable="false" />
 	<comment></comment>
 </MCSwitch_Env>

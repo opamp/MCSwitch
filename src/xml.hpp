@@ -24,6 +24,6 @@ public:
     bool save();
 private:
     QString filename;
-
+    xml_d data;
 };
 #endif
