@@ -8,6 +8,14 @@
 #include<QDomText>
 #include<QDomNode>
 
+struct xml_data{
+   QString name;
+   QString version;
+   QString comment;
+   bool mods;
+};typedef struct xml_data xml_d;
+
+
 class Xml{
 public:
     Xml();
@@ -16,5 +24,6 @@ public:
     bool save();
 private:
     QString filename;
+
 };
 #endif
