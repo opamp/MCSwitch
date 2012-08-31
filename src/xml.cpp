@@ -55,6 +55,14 @@ bool Xml::open(const QString filename){
     return true;
 }
 
+void Xml::getXmlData(xml_d* d){
+    d = &data;
+}
+
+void Xml::setXmlData(xml_d* d){
+
+}
+
 bool Xml::save(){
     return true;
 }

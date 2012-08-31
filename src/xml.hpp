@@ -21,6 +21,8 @@ public:
     Xml();
 
     bool open(const QString); // file path.
+    void getXmlData(xml_d*);
+    void setXmlData(xml_d*);
     bool save();
 private:
     QString filename;
