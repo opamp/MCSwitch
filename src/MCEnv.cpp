@@ -1,7 +1,20 @@
 #include"MCEnv.hpp"
 
-MCEnv::MCEnv(){
+MCEnv::MCEnv(const QString path){
+	if(QFile::exists(path))
+		this->path = path;
+	mods = false;
+}
 
+bool MCEnv::open(){
+	Xml xmlReader(path);
+	if(!xmlReader.open()) return false;
+	xml_d data;
+	xmlReader.getXmlData(&data);
+	envName = data.name;
+	mcVersion = data.version;
+	mods = data.mods;
+	comment = data.comment;
 }
 
 bool MCEnv::initEnv(const QString name, const QString dir_path){

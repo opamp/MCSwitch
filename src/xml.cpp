@@ -2,7 +2,7 @@
 #include"xml.hpp"
 
 Xml::Xml(const QString f){
-    data.mods = false;
+	data.mods = false;
 	filename = f;
 }
 
