@@ -7,7 +7,7 @@ MCEnv::MCEnv(const QString path){
 }
 
 bool MCEnv::open(){
-	Xml xmlReader(path);
+	Xml xmlReader(path + "/" +  eachEnvDataXmlName);
 	if(!xmlReader.open()) return false;
 	xml_d data;
 	xmlReader.getXmlData(&data);
