@@ -8,6 +8,9 @@
 #include<QDomText>
 #include<QDomNode>
 
+const QString rootTagName = "MCSwitch_Env";
+const int xml_indent = 4;
+
 struct xml_data{
    QString name;
    QString version;
@@ -18,9 +21,9 @@ struct xml_data{
 
 class Xml{
 public:
-    Xml();
+    Xml(const QString);
 
-    bool open(const QString); // file path.
+    bool open(); // file path.
     void getXmlData(xml_d*);
     void setXmlData(xml_d*);
     bool save();
