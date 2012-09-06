@@ -90,5 +90,6 @@ bool Xml::save(){
 	QTextStream out(&file);
 	doc.save(out,xml_indent);
 
+	file.close();
     return true;
 }
