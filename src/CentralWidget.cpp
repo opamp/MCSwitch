@@ -1,4 +1,7 @@
 #include"CentralWidget.hpp"
+#include<iostream>
+using std::cout;
+using std::endl;
 
 CentralWidget::CentralWidget(QWidget* parent):
     QWidget(parent){
@@ -6,6 +9,7 @@ CentralWidget::CentralWidget(QWidget* parent):
 }
 
 void CentralWidget::initEnvironments(){
+    Environments::installNewEnvironment(QString("InitialEnv"),minecraft_dir);
     mcenvs = new Environments();
 }
 
