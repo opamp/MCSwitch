@@ -22,6 +22,7 @@ public:
     static bool removeEnvironment(const QString);
 
 private:
+    QString path;
     QVector<MCEnv*> envsVector;
 };
 #endif
