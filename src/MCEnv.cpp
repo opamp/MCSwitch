@@ -11,10 +11,11 @@ bool MCEnv::open(){
 	if(!xmlReader.open()) return false;
 	xml_d data;
 	xmlReader.getXmlData(&data);
-	envName = data.name;
+    envName = data.name;
 	mcVersion = data.version;
 	mods = data.mods;
-	comment = data.comment;
+    comment = data.comment;
+    return true;
 }
 
 bool MCEnv::initEnv(const QString name, const QString dir_path){
@@ -40,5 +41,34 @@ bool MCEnv::initEnv(const QString name, const QString dir_path){
                           QFile::WriteUser
                           );
 
+    return true;
+}
+
+
+bool MCEnv::setName(const QString name){
+    if(name.isEmpty()){
+        return false;
+    }else{
+        this->envName = name;
+        return true;
+    }
+}
+
+bool MCEnv::setVersion(const QString version){
+    if(version.isEmpty()){
+        return false;
+    }else{
+        this->mcVersion = version;
+        return true;
+    }
+}
+
+bool MCEnv::setComment(const QString comment){
+    this->comment = comment;
+    return true;
+}
+
+bool MCEnv::setMods(bool f){
+    this->mods = f;
     return true;
 }

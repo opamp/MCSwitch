@@ -15,7 +15,16 @@ public:
 	bool open();
 
 	QString getPath(){return path;};
-    QString name(){return envName;};
+    QString getName(){return envName;};
+    QString getVersion(){return mcVersion;};
+    QString getComment(){return comment;};
+    bool getMods(){return mods;};
+
+
+    bool setName(const QString);
+    bool setVersion(const QString);
+    bool setComment(const QString);
+    bool setMods(bool);
 
 
     static bool initEnv(const QString name,const QString dir_path = mcswitch_dir_env);
