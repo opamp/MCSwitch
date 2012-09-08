@@ -2,10 +2,21 @@
 #include"version.hpp"
 #include"fileutils.hpp"
 
-Environments::Environments(){
-
+Environments::Environments(const QString path){
+    QDir dir(path);
+    QStringList envList = dir.entryList();
+    MCEnv *p;
+    for(int i = 0;i < envList.size();++i){
+        if(envList.at(i) == QString(".") || envList.at(i) == QString("..")){
+            continue;
+        }
+        p = new MCEnv(path + "/" + envList.at(i));
+        if(!p->open()){
+            continue;
+        }
+        envsVector.push_back(p);
+    }
 }
-
 
 
 bool Environments::createNewEnvironemnt(const QString name){

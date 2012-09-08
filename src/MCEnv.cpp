@@ -7,14 +7,24 @@ MCEnv::MCEnv(const QString path){
 }
 
 bool MCEnv::open(){
-	Xml xmlReader(path + "/" +  eachEnvDataXmlName);
-	if(!xmlReader.open()) return false;
+    xmlReader = new Xml(path + "/" +  eachEnvDataXmlName);
+    if(!xmlReader->open()) return false;
 	xml_d data;
-	xmlReader.getXmlData(&data);
+    xmlReader->getXmlData(&data);
     envName = data.name;
 	mcVersion = data.version;
 	mods = data.mods;
     comment = data.comment;
+    return true;
+}
+
+bool MCEnv::save(){
+    xml_d data;
+    data.name = envName;
+    data.version = mcVersion;
+    data.mods = mods;
+    data.comment = comment;
+    xmlReader->setXmlData(&data);
     return true;
 }
 

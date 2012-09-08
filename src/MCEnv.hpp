@@ -12,7 +12,8 @@ Q_OBJECT
 public:
     MCEnv(const QString); // path to env dir.
 
-	bool open();
+    bool open();
+    bool save();
 
 	QString getPath(){return path;};
     QString getName(){return envName;};
@@ -33,6 +34,8 @@ private:
     QString envName;
 	QString mcVersion;
 	QString comment;
-	bool mods;
+    bool mods;
+
+    Xml *xmlReader;
 };
 #endif

@@ -12,7 +12,7 @@
 class Environments : public QObject{
 Q_OBJECT
 public:
-    Environments();
+    Environments(const QString path = mcswitch_dir_env);
 
     /*引数には新しく作る環境の名前を渡す*/
     static bool createNewEnvironemnt(const QString);
@@ -22,6 +22,6 @@ public:
     static bool removeEnvironment(const QString);
 
 private:
-    QVector<MCEnv> envsVector;
+    QVector<MCEnv*> envsVector;
 };
 #endif
