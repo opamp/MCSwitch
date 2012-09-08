@@ -24,13 +24,13 @@ Environments::Environments(const QString path){
 }
 
 bool Environments::createNewEnvironemnt(const QString name){
-    if(!MCEnv::initEnv(name,this->path))return false; // create new environment.
+    if(!MCEnv::initEnv(name,mcswitch_dir_env))return false; // create new environment.
     return true;
 }
 
 bool Environments::installNewEnvironment(const QString name,const QString path){
     if(path.isEmpty() or !QDir().exists(path)) return false;
-    QStringList envs = QDir(this->path).entryList();
+    QStringList envs = QDir(mcswitch_dir_env).entryList();
     QStringListIterator i(envs);
     while(i.hasNext()){
         if(i.next() == name){
@@ -38,14 +38,15 @@ bool Environments::installNewEnvironment(const QString name,const QString path){
         }
     }
 
-    if(!fileutils::cp_R(path,this->path + "/" + name)) return false;
+    if(!fileutils::cp_R(path, mcswitch_dir_env + "/" + name)) return false;
+
 
 
     /*以下のifの中でeachEnvDataXmlNameに入っている文字列で設定ファイルを生成*/
     if(QFile::exists(path + "/" + eachEnvDataXmlName)){
-        QFile::remove(this->path + "/" + name + "/" + eachEnvDataXmlName);
-        QFile::copy(path + "/" + eachEnvDataXmlName,this->path + "/" + name + "/" + eachEnvDataXmlName);
-        QFile::setPermissions(this->path + "/" + name + "/" + eachEnvDataXmlName,
+        QFile::remove(mcswitch_dir_env + "/" + name + "/" + eachEnvDataXmlName);
+        QFile::copy(path + "/" + eachEnvDataXmlName,mcswitch_dir_env + "/" + name + "/" + eachEnvDataXmlName);
+        QFile::setPermissions(mcswitch_dir_env + "/" + name + "/" + eachEnvDataXmlName,
                                   QFile::ReadOwner  |
                                   QFile::WriteOwner |
                                   QFile::ReadUser   |
@@ -54,8 +55,8 @@ bool Environments::installNewEnvironment(const QString name,const QString path){
 
 
     }else{
-        if(!QFile::copy(tmp_xml1,this->path + "/" + name + "/" + eachEnvDataXmlName)) return false;
-        QFile::setPermissions(this->path + "/" + name + "/" + eachEnvDataXmlName,
+        if(!QFile::copy(tmp_xml1,mcswitch_dir_env + "/" + name + "/" + eachEnvDataXmlName)) return false;
+        QFile::setPermissions(mcswitch_dir_env + "/" + name + "/" + eachEnvDataXmlName,
                               QFile::ReadOwner  |
                               QFile::WriteOwner |
                               QFile::ReadUser   |
@@ -67,6 +68,6 @@ bool Environments::installNewEnvironment(const QString name,const QString path){
 
 bool Environments::removeEnvironment(const QString name){
     if(name.isEmpty()) return false;
-    if(QDir().remove(this->path + "/" + name)) return true;
+    if(QDir().remove(mcswitch_dir_env + "/" + name)) return true;
     return false;
 }
