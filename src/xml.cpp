@@ -1,6 +1,5 @@
 #include<QTextStream>
 #include"xml.hpp"
-#include<iostream> // for debug
 
 Xml::Xml(const QString f){
 	data.mods = false;
@@ -57,7 +56,7 @@ bool Xml::open(){
 }
 
 void Xml::getXmlData(xml_d* d){
-    d = &data;
+    *d = data;
 }
 
 void Xml::setXmlData(xml_d* d){
