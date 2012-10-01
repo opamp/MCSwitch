@@ -20,10 +20,10 @@ void CentralWidget::initButtons(){
 }
 
 void CentralWidget::initComboBox(Environments* e_obj){
-    selectEnvBox = new ComboBox();
+    selectEnvBox = new QComboBox();
     int numOfEnvs = e_obj->getNumberOfEnvironments();
     for(int i = 0;i < numOfEnvs;i++){
-        selectEnvBox->addItem((e_obj->getMCEnv(n))->getName());
+        selectEnvBox->addItem(e_obj->getMCEnv(i)->getName());
     }
 }
 
