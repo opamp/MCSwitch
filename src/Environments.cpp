@@ -2,6 +2,8 @@
 #include"version.hpp"
 #include"fileutils.hpp"
 
+#include<iostream>
+
 Environments::Environments(const QString path){
     if(QFile::exists(path)){
         this->path = path;
@@ -17,8 +19,11 @@ Environments::Environments(const QString path){
         }
         p = new MCEnv(path + "/" + envList.at(i));
         if(!p->open()){
+            std::cerr<<"ERROR::Failed to read "<<(path + "/" +envList.at(i)).toStdString()<<std::endl;
             continue;
         }
+
+//      std::cout<<"="<<p->getName().toStdString()<<std::endl;
         envsVector.push_back(p);
     }
 }

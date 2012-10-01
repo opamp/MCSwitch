@@ -1,5 +1,6 @@
 #include<QTextStream>
 #include"xml.hpp"
+#include<iostream> // for debug
 
 Xml::Xml(const QString f){
 	data.mods = false;
@@ -12,7 +13,7 @@ bool Xml::open(){
     QString error;int errorline;int errorColmun;
     QFile f(this->filename);
 
-    if(f.open(QIODevice::ReadOnly)){
+    if(!f.open(QIODevice::ReadOnly)){
         //fail to open file.
         return false;
     }
