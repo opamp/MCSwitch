@@ -3,7 +3,7 @@
 CentralWidget::CentralWidget(QWidget* parent):
     QWidget(parent){
     this->initEnvironments();
-    this->initSpinBox(this->mcenvs);
+    this->initComboBox(this->mcenvs);
 }
 
 void CentralWidget::initEnvironments(){
@@ -11,6 +11,7 @@ void CentralWidget::initEnvironments(){
 }
 
 
-void CentralWidget::initSpinBox(Environments* e_obj){
+void CentralWidget::initComboBox(Environments* e_obj){
+    int numOfEnvs = mcenvs->getNumberOfEnvironments();
 }
 

@@ -2,6 +2,7 @@
 #define CENTRALWIDGET_HPP
 #include<QtGui>
 #include<QString>
+#include<QComboBox>
 #include"Environments.hpp"
 
 
@@ -12,9 +13,9 @@ public:
 
 private:
     void initEnvironments();
-    void initSpinBox(Environments*);
+    void initComboBox(Environments*);
 
-    QSpinBox* selectEnvBox;
+    QComboBox* selectEnvBox;
     QPushButton* OKButton;
     QPushButton* ExitButton;
 
