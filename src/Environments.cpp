@@ -27,6 +27,13 @@ int Environments::getNumberOfEnvironments(){
     return envsVector.size();
 }
 
+MCEnv* Environments::getMCEnv(int n){
+    if(n < 0 || n >= this->getNumberOfEnvironments()){
+        return NULL;
+    }else{
+        return envsVector[n];
+    }
+}
 
 bool Environments::createNewEnvironemnt(const QString name){
     if(!MCEnv::initEnv(name,mcswitch_dir_env))return false; // create new environment.

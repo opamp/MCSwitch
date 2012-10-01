@@ -14,6 +14,8 @@ public:
 private:
     void initEnvironments();
     void initComboBox(Environments*);
+    void initButtons();
+    void setupUI();
 
     QComboBox* selectEnvBox;
     QPushButton* OKButton;

@@ -23,6 +23,7 @@ public:
 
 
     int getNumberOfEnvironments();
+    MCEnv* getMCEnv(int n);
 
 private:
     QString path;
