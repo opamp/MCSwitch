@@ -23,6 +23,11 @@ Environments::Environments(const QString path){
     }
 }
 
+int Environments::getNumberOfEnvironments(){
+    return envsVector.size();
+}
+
+
 bool Environments::createNewEnvironemnt(const QString name){
     if(!MCEnv::initEnv(name,mcswitch_dir_env))return false; // create new environment.
     return true;

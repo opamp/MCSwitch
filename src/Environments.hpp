@@ -21,6 +21,9 @@ public:
     /*指定した名前の環境を削除*/
     static bool removeEnvironment(const QString);
 
+
+    int getNumberOfEnvironments();
+
 private:
     QString path;
     QVector<MCEnv*> envsVector;

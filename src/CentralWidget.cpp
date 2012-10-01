@@ -3,10 +3,14 @@
 CentralWidget::CentralWidget(QWidget* parent):
     QWidget(parent){
     this->initEnvironments();
+    this->initSpinBox(this->mcenvs);
 }
 
 void CentralWidget::initEnvironments(){
-    Environments::installNewEnvironment(QString("InitialEnv"),minecraft_dir);
     mcenvs = new Environments();
+}
+
+
+void CentralWidget::initSpinBox(Environments* e_obj){
 }
 
