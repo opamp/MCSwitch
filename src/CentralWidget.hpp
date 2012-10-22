@@ -19,6 +19,7 @@ private:
 
     QComboBox* selectEnvBox;
     QPushButton* OKButton;
+	QPushButton* AddButton;
     QPushButton* ExitButton;
 
     Environments* mcenvs;

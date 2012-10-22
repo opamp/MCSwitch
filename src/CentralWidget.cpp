@@ -15,6 +15,8 @@ void CentralWidget::initEnvironments(){
 void CentralWidget::initButtons(){
     OKButton = new QPushButton("OK");
     //connect();
+	AddButton = new QPushButton("Add");
+	//connect();
     ExitButton = new QPushButton("EXIT");
     //connect();
 }

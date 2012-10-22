@@ -1,5 +1,5 @@
-#include<QTextStream>
-#include"xml.hpp"
+#include <QTextStream>
+#include "xml.hpp"
 
 Xml::Xml(const QString f){
 	data.mods = false;
