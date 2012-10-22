@@ -10,6 +10,7 @@ SET(MSRC
     ${SRC_DIR}/main.cpp
     ${SRC_DIR}/MainWindow.cpp
 	${SRC_DIR}/CentralWidget.cpp
+	${SRC_DIR}/AddNewEnvDialog.cpp
 	${SRC_DIR}/Environments.cpp
 	${SRC_DIR}/MCEnv.cpp
 	${SRC_DIR}/xml.cpp
@@ -18,6 +19,7 @@ SET(MSRC
 SET(MHED
     ${SRC_DIR}/MainWindow.hpp
 	${SRC_DIR}/CentralWidget.hpp
+	${SRC_DIR}/AddNewEnvDialog.hpp
 	${SRC_DIR}/Environments.hpp
 	${SRC_DIR}/MCEnv.hpp
 	${SRC_DIR}/xml.cpp
