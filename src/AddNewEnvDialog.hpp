@@ -6,5 +6,5 @@ class AddNewEnvDialog{
 	AddNewEnvDialog(){
 
 	}
-}
+};
 #endif
