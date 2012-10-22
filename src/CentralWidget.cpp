@@ -33,9 +33,12 @@ void CentralWidget::setupUI(){
     QHBoxLayout* buttonLayout = new QHBoxLayout();
     buttonLayout->addWidget(OKButton);
     buttonLayout->addWidget(ExitButton);
+	QHBoxLayout* comboBoxLayout = new QHBoxLayout();
+	comboBoxLayout->addWidget(selectEnvBox);
+	comboBoxLayout->addWidget(AddButton);
     QVBoxLayout* mainLayout = new QVBoxLayout();
-    mainLayout->addWidget(selectEnvBox);
-    mainLayout->addLayout(buttonLayout);
+	mainLayout->addLayout(comboBoxLayout);
+	mainLayout->addLayout(buttonLayout);
 
     setLayout(mainLayout);
 }
