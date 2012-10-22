@@ -2,6 +2,7 @@
 
 CentralWidget::CentralWidget(QWidget* parent):
     QWidget(parent){
+	addEnvdlg = new AddNewEnvDialog();
     this->initEnvironments();
     this->initComboBox(this->mcenvs);
     this->initButtons();
@@ -47,5 +48,5 @@ void CentralWidget::setupUI(){
 
 //When AddButton is clicked,this is called.
 void CentralWidget::addNewEnvironment(){
-
+	addEnvdlg->show();
 }

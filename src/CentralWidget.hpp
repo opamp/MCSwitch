@@ -4,6 +4,7 @@
 #include<QString>
 #include<QComboBox>
 #include"Environments.hpp"
+#include"addNewEnvDialog.hpp"
 
 
 class CentralWidget : public QWidget {
@@ -24,6 +25,8 @@ private:
     QPushButton* OKButton;
 	QPushButton* AddButton;
     QPushButton* ExitButton;
+
+	AddNewEnvDialog* addEnvdlg;
 
     Environments* mcenvs;
 };
