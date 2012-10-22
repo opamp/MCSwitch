@@ -11,6 +11,9 @@ Q_OBJECT
 public:
     CentralWidget(QWidget* parent = 0);
 
+private slots:
+	void addNewEnvironment();
+
 private:
     void initEnvironments();
     void initComboBox(Environments*);

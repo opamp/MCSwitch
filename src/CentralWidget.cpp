@@ -16,7 +16,7 @@ void CentralWidget::initButtons(){
     OKButton = new QPushButton("OK");
     //connect();
 	AddButton = new QPushButton("Add");
-	//connect();
+	connect(AddButton,SIGNAL(clicked()),this,SLOT(addNewEnvironment()));
     ExitButton = new QPushButton("EXIT");
     //connect();
 }
@@ -33,12 +33,19 @@ void CentralWidget::setupUI(){
     QHBoxLayout* buttonLayout = new QHBoxLayout();
     buttonLayout->addWidget(OKButton);
     buttonLayout->addWidget(ExitButton);
+
 	QHBoxLayout* comboBoxLayout = new QHBoxLayout();
 	comboBoxLayout->addWidget(selectEnvBox);
 	comboBoxLayout->addWidget(AddButton);
+
     QVBoxLayout* mainLayout = new QVBoxLayout();
 	mainLayout->addLayout(comboBoxLayout);
 	mainLayout->addLayout(buttonLayout);
 
     setLayout(mainLayout);
+}
+
+//When AddButton is clicked,this is called.
+void CentralWidget::addNewEnvironment(){
+
 }
