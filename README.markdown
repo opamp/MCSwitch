@@ -2,7 +2,7 @@ MCSwitch
 ========
 
 ## About   
-MCSwitch provide you with environment to play plural minecraft versions. But,Now It supports a mac only.  
+MCSwitch provides you with environment to play plural minecraft versions. But,Now It supports a mac only.  
 I'm considering also about other platform support.  
 
 
