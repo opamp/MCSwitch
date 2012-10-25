@@ -16,9 +16,11 @@ protected:
 
 private slots:
     void clickedOKButton();
+    void clickedCancelButton();
 
 signals:
     void OKButtonIsPushed(AddNewEnvDialog_d*);
+    void CancelButtonIsPushed();
 
 private:
     AddNewEnvDialog_d data;

@@ -4,6 +4,7 @@ CentralWidget::CentralWidget(QWidget* parent):
     QWidget(parent){
     addEnvdlg = new AddNewEnvDialog();
     connect(addEnvdlg,SIGNAL(OKButtonIsPushed(AddNewEnvDialog_d*)),this,SLOT(AddNewEnvDialogIsSet(AddNewEnvDialog_d*)));
+    connect(addEnvdlg,SIGNAL(CancelButtonIsPushed()),this,SLOT(setEnabledTrue()));
 
 
     this->initEnvironments();

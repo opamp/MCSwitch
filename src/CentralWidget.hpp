@@ -12,6 +12,9 @@ Q_OBJECT
 public:
     CentralWidget(QWidget* parent = 0);
 
+public slots:
+    void setEnabledTrue(){this->setEnabled(true);};
+
 private slots:
     void addNewEnvironment();
     void AddNewEnvDialogIsSet(AddNewEnvDialog_d*);

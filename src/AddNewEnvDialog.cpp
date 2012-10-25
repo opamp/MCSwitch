@@ -7,6 +7,7 @@ AddNewEnvDialog::AddNewEnvDialog(QWidget* parent):
 	OKButton = new QPushButton("OK");
     CancelButton = new QPushButton("Cancel");
     connect(OKButton,SIGNAL(clicked()),this,SLOT(clickedOKButton()));
+    connect(CancelButton,SIGNAL(clicked()),this,SLOT(clickedCancelButton()));
 	nameEditor = new QLineEdit();
 
 	QHBoxLayout* buttonsLayout = new QHBoxLayout();
@@ -27,5 +28,10 @@ AddNewEnvDialog_d* AddNewEnvDialog::getDatas(){
 
 void AddNewEnvDialog::clickedOKButton(){
     emit OKButtonIsPushed(this->getDatas());
+    this->setVisible(false);
+}
+
+void AddNewEnvDialog::clickedCancelButton(){
+    emit CancelButtonIsPushed();
     this->setVisible(false);
 }
