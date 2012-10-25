@@ -21,11 +21,11 @@ AddNewEnvDialog::AddNewEnvDialog(QWidget* parent):
 }
 
 AddNewEnvDialog_d* AddNewEnvDialog::getDatas(){
-    //Implementation hasn't been finished.
-    return NULL;
+    data.env_name = nameEditor->text();
+    return &data;
 }
 
 void AddNewEnvDialog::clickedOKButton(){
-    emit OKButtonIsPushed();
+    emit OKButtonIsPushed(this->getDatas());
     this->setVisible(false);
 }

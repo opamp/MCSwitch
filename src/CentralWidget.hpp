@@ -14,7 +14,7 @@ public:
 
 private slots:
     void addNewEnvironment();
-    void AddNewEnvDialogIsSet();
+    void AddNewEnvDialogIsSet(AddNewEnvDialog_d*);
 
 private:
     void initEnvironments();

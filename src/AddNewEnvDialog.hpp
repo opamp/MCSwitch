@@ -10,14 +10,19 @@ class AddNewEnvDialog : public QWidget{
 	Q_OBJECT
 public:
     AddNewEnvDialog(QWidget* parent = 0);
+
+protected:
     AddNewEnvDialog_d* getDatas();
 
 private slots:
     void clickedOKButton();
+
 signals:
-    void OKButtonIsPushed();
+    void OKButtonIsPushed(AddNewEnvDialog_d*);
+
 private:
-	QLineEdit* nameEditor;
+    AddNewEnvDialog_d data;
+    QLineEdit* nameEditor;
 	QPushButton* OKButton;
 	QPushButton* CancelButton;
 };
