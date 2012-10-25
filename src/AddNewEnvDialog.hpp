@@ -2,6 +2,10 @@
 #define ADD_NEW_ENV_DIALOG
 #include<QtGui>
 
+struct AddNewEnvDialogData{
+    QString env_name;
+};typedef struct AddNewEnvDialogData AddNewEnvDialog_d;
+
 class AddNewEnvDialog : public QWidget{
 	Q_OBJECT
 public:

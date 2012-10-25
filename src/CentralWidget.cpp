@@ -2,7 +2,7 @@
 
 CentralWidget::CentralWidget(QWidget* parent):
     QWidget(parent){
-	addEnvdlg = new AddNewEnvDialog();
+    addEnvdlg = new AddNewEnvDialog();
     connect(addEnvdlg,SIGNAL(OKButtonIsPushed()),this,SLOT(AddNewEnvDialogIsSet()));
 
 
