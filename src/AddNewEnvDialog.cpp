@@ -20,6 +20,10 @@ AddNewEnvDialog::AddNewEnvDialog(QWidget* parent):
     setLayout(mainLayout);
 }
 
+AddNewEnvDialog_d* AddNewEnvDialog::getDatas(){
+    //Implementation hasn't been finished.
+    return NULL;
+}
 
 void AddNewEnvDialog::clickedOKButton(){
     emit OKButtonIsPushed();

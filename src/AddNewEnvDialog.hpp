@@ -10,6 +10,7 @@ class AddNewEnvDialog : public QWidget{
 	Q_OBJECT
 public:
     AddNewEnvDialog(QWidget* parent = 0);
+    AddNewEnvDialog_d* getDatas();
 
 private slots:
     void clickedOKButton();
