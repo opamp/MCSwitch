@@ -13,7 +13,8 @@ public:
     CentralWidget(QWidget* parent = 0);
 
 private slots:
-	void addNewEnvironment();
+    void addNewEnvironment();
+    void AddNewEnvDialogIsSet();
 
 private:
     void initEnvironments();
