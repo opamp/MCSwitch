@@ -12,6 +12,8 @@ Q_OBJECT
 public:
     CentralWidget(QWidget* parent = 0);
 
+signals:
+    void exitSignal();
 protected:
     void update();
 
@@ -21,6 +23,8 @@ public slots:
 private slots:
     void addNewEnvironment();
     void AddNewEnvDialogIsSet(AddNewEnvDialog_d*);
+    void ExitButtonPushed();
+    void OKButtonPushed();
 
 private:
     void initEnvironments();

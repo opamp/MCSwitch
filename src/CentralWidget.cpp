@@ -40,11 +40,11 @@ void CentralWidget::initEnvironments(){
 
 void CentralWidget::initButtons(){
     OKButton = new QPushButton("OK");
-    //connect();
+    connect(OKButton,SIGNAL(clicked()),this,SLOT(OKButtonPushed()));
 	AddButton = new QPushButton("Add");
 	connect(AddButton,SIGNAL(clicked()),this,SLOT(addNewEnvironment()));
     ExitButton = new QPushButton("EXIT");
-    //connect();
+    connect(ExitButton,SIGNAL(clicked()),this,SLOT(ExitButtonPushed()));
 }
 
 void CentralWidget::initComboBox(Environments* e_obj){
@@ -81,9 +81,18 @@ void CentralWidget::AddNewEnvDialogIsSet(AddNewEnvDialog_d* data){
     this->update();
 }
 
+void CentralWidget::ExitButtonPushed(){
+    emit exitSignal();
+}
+
+void CentralWidget::OKButtonPushed(){
+    //When OKButton is pushed,this is called.
+}
+
 //When AddButton is clicked,this is called.
 void CentralWidget::addNewEnvironment(){
     addEnvdlg->show();
     this->setEnabled(false);
 }
+
 
