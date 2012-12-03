@@ -32,8 +32,13 @@ private:
     QSpinBox* majorVersion;
     QSpinBox* minorVersion;
     QSpinBox* patchVersion;
-    QCheckBox* modButton;
+    QCheckBox* usemodsBox;
 	QPushButton* OKButton;
-	QPushButton* CancelButton;
+    QPushButton* CancelButton;
+
+    QLabel* nameLabel;
+    QLabel* commentLabel;
+    QLabel* versionLabel;
+    QLabel* modLabel;
 };
 #endif
