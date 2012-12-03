@@ -4,6 +4,9 @@
 
 struct AddNewEnvDialogData{
     QString env_name;
+    int version[3];//[0]->major,[1]->minor,[2]->patch
+    QString comment;
+    bool mod;
 };typedef struct AddNewEnvDialogData AddNewEnvDialog_d;
 
 class AddNewEnvDialog : public QWidget{
@@ -25,6 +28,11 @@ signals:
 private:
     AddNewEnvDialog_d data;
     QLineEdit* nameEditor;
+    QTextEdit* commentEdit;
+    QSpinBox* majorVersion;
+    QSpinBox* minorVersion;
+    QSpinBox* patchVersion;
+    QCheckBox* modButton;
 	QPushButton* OKButton;
 	QPushButton* CancelButton;
 };
