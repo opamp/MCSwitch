@@ -20,6 +20,18 @@ CentralWidget::CentralWidget(QWidget* parent):
 void CentralWidget::update(){
     MCEnv* cenv = mcenvs->getCurrentEnv();
     currentEnvView->setText(cenv->getName());
+    QString c = selectEnvBox->currentText();
+    int i = -1;
+    selectEnvBox->clear();
+    for(int n = 0;n < mcenvs->getNumberOfEnvironments();n++){
+      selectEnvBox->addItem(mcenvs->getMCEnv(n)->getName());
+      if(mcenvs->getMCEnv(n)->getName() == c){
+          i = n;
+      }
+    }
+    if(i != -1){
+        selectEnvBox->setCurrentIndex(i);
+    }
 }
 
 void CentralWidget::initEnvironments(){
@@ -66,6 +78,7 @@ void CentralWidget::AddNewEnvDialogIsSet(AddNewEnvDialog_d* data){
     Environments::createNewEnvironemnt(data->env_name,data->version,data->comment,data->mod);
     mcenvs->updateEnvData();
     this->setEnabled(true);
+    this->update();
 }
 
 //When AddButton is clicked,this is called.
