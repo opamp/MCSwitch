@@ -9,7 +9,7 @@ Environments::Environments(const QString path){
     }else{
         return;
     }
-    QDir dir(path);
+    QDir dir(this->path);
     QStringList envList = dir.entryList();
     MCEnv *p;
     for(int i = 0;i < envList.size();++i){
@@ -23,6 +23,38 @@ Environments::Environments(const QString path){
         }
         envsVector.push_back(p);
     }
+}
+
+int Environments::updateEnvData(){
+    QDir dir(this->path);
+    QStringList envList = dir.entryList();
+    MCEnv* p;
+    for(int i = 0;i < envList.size();++i){
+        bool dumpflg = false;
+        //"."と".."は省く
+        if(envList.at(i) == QString(".") || envList.at(i) == QString("..")){
+            continue;
+        }
+        //すでに同PATHを表すMCSWitchが登録されてるならスキップする
+        for(int n = 0;n < envsVector.size();++n){
+            if(envsVector[n]->getName() == envList.at(i)){
+                dumpflg = true;
+            }
+        }
+        if(dumpflg == true){
+            continue;
+        }
+
+        //上記２つに引っかからないものをMCSwitchの環境として認め登録
+        p = new MCEnv(path + "/" + envList.at(i));
+        if(!p->open()){
+            std::cerr<<"IGNORE::Failed to read "<<(path + "/" +envList.at(i)).toStdString()<<std::endl;
+            continue;
+        }
+        envsVector.push_back(p);
+
+    }
+    return getNumberOfEnvironments();
 }
 
 int Environments::getNumberOfEnvironments(){

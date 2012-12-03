@@ -51,6 +51,7 @@ void CentralWidget::setupUI(){
 }
 
 void CentralWidget::AddNewEnvDialogIsSet(AddNewEnvDialog_d* data){
+    Environments::createNewEnvironemnt(data->env_name);
     this->setEnabled(true);
     //data->env_name
 }
