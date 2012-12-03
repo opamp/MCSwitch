@@ -4,7 +4,7 @@ CentralWidget::CentralWidget(QWidget* parent):
     QWidget(parent){
     addEnvdlg = new AddNewEnvDialog();
     connect(addEnvdlg,SIGNAL(OKButtonIsPushed(AddNewEnvDialog_d*)),this,SLOT(AddNewEnvDialogIsSet(AddNewEnvDialog_d*)));
-    connect(addEnvdlg,SIGNAL(CancelButtonIsPushed()),this,SLOT(setEnabledTrue()));
+    connect(addEnvdlg,SIGNAL(CancelButtonIsPushed()),this,SLOT(setVisibleTrue()));
     currentEnvLabel = new QLabel("CurrentEnv ");
     currentEnvView = new QLineEdit();
     currentEnvView->setReadOnly(true);
@@ -77,7 +77,8 @@ void CentralWidget::setupUI(){
 void CentralWidget::AddNewEnvDialogIsSet(AddNewEnvDialog_d* data){
     Environments::createNewEnvironemnt(data->env_name,data->version,data->comment,data->mod);
     mcenvs->updateEnvData();
-    this->setEnabled(true);
+//  this->setEnabled(true);
+    emit requestToVisible();
     this->update();
 }
 
@@ -93,7 +94,8 @@ void CentralWidget::OKButtonPushed(){
 //When AddButton is clicked,this is called.
 void CentralWidget::addNewEnvironment(){
     addEnvdlg->show();
-    this->setEnabled(false);
+//  this->setEnabled(false);
+    emit requestToInvisible();
 }
 
 
