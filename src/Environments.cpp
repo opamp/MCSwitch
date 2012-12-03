@@ -2,6 +2,7 @@
 #include"Environments.hpp"
 #include"version.hpp"
 #include"fileutils.hpp"
+#include"xml.hpp"
 
 Environments::Environments(const QString path){
     if(QFile::exists(path)){
@@ -27,7 +28,7 @@ int Environments::updateEnvData(){
             continue;
         }
         //すでに同PATHを表すMCSWitchが登録されてるならスキップする
-        for(int n = 0;n < envsVector.size();++n){
+        for(int n = 0;n < this->getNumberOfEnvironments();++n){
             if(envsVector[n]->getName() == envList.at(i)){
                 dumpflg = true;
             }
@@ -60,9 +61,19 @@ MCEnv* Environments::getMCEnv(int n){
     }
 }
 
-
 MCEnv* Environments::getCurrentEnv(){
-
+    Xml reader(minecraft_dir + "/" +  eachEnvDataXmlName);
+    if(reader.open() == false){
+        return NULL;
+    }
+    xml_d data;
+    reader.getXmlData(&data);
+    for(int i = 0;i < this->getNumberOfEnvironments();++i){
+        if(envsVector[i]->getName() == data.name){
+            return envsVector[i];
+        }
+    }
+    return NULL;
 }
 
 bool Environments::createNewEnvironemnt(const QString name){
