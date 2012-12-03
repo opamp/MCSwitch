@@ -14,19 +14,6 @@ Environments::Environments(const QString path){
     MCEnv *p;
 
     this->updateEnvData();
-    /*
-    for(int i = 0;i < envList.size();++i){
-        if(envList.at(i) == QString(".") || envList.at(i) == QString("..")){
-            continue;
-        }
-        p = new MCEnv(path + "/" + envList.at(i));
-        if(!p->open()){
-            std::cerr<<"IGNORE::Failed to read "<<(path + "/" +envList.at(i)).toStdString()<<std::endl;
-            continue;
-        }
-        envsVector.push_back(p);
-    }
-    */
 }
 
 int Environments::updateEnvData(){
