@@ -20,6 +20,7 @@ protected:
 private slots:
     void clickedOKButton();
     void clickedCancelButton();
+    void changeCheckBox(int);
 
 signals:
     void OKButtonIsPushed(AddNewEnvDialog_d*);

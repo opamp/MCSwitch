@@ -4,6 +4,7 @@
 AddNewEnvDialog::AddNewEnvDialog(QWidget* parent):
 	QWidget(parent)
 {
+    data.mod = false;
     /*labels*/
     commentLabel = new QLabel("Comment:");
     nameLabel = new QLabel("Name:");
@@ -11,7 +12,7 @@ AddNewEnvDialog::AddNewEnvDialog(QWidget* parent):
 
     /*CheckBox*/
     usemodsBox = new QCheckBox("Use mods");
-
+    connect(usemodsBox,SIGNAL(stateChanged(int)),this,SLOT(changeCheckBox(int)));
 
     /*buttons*/
 	OKButton = new QPushButton("OK");
@@ -68,6 +69,10 @@ AddNewEnvDialog::AddNewEnvDialog(QWidget* parent):
 
 AddNewEnvDialog_d* AddNewEnvDialog::getDatas(){
     data.env_name = nameEditor->text();
+    data.version[0] = majorVersion->value();
+    data.version[1] = minorVersion->value();
+    data.version[2] = patchVersion->value();
+    data.comment = commentEdit->toPlainText();
     return &data;
 }
 
@@ -79,4 +84,12 @@ void AddNewEnvDialog::clickedOKButton(){
 void AddNewEnvDialog::clickedCancelButton(){
     emit CancelButtonIsPushed();
     this->setVisible(false);
+}
+
+void AddNewEnvDialog::changeCheckBox(int state){
+    if(state == Qt::Checked){
+        data.mod = true;
+    }else{
+        data.mod = false;
+    }
 }
