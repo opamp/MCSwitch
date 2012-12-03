@@ -12,6 +12,9 @@ Q_OBJECT
 public:
     CentralWidget(QWidget* parent = 0);
 
+protected:
+    void update();
+
 public slots:
     void setEnabledTrue(){this->setEnabled(true);};
 
@@ -29,6 +32,9 @@ private:
     QPushButton* OKButton;
 	QPushButton* AddButton;
     QPushButton* ExitButton;
+
+    QLabel* currentEnvLabel;
+    QLineEdit* currentEnvView;
 
 	AddNewEnvDialog* addEnvdlg;
 

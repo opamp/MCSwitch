@@ -5,12 +5,21 @@ CentralWidget::CentralWidget(QWidget* parent):
     addEnvdlg = new AddNewEnvDialog();
     connect(addEnvdlg,SIGNAL(OKButtonIsPushed(AddNewEnvDialog_d*)),this,SLOT(AddNewEnvDialogIsSet(AddNewEnvDialog_d*)));
     connect(addEnvdlg,SIGNAL(CancelButtonIsPushed()),this,SLOT(setEnabledTrue()));
-
+    currentEnvLabel = new QLabel("CurrentEnv ");
+    currentEnvView = new QLineEdit();
+    currentEnvView->setReadOnly(true);
+    currentEnvView->setFrame(true);
 
     this->initEnvironments();
     this->initComboBox(this->mcenvs);
     this->initButtons();
     this->setupUI();
+    this->update();
+}
+
+void CentralWidget::update(){
+    MCEnv* cenv = mcenvs->getCurrentEnv();
+    currentEnvView->setText(cenv->getName());
 }
 
 void CentralWidget::initEnvironments(){
@@ -34,6 +43,9 @@ void CentralWidget::initComboBox(Environments* e_obj){
 }
 
 void CentralWidget::setupUI(){
+    QHBoxLayout* currentEnvLayout = new QHBoxLayout();
+    currentEnvLayout->addWidget(currentEnvLabel);
+    currentEnvLayout->addWidget(currentEnvView);
     QHBoxLayout* buttonLayout = new QHBoxLayout();
     buttonLayout->addWidget(OKButton);
     buttonLayout->addWidget(ExitButton);
@@ -44,7 +56,8 @@ void CentralWidget::setupUI(){
 
     QVBoxLayout* mainLayout = new QVBoxLayout();
 	mainLayout->addLayout(comboBoxLayout);
-	mainLayout->addLayout(buttonLayout);
+    mainLayout->addLayout(currentEnvLayout);
+    mainLayout->addLayout(buttonLayout);
 
     setLayout(mainLayout);
 }
