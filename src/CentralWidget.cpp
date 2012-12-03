@@ -28,10 +28,10 @@ void CentralWidget::initButtons(){
 
 void CentralWidget::initComboBox(Environments* e_obj){
     selectEnvBox = new QComboBox();
-    int numOfEnvs = e_obj->getNumberOfEnvironments();
-    for(int i = 0;i < numOfEnvs;i++){
+    for(int i = 0;i < e_obj->getNumberOfEnvironments();i++){
         selectEnvBox->addItem(e_obj->getMCEnv(i)->getName());
     }
+
 }
 
 void CentralWidget::setupUI(){
@@ -54,7 +54,6 @@ void CentralWidget::AddNewEnvDialogIsSet(AddNewEnvDialog_d* data){
     Environments::createNewEnvironemnt(data->env_name);
     mcenvs->updateEnvData();
     this->setEnabled(true);
-    //data->env_name
 }
 
 //When AddButton is clicked,this is called.

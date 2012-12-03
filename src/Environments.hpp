@@ -23,8 +23,12 @@ public:
 
     /*envsVectorを読み込み直す*/
     int updateEnvData();
+    /*環境の数を返す*/
     int getNumberOfEnvironments();
+    /*n番目の環境のMCEnvデータへのポインタを返す*/
     MCEnv* getMCEnv(int n);
+    /*現在有効になっている環境を返す*/
+    MCEnv* getCurrentEnv();
 
 private:
     QString path;
