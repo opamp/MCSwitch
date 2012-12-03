@@ -82,6 +82,7 @@ void CentralWidget::AddNewEnvDialogIsSet(AddNewEnvDialog_d* data){
 }
 
 void CentralWidget::ExitButtonPushed(){
+    //If you want to excuse something before exit,you should write it here.
     emit exitSignal();
 }
 
