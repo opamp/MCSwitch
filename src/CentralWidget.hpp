@@ -20,7 +20,6 @@ protected:
     void update();
 
 public slots:
-//  void setEnabledTrue(){this->setEnabled(true);};
     void setVisibleTrue(){emit requestToVisible();};
 
 private slots:
