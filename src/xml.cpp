@@ -64,7 +64,10 @@ void Xml::setXmlData(xml_d* d){
 }
 
 bool Xml::save(){
-	QDomDocument doc;
+    if(data.name.isEmpty()) return false;
+    if(data.version.isEmpty()) return false;
+
+    QDomDocument doc;
 	QDomElement newroot = doc.createElement(rootTagName);
 	doc.appendChild(newroot);
 
@@ -73,8 +76,6 @@ bool Xml::save(){
 	QDomElement E_mods = doc.createElement("mods");
 	QDomElement E_comment = doc.createElement("comment");
 
-	if(data.name.isEmpty()) return false;
-	if(data.version.isEmpty()) return false;
 
 	QDomText name_text = doc.createTextNode(data.name);
 	QDomText version_text = doc.createTextNode(data.version);
@@ -86,7 +87,12 @@ bool Xml::save(){
 	else
 		E_mods.setAttribute(QString("enable"),QString("false"));
 
-	QFile file(filename);file.open(QIODevice::WriteOnly);
+    newroot.appendChild(E_name);
+    newroot.appendChild(E_version);
+    newroot.appendChild(E_mods);
+    newroot.appendChild(E_comment);
+
+    QFile file(filename);file.open(QIODevice::WriteOnly);
 	QTextStream out(&file);
 	doc.save(out,xml_indent);
 

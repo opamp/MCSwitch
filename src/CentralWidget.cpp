@@ -31,7 +31,6 @@ void CentralWidget::initComboBox(Environments* e_obj){
     for(int i = 0;i < e_obj->getNumberOfEnvironments();i++){
         selectEnvBox->addItem(e_obj->getMCEnv(i)->getName());
     }
-
 }
 
 void CentralWidget::setupUI(){
