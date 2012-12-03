@@ -12,6 +12,9 @@ Environments::Environments(const QString path){
     QDir dir(this->path);
     QStringList envList = dir.entryList();
     MCEnv *p;
+
+    this->updateEnvData();
+    /*
     for(int i = 0;i < envList.size();++i){
         if(envList.at(i) == QString(".") || envList.at(i) == QString("..")){
             continue;
@@ -23,6 +26,7 @@ Environments::Environments(const QString path){
         }
         envsVector.push_back(p);
     }
+    */
 }
 
 int Environments::updateEnvData(){
