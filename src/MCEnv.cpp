@@ -1,5 +1,4 @@
 #include"MCEnv.hpp"
-#include<iostream>
 
 MCEnv::MCEnv(const QString path){
 	if(QFile::exists(path))
@@ -59,10 +58,7 @@ bool MCEnv::initEnv(const QString name, const QString dir_path){
     data.version = "unknown";
     data.mods = false;
     writer.setXmlData(&data);
-    if(!writer.save()){
-        std::cout<<"false"<<std::endl;
-        return false;
-    }
+    if(!writer.save()) return false;
     return true;
 }
 

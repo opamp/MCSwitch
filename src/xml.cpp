@@ -78,9 +78,11 @@ bool Xml::save(){
 
 
 	QDomText name_text = doc.createTextNode(data.name);
-	QDomText version_text = doc.createTextNode(data.version);
+    QDomText version_text = doc.createTextNode(data.version);
+    QDomText comment_test = doc.createTextNode(data.comment);
 	E_name.appendChild(name_text);
-	E_version.appendChild(version_text);
+    E_version.appendChild(version_text);
+    E_comment.appendChild(comment_test);
 
 	if(data.mods == true)
 		E_mods.setAttribute(QString("enable"),QString("true"));
