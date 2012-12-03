@@ -14,8 +14,14 @@ Q_OBJECT
 public:
     Environments(const QString path = mcswitch_dir_env);
 
-    /*引数には新しく作る環境の名前を渡す*/
-    static bool createNewEnvironemnt(const QString);
+    /*
+    引数には新しく作る環境の名前を渡す
+    第一引数 -> name
+    第二引数 -> version配列
+    第三引数 -> comment
+    第四引数 -> use mod
+    */
+    static bool createNewEnvironemnt(const QString,int*,const QString,bool);
     /*nameには新しく作る環境の名前を、pathにはinstallするminecraftフォルダのPATHを渡す*/
     static bool installNewEnvironment(const QString name, const QString path);
     /*指定した名前の環境を削除*/

@@ -76,8 +76,15 @@ MCEnv* Environments::getCurrentEnv(){
     return NULL;
 }
 
-bool Environments::createNewEnvironemnt(const QString name){
-    if(!MCEnv::initEnv(name,mcswitch_dir_env))return false; // create new environment.
+bool Environments::createNewEnvironemnt(const QString name,int* v,const QString comment,bool usemod_f){
+    init_d data;
+    data.name = name;
+    data.version[0] = *v;
+    data.version[1] = *(v + 1);
+    data.version[2] = *(v + 2);
+    data.comment = comment;
+    data.usemod = usemod_f;
+    if(!MCEnv::initEnv(&data,mcswitch_dir_env))return false; // create new environment.
     return true;
 }
 

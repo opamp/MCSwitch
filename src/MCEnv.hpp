@@ -7,6 +7,13 @@
 #include"xml.hpp"
 #include"version.hpp"
 
+struct initData{
+    QString name;
+    int version[3];
+    bool usemod;
+    QString comment;
+};typedef struct initData init_d;
+
 class MCEnv : public QObject{
 Q_OBJECT
 public:
@@ -28,7 +35,8 @@ public:
     bool setMods(bool);
 
 
-    static bool initEnv(const QString name,const QString dir_path = mcswitch_dir_env);
+//  static bool initEnv(const QString name,const QString dir_path = mcswitch_dir_env);
+    static bool initEnv(init_d*,const QString dir_path = mcswitch_dir_env);
 private:
 	QString path;
     QString envName;

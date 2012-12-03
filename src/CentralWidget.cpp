@@ -50,7 +50,7 @@ void CentralWidget::setupUI(){
 }
 
 void CentralWidget::AddNewEnvDialogIsSet(AddNewEnvDialog_d* data){
-    Environments::createNewEnvironemnt(data->env_name);
+    Environments::createNewEnvironemnt(data->env_name,data->version,data->comment,data->mod);
     mcenvs->updateEnvData();
     this->setEnabled(true);
 }

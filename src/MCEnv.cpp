@@ -28,8 +28,8 @@ bool MCEnv::save(){
     return true;
 }
 
-bool MCEnv::initEnv(const QString name, const QString dir_path){
-    if(name.isEmpty() or dir_path.isEmpty()) return false;
+bool MCEnv::initEnv(init_d *d, const QString dir_path){
+    if(d->name.isEmpty() or dir_path.isEmpty()) return false;
     if(!QDir(dir_path).exists()) return false;
     QDir envsdir(mcswitch_dir_env);
     QStringList envs = envsdir.entryList();
@@ -37,26 +37,27 @@ bool MCEnv::initEnv(const QString name, const QString dir_path){
     /*同名のenvがないかチェック*/
     QStringListIterator i(envs);
     while(i.hasNext()){
-        if(i.next() == name){
+        if(i.next() == d->name){
             return false; // あったらfalseを返して終了
         }
     }
 
-    if(!QDir().mkdir(dir_path + "/" + name)) return false;
-    if(!QFile::copy(tmp_xml1,dir_path + "/" + name + "/" + eachEnvDataXmlName)) return false;
-    QFile::setPermissions(dir_path + "/" + name + "/" + eachEnvDataXmlName,
+    if(!QDir().mkdir(dir_path + "/" + d->name)) return false;
+    if(!QFile::copy(tmp_xml1,dir_path + "/" + d->name + "/" + eachEnvDataXmlName)) return false;
+    QFile::setPermissions(dir_path + "/" + d->name + "/" + eachEnvDataXmlName,
                           QFile::ReadOwner  |
                           QFile::WriteOwner |
                           QFile::ReadUser   |
                           QFile::WriteUser
                           );
 
-    Xml writer(dir_path + "/" + name + "/" + eachEnvDataXmlName);
+    Xml writer(dir_path + "/" + d->name + "/" + eachEnvDataXmlName);
     writer.open();
     xml_d data;
-    data.name = name;
-    data.version = "unknown";
-    data.mods = false;
+    data.name = d->name;
+    data.version = QString::number(d->version[0]) + "." + QString::number(d->version[1]) + "." + QString::number(d->version[2]);
+    data.mods = d->usemod;
+    data.comment = d->comment;
     writer.setXmlData(&data);
     if(!writer.save()) return false;
     return true;
