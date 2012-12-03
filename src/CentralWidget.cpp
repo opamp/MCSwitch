@@ -1,5 +1,4 @@
 #include"CentralWidget.hpp"
-#include<iostream> // for test
 
 CentralWidget::CentralWidget(QWidget* parent):
     QWidget(parent){
@@ -54,7 +53,6 @@ void CentralWidget::setupUI(){
 void CentralWidget::AddNewEnvDialogIsSet(AddNewEnvDialog_d* data){
     Environments::createNewEnvironemnt(data->env_name);
     mcenvs->updateEnvData();
-    std::cout<<mcenvs->getCurrentEnv()->getName().toStdString()<<std::endl;//for test
     this->setEnabled(true);
 }
 
