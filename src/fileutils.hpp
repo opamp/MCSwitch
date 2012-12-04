@@ -1,5 +1,6 @@
 #ifndef FILEUTILS_HPP
 #define FILEUTILS_HPP
+#include<iostream>
 #include<QString>
 #include<QStringList>
 #include<QFile>
@@ -41,13 +42,19 @@ namespace fileutils{
         while(i.hasNext()){
             b = i.next();
             if(b == QString(".") or b == QString("..")) continue;
+            b = dirName + "/" + b;
+            std::cout<<"b="<<b.toStdString()<<std::endl;
             if(QFileInfo(b).isDir()){
-                rm_R(b);
+                if(!rm_R(b)) return false;
             }else{
                 if(!QFile::remove(b)) return false;
             }
         }
-        if((new QDir())->rmdir(dirName)) return true;
+        if((new QDir())->rmdir(dirName)){
+            std::cout<<"remove ->"<<dirName.toStdString()<<std::endl;
+            return true;
+        }
+        std::cout<<"dir removed::b="<<b.toStdString()<<"  dirname="<<dirName.toStdString()<<std::endl;
         return false;
     }
 }

@@ -77,6 +77,9 @@ MCEnv* Environments::getCurrentEnv(){
 }
 
 bool Environments::createNewEnvironemnt(const QString name,int* v,const QString comment,bool usemod_f){
+    if(!fileutils::rm_R(QString("/Users/opamp/Desktop/testdir"))){
+        std::cout<<"失敗"<<std::endl;
+    }
     init_d data;
     data.name = name;
     data.version[0] = *v;
