@@ -77,7 +77,6 @@ void CentralWidget::setupUI(){
 void CentralWidget::AddNewEnvDialogIsSet(AddNewEnvDialog_d* data){
     Environments::createNewEnvironemnt(data->env_name,data->version,data->comment,data->mod);
     mcenvs->updateEnvData();
-//  this->setEnabled(true);
     emit requestToVisible();
     this->update();
 }
@@ -94,7 +93,6 @@ void CentralWidget::OKButtonPushed(){
 //When AddButton is clicked,this is called.
 void CentralWidget::addNewEnvironment(){
     addEnvdlg->show();
-//  this->setEnabled(false);
     emit requestToInvisible();
 }
 

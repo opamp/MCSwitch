@@ -35,6 +35,8 @@ public:
     MCEnv* getMCEnv(int n);
     /*現在有効になっている環境を返す*/
     MCEnv* getCurrentEnv();
+    /*QStringで指定された名前の環境に変更する*/
+    bool changeEnv(QString);
 
 private:
     QString path;

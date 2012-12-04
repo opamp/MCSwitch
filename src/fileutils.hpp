@@ -20,7 +20,6 @@ namespace fileutils{
 		while(i.hasNext()){
 			b = i.next();
 			bf = from + "/" + b;
-			//std::cout<<"=="<<bf.toStdString()<<std::endl;
 			if(bf == from + "/" + QString(".") or bf == from + "/" + QString("..")) continue;
 			if(QFileInfo(bf).isDir()){
 				cp_R(bf,to + "/" + b);
@@ -29,6 +28,27 @@ namespace fileutils{
 			}
 		}
 		return true;
-	}
+    }
+
+    bool rm_R(const QString dirName){
+        if(!QFileInfo(dirName).isDir()) return false;
+
+        QDir dir(dirName);
+        QStringList list = dir.entryList();
+        QStringListIterator i(list);
+        QString b;
+
+        while(i.hasNext()){
+            b = i.next();
+            if(b == QString(".") or b == QString("..")) continue;
+            if(QFileInfo(b).isDir()){
+                rm_R(b);
+            }else{
+                if(!QFile::remove(b)) return false;
+            }
+        }
+        if((new QDir())->rmdir(dirName)) return true;
+        return false;
+    }
 }
 #endif

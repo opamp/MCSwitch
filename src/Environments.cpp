@@ -131,3 +131,12 @@ bool Environments::removeEnvironment(const QString name){
     if(QDir().remove(mcswitch_dir_env + "/" + name)) return true;
     return false;
 }
+
+bool Environments::changeEnv(QString env_name){
+    for(int n = 0;n < envsVector.size();++n){
+        if(envsVector[n]->getName() == env_name){
+            QFile::remove(minecraft_dir + "/" + eachEnvDataXmlName);
+            QFile::copy(mcswitch_dir_env + "/" + env_name + "/" + eachEnvDataXmlName,minecraft_dir + "/" + eachEnvDataXmlName);
+        }
+    }
+}
