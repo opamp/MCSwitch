@@ -1,6 +1,11 @@
 MCSwitch   
 ========
 
+## Qt5  
+開発環境をQt5に移行中です。開発環境が十分に構築できるまでしばらく完全に更新がストップすると思います。  
+Qt5はインストール済みですが、CMakeのほうがちょっとまだよくわかってない状況です。  
+まあ、元々そんないいペースで進んでなかったけど...   
+   
 ## About   
 MCSwitch provides you with environment to play plural minecraft versions. But,Now It supports a mac only.  
 I'm considering also about other platform support.  
