@@ -3,6 +3,7 @@
 #include<QtGui>
 #include<QString>
 #include<QComboBox>
+#include<QHBoxLayout>
 #include"Environments.hpp"
 #include"addNewEnvDialog.hpp"
 

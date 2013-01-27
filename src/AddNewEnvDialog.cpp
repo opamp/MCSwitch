@@ -1,4 +1,6 @@
 #include "AddNewEnvDialog.hpp"
+#include <QHBoxLayout>
+#include <QVBoxLayout>
 
 
 AddNewEnvDialog::AddNewEnvDialog(QWidget* parent):
