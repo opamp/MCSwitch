@@ -1,11 +1,6 @@
 MCSwitch   
 ========
 
-## Qt5  
-開発環境をQt5に移行中です。開発環境が十分に構築できるまでしばらく完全に更新がストップすると思います。  
-Qt5はインストール済みですが、CMakeのほうがちょっとまだよくわかってない状況です。  
-まあ、元々そんないいペースで進んでなかったけど...   
-   
 ## About   
 MCSwitch provides you with environment to play plural minecraft versions. But,Now It supports a mac only.  
 I'm considering also about other platform support.  
@@ -21,7 +16,7 @@ I'm considering also about other platform support.
 
 ## Dependencies   
    
-[Qt](http://qt.nokia.com/)  
+[Qt5](http://qt.nokia.com/)  
 License is [LGPLv2](http://www.gnu.org/licenses/lgpl-2.1.html)  
 
 If you will build this application from source,you have to install [CMake](http://www.cmake.org/).  
