@@ -101,6 +101,7 @@ bool Environments::installNewEnvironment(const QString name,const QString path){
         }
     }
 
+
     if(!fileutils::cp_R(path, mcswitch_dir_env + "/" + name)) return false;
 
 
