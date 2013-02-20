@@ -1,5 +1,6 @@
 build/
 *.swp
 *.user
+*.2.6pre1
 *.DS_Store
 Thumbs.db
