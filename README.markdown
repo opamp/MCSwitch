@@ -1,5 +1,8 @@
-MCSwitch   
+MCSwitch  
 ========
+
+	MCSwitch is in development
+
 
 ## About   
 MCSwitch provides you with environment to play plural minecraft versions. But,Now It supports a mac only.  
@@ -18,8 +21,9 @@ I'm considering also about other platform support.
    
 [Qt5](http://qt.nokia.com/)  
 License is [LGPLv2](http://www.gnu.org/licenses/lgpl-2.1.html)  
+You can build it if you rewrite CMakeLists.txt for Qt4.
 
-If you will build this application from source,you have to install [CMake](http://www.cmake.org/).  
+If you will build this application from source code,you have to install [CMake](http://www.cmake.org/).  
 
 
 ## Compiling from source code.
