@@ -130,11 +130,6 @@ bool Environments::installNewEnvironment(const QString name,const QString path){
     }
     return true;
 }
-/*
-bool Environments::removeEnvironment(const QString name){
-    if(name.isEmpty()) return false;
-    return false;
-}*/
 
 bool Environments::changeEnv(QString env_name){
     for(int n = 0;n < envsVector.size();++n){
@@ -148,5 +143,6 @@ bool Environments::changeEnv(QString env_name){
             if(!QFile::rename(mcswitch_dir_env + fsp + env_name,mcswitch_dir + fsp + LOADING_DIR_NAME)) return false;
         }
     }
+    this->updateEnvData();
     return true;
 }

@@ -24,8 +24,6 @@ public:
     static bool createNewEnvironemnt(const QString,int*,const QString,bool);
     /*nameには新しく作る環境の名前を、pathにはinstallするminecraftフォルダのPATHを渡す*/
     static bool installNewEnvironment(const QString name, const QString path);
-    /*指定した名前の環境を削除*/
-    //static bool removeEnvironment(const QString);
 
     /*envsVectorを読み込み直す*/
     int updateEnvData();
