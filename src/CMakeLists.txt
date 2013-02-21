@@ -13,6 +13,7 @@ QT5_USE_MODULES(mcswitch_xml Xml)
 SET(MSRC
     ${SRC_DIR}/main.cpp
     ${SRC_DIR}/MainWindow.cpp
+	${SRC_DIR}/AboutWidget.cpp
 	${SRC_DIR}/CentralWidget.cpp
 	${SRC_DIR}/AddNewEnvDialog.cpp
 	${SRC_DIR}/Environments.cpp
@@ -22,6 +23,7 @@ SET(MSRC
 
 SET(MHED
     ${SRC_DIR}/MainWindow.hpp
+	${SRC_DIR}/AboutWidget.hpp
 	${SRC_DIR}/CentralWidget.hpp
 	${SRC_DIR}/AddNewEnvDialog.hpp
 	${SRC_DIR}/Environments.hpp
