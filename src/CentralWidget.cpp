@@ -55,9 +55,17 @@ void CentralWidget::initButtons(){
 
 void CentralWidget::initComboBox(Environments* e_obj){
     selectEnvBox = new QComboBox();
+	MCEnv* e = mcenvs->getCurrentEnv();
+	e->open();
+	int b = 0;
     for(int i = 0;i < e_obj->getNumberOfEnvironments();i++){
         selectEnvBox->addItem(e_obj->getMCEnv(i)->getName());
+		if(e_obj->getMCEnv(i)->getName() == e->getName()){
+			b = i;
+		}
     }
+	delete e;
+	selectEnvBox->setCurrentIndex(b);
 }
 
 void CentralWidget::setupUI(){

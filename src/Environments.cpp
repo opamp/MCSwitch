@@ -14,6 +14,14 @@ Environments::Environments(const QString path){
     QDir dir(this->path);
     QStringList envList = dir.entryList();
     this->updateEnvData();
+
+	/*起動時にloadingenvにEnvironmentがあれば読みこんでvectorに追加 (無理矢理感しかない)*/
+	if(QFile::exists(mcswitch_dir + fsp + LOADING_DIR_NAME)){
+		MCEnv* e = new MCEnv(mcswitch_dir + fsp + LOADING_DIR_NAME);
+		e->open();
+		this->envsVector.push_back(e);
+	}
+
 }
 
 int Environments::updateEnvData(){
@@ -59,19 +67,6 @@ MCEnv* Environments::getMCEnv(int n){
 }
 
 MCEnv* Environments::getCurrentEnv(){
-    /*
-    Xml reader(minecraft_dir + fsp +  eachEnvDataXmlName);
-    if(reader.open() == false){
-        return NULL;
-    }
-    xml_d data;
-    reader.getXmlData(&data);
-    for(int i = 0;i < this->getNumberOfEnvironments();++i){
-        if(envsVector[i]->getName() == data.name){
-            return envsVector[i];
-        }
-    }
-    return NULL;*/
     if(QFile::exists(mcswitch_dir + fsp + LOADING_DIR_NAME)){
         MCEnv* e = new MCEnv(mcswitch_dir + fsp + LOADING_DIR_NAME);
         return e;
