@@ -20,6 +20,10 @@ CentralWidget::CentralWidget(QWidget* parent):
 
 void CentralWidget::update(){
     MCEnv* cenv = mcenvs->getCurrentEnv();
+    if(cenv == NULL){
+        std::cerr<<"MCSwitch can't load current env."<<std::endl;
+        exit(1);
+    }
     cenv->open();
     currentEnvView->setText(cenv->getName());
     QString c = selectEnvBox->currentText();
@@ -90,7 +94,9 @@ void CentralWidget::ExitButtonPushed(){
 
 void CentralWidget::OKButtonPushed(){
     //When OKButton is pushed,this is called.
-    mcenvs->changeEnv(selectEnvBox->itemText(selectEnvBox->currentIndex()));
+    if(!mcenvs->changeEnv(selectEnvBox->itemText(selectEnvBox->currentIndex()))){
+        std::cerr<<"fail to change environment\n";
+    }
     this->update();
 }
 
