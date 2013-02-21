@@ -4,6 +4,7 @@
 #include"fileutils.hpp"
 #include"xml.hpp"
 
+
 Environments::Environments(const QString path){
     if(QFile::exists(path)){
         this->path = path;
@@ -12,21 +13,17 @@ Environments::Environments(const QString path){
     }
     QDir dir(this->path);
     QStringList envList = dir.entryList();
-    MCEnv *p;
-
     this->updateEnvData();
 }
 
 int Environments::updateEnvData(){
     QDir dir(this->path);
-    QStringList envList = dir.entryList();
+    QStringList envList = dir.entryList(QDir::NoDotAndDotDot | QDir::AllDirs);
     MCEnv* p;
     for(int i = 0;i < envList.size();++i){
         bool dumpflg = false;
-        //"."と".."は省く
-        if(envList.at(i) == QString(".") || envList.at(i) == QString("..")){
-            continue;
-        }
+        //候補のディレクトリ直下にeachEnvDataXmlNameが存在しない場合はスキップする
+        if(!QFile::exists(mcswitch_dir_env + fsp + envList.at(i) + fsp + eachEnvDataXmlName)) continue;
         //すでに同PATHを表すMCSWitchが登録されてるならスキップする
         for(int n = 0;n < this->getNumberOfEnvironments();++n){
             if(envsVector[n]->getName() == envList.at(i)){
@@ -38,9 +35,9 @@ int Environments::updateEnvData(){
         }
 
         //上記２つに引っかからないものをMCSwitchの環境として認め登録
-        p = new MCEnv(path + "/" + envList.at(i));
+        p = new MCEnv(path + fsp + envList.at(i));
         if(!p->open()){
-            std::cerr<<"IGNORE::Failed to read "<<(path + "/" +envList.at(i)).toStdString()<<std::endl;
+            std::cerr<<"IGNORE::Failed to read "<<(path + fsp +envList.at(i)).toStdString()<<std::endl;
             continue;
         }
         envsVector.push_back(p);
@@ -62,7 +59,8 @@ MCEnv* Environments::getMCEnv(int n){
 }
 
 MCEnv* Environments::getCurrentEnv(){
-    Xml reader(minecraft_dir + "/" +  eachEnvDataXmlName);
+    /*
+    Xml reader(minecraft_dir + fsp +  eachEnvDataXmlName);
     if(reader.open() == false){
         return NULL;
     }
@@ -73,13 +71,16 @@ MCEnv* Environments::getCurrentEnv(){
             return envsVector[i];
         }
     }
-    return NULL;
+    return NULL;*/
+    if(QFile::exists(mcswitch_dir + fsp + LOADING_DIR_NAME)){
+        MCEnv* e = new MCEnv(mcswitch_dir + fsp + LOADING_DIR_NAME);
+        return e;
+    }else{
+        return NULL;
+    }
 }
 
 bool Environments::createNewEnvironemnt(const QString name,int* v,const QString comment,bool usemod_f){
-    if(!fileutils::rm_R(QString("/Users/opamp/Desktop/testdir"))){
-        std::cout<<"失敗"<<std::endl;
-    }
     init_d data;
     data.name = name;
     data.version[0] = *v;
@@ -97,20 +98,20 @@ bool Environments::installNewEnvironment(const QString name,const QString path){
     QStringListIterator i(envs);
     while(i.hasNext()){
         if(i.next() == name){
-            return false; // あったらfalseを返して終了
+            return false; //同名のEnvironemntがないかチェック
         }
     }
 
 
-    if(!fileutils::cp_R(path, mcswitch_dir_env + "/" + name)) return false;
+    if(!fileutils::cp_R(path, mcswitch_dir_env + fsp + name)) return false; //copy.
 
 
 
     /*以下のifの中でeachEnvDataXmlNameに入っている文字列で設定ファイルを生成*/
-    if(QFile::exists(path + "/" + eachEnvDataXmlName)){
-        QFile::remove(mcswitch_dir_env + "/" + name + "/" + eachEnvDataXmlName);
-        QFile::copy(path + "/" + eachEnvDataXmlName,mcswitch_dir_env + "/" + name + "/" + eachEnvDataXmlName);
-        QFile::setPermissions(mcswitch_dir_env + "/" + name + "/" + eachEnvDataXmlName,
+    if(QFile::exists(path + fsp + eachEnvDataXmlName)){
+        QFile::remove(mcswitch_dir_env + fsp + name + fsp + eachEnvDataXmlName);
+        QFile::copy(path + fsp + eachEnvDataXmlName,mcswitch_dir_env + fsp + name + fsp + eachEnvDataXmlName);
+        QFile::setPermissions(mcswitch_dir_env + fsp + name + fsp + eachEnvDataXmlName,
                                   QFile::ReadOwner  |
                                   QFile::WriteOwner |
                                   QFile::ReadUser   |
@@ -130,17 +131,18 @@ bool Environments::installNewEnvironment(const QString name,const QString path){
     return true;
 }
 
-bool Environments::removeEnvironment(const QString name){
-    if(name.isEmpty()) return false;
-    if(QDir().remove(mcswitch_dir_env + "/" + name)) return true;
-    return false;
-}
-
 bool Environments::changeEnv(QString env_name){
     for(int n = 0;n < envsVector.size();++n){
         if(envsVector[n]->getName() == env_name){
-            QFile::remove(minecraft_dir + "/" + eachEnvDataXmlName);
-            QFile::copy(mcswitch_dir_env + "/" + env_name + "/" + eachEnvDataXmlName,minecraft_dir + "/" + eachEnvDataXmlName);
+            if(QFile::exists(mcswitch_dir + fsp + LOADING_DIR_NAME)){
+                MCEnv* e = new MCEnv(mcswitch_dir + fsp + LOADING_DIR_NAME);
+                e->open();
+                if(!QFile::rename(mcswitch_dir + fsp + LOADING_DIR_NAME,mcswitch_dir_env + fsp + e->getName())) return false;
+                delete e;
+            }
+            if(!QFile::rename(mcswitch_dir_env + fsp + env_name,mcswitch_dir + fsp + LOADING_DIR_NAME)) return false;
         }
     }
+    this->updateEnvData();
+    return true;
 }

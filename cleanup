@@ -1,0 +1,15 @@
+#!/bin/sh
+
+UNAME=`uname`
+if test ${UNAME} != "Darwin";then
+	echo "This script for Darwin."
+	exit 0
+fi
+
+rm -f $HOME/MCSwitchEnvironments
+rm -f $HOME/Library/Application\ Support/minecraft
+mv $HOME/.MCSwitch/env/InitialEnv $HOME/Library/Application\ Support/minecraft
+rm -fr $HOME/.MCSwitch
+rm -f $HOME/Library/Application\ Support/minecraft/.mcswitch.xml
+
+echo "Finsihed"

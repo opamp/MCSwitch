@@ -1,13 +1,12 @@
 #include"MCEnv.hpp"
 
 MCEnv::MCEnv(const QString path){
-	if(QFile::exists(path))
-		this->path = path;
+    if(QFile::exists(path)) this->path = path;
 	mods = false;
 }
 
 bool MCEnv::open(){
-    xmlReader = new Xml(path + "/" +  eachEnvDataXmlName);
+    xmlReader = new Xml(path + fsp +  eachEnvDataXmlName);
     if(!xmlReader->open()) return false;
     xml_d data;
     xmlReader->getXmlData(&data);

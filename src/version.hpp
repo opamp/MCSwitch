@@ -3,15 +3,21 @@
 #include<QString>
 #include<QDir>
 
+#define LOADING_DIR_NAME "loadingenv"
+
+const QString fsp = QDir::separator();
+
 const QString app_name = "MCSwitch"; // Application Full Name.
 const QString app_ver = "0.0.1-dev"; // Application Version.
 const QString app_license = "MIT"; // Application License.
 
-const QString mcswitch_dir = QDir::homePath() + "/.MCSwitch"; //Application data dir.
-const QString mcswitch_dir_common = mcswitch_dir + "/common";
-const QString mcswitch_dir_env = mcswitch_dir + "/env";
+const QString mcswitch_dir = QDir::homePath() + fsp + ".MCSwitch"; //Application data dir.
+const QString mcswitch_dir_common = mcswitch_dir + fsp + "common";
+const QString mcswitch_dir_env = mcswitch_dir + fsp + "env";
 
-const QString minecraft_dir = QDir::homePath() + "/Library/Application Support/minecraft";
+const QString mcswitch_dir_env_link = QDir::homePath() + fsp + "MCSwitchEnvironments";
+
+const QString minecraft_dir = QDir::homePath() + "/Library/Application Support/minecraft"; //MacOSX
 
 const QString eachEnvDataXmlName = ".mcswitch.xml";
 /*resource*/
