@@ -6,7 +6,7 @@
 
 AboutWidget::AboutWidget(QWidget* parent):
     QWidget(parent){
-    appNameLabel = new QLabel(QString("<h1>")+app_name+QString("</h1>"));
+    appNameLabel = new QLabel(QString("<h1>")+app_name+QString(" -for Switching Minecraft version- </h1>"));
     versionLabel = new QLabel(app_ver);
     urlLabel = new QLabel(QString("https://github.com/opamp/MCSwitch"));
     licenseViewer = new QTextEdit();
