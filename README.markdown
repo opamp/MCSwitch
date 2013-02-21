@@ -5,17 +5,15 @@ MCSwitch
 
 
 ## About   
-MCSwitch provides you with environment to play plural minecraft versions. But,Now It supports a mac only.  
-I'm considering also about other platform support.  
+MCSwitch provides you with environment to play plural minecraft versions.   
 
 
 ## Note  
-##### version 0.0.1  
+##### version 0.0.1-dev   
 
-	*First release.  
-	*MCSwitch is released under a MIT License.   
-	*There are many bugs.  
-	*This is in development.
+	*Developer version   
+	*Minimum function   
+	*Many bugs.
 
 ## Dependencies   
    
