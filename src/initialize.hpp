@@ -64,7 +64,8 @@ bool init(){
                               QFile::WriteUser
                               );
 		if(!rm_R(minecraft_dir)) return false;
-		if(!QFile().link(mcswitch_dir_env + fsp + "InitialEnv",minecraft_dir)) return false;
+		QFile::rename(mcswitch_dir_env + fsp + "InitialEnv",mcswitch_dir + fsp + LOADING_DIR_NAME);
+		if(!QFile::link(mcswitch_dir + fsp + LOADING_DIR_NAME,minecraft_dir)) return false;
     }
 	return true;
 }

@@ -4,6 +4,7 @@
 #include"fileutils.hpp"
 #include"xml.hpp"
 
+
 Environments::Environments(const QString path){
     if(QFile::exists(path)){
         this->path = path;
@@ -12,8 +13,6 @@ Environments::Environments(const QString path){
     }
     QDir dir(this->path);
     QStringList envList = dir.entryList();
-    MCEnv *p;
-
     this->updateEnvData();
 }
 
@@ -60,6 +59,7 @@ MCEnv* Environments::getMCEnv(int n){
 }
 
 MCEnv* Environments::getCurrentEnv(){
+    /*
     Xml reader(minecraft_dir + fsp +  eachEnvDataXmlName);
     if(reader.open() == false){
         return NULL;
@@ -71,7 +71,13 @@ MCEnv* Environments::getCurrentEnv(){
             return envsVector[i];
         }
     }
-    return NULL;
+    return NULL;*/
+    if(QFile::exists(mcswitch_dir + fsp + LOADING_DIR_NAME)){
+        MCEnv* e = new MCEnv(mcswitch_dir + fsp + LOADING_DIR_NAME);
+        return e;
+    }else{
+        return NULL;
+    }
 }
 
 bool Environments::createNewEnvironemnt(const QString name,int* v,const QString comment,bool usemod_f){
@@ -124,18 +130,23 @@ bool Environments::installNewEnvironment(const QString name,const QString path){
     }
     return true;
 }
-
+/*
 bool Environments::removeEnvironment(const QString name){
     if(name.isEmpty()) return false;
-    if(QDir().remove(mcswitch_dir_env + "/" + name)) return true;
     return false;
-}
+}*/
 
 bool Environments::changeEnv(QString env_name){
     for(int n = 0;n < envsVector.size();++n){
         if(envsVector[n]->getName() == env_name){
-            QFile::remove(minecraft_dir + "/" + eachEnvDataXmlName);
-            QFile::copy(mcswitch_dir_env + "/" + env_name + "/" + eachEnvDataXmlName,minecraft_dir + "/" + eachEnvDataXmlName);
+            if(QFile::exists(mcswitch_dir + fsp + LOADING_DIR_NAME)){
+                MCEnv* e = new MCEnv(mcswitch_dir + fsp + LOADING_DIR_NAME);
+                e->open();
+                if(!QFile::rename(mcswitch_dir + fsp + LOADING_DIR_NAME,mcswitch_dir_env + fsp + e->getName())) return false;
+                delete e;
+            }
+            if(!QFile::rename(mcswitch_dir_env + fsp + env_name,mcswitch_dir + fsp + LOADING_DIR_NAME)) return false;
         }
     }
+    return true;
 }

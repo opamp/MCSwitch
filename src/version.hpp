@@ -3,6 +3,8 @@
 #include<QString>
 #include<QDir>
 
+#define LOADING_DIR_NAME "loadingenv"
+
 const QString fsp = QDir::separator();
 
 const QString app_name = "MCSwitch"; // Application Full Name.

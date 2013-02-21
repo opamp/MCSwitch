@@ -1,4 +1,5 @@
 #include"CentralWidget.hpp"
+#include<iostream>
 
 CentralWidget::CentralWidget(QWidget* parent):
     QWidget(parent){
@@ -19,6 +20,7 @@ CentralWidget::CentralWidget(QWidget* parent):
 
 void CentralWidget::update(){
     MCEnv* cenv = mcenvs->getCurrentEnv();
+    cenv->open();
     currentEnvView->setText(cenv->getName());
     QString c = selectEnvBox->currentText();
     int i = -1;
@@ -88,6 +90,8 @@ void CentralWidget::ExitButtonPushed(){
 
 void CentralWidget::OKButtonPushed(){
     //When OKButton is pushed,this is called.
+    mcenvs->changeEnv(selectEnvBox->itemText(selectEnvBox->currentIndex()));
+    this->update();
 }
 
 //When AddButton is clicked,this is called.
