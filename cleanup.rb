@@ -10,6 +10,10 @@ unless RbConfig::CONFIG["host_os"] =~ /^darwin.+/ then
 	exit 1
 end
 
+puts "rm -f $HOME/Library/Application Support/minecraft"
+system("rm -f $HOME/Library/Application Support/minecraft")
+puts "mv $HOME/.MCSwitch/env/InitialEnv $HOME/Application Support/minecraft"
+system("mv $HOME/.MCSwitch/env/InitialEnv $HOME/Application Support/minecraft")
 puts  "rm -fr $HOME/.MCSwitch"
 system("rm -fr ~/.MCSwitch")
 
