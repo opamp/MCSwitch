@@ -10,6 +10,8 @@ class AboutWidget : public QWidget{
 public:
     AboutWidget(QWidget* parent = 0);
 
+private slots:
+    void clickedOKButton();
 private:
     QLabel* appNameLabel;
     QLabel* versionLabel;

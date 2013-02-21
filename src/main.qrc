@@ -3,7 +3,7 @@
         <file>resources/icons/IconCandidate.png</file>
     </qresource>
     <qresource prefix="/texts">
-        <file>resources/tests/LICENSE.txt</file>
+        <file>resources/text/LICENSE.txt</file>
     </qresource>
     <qresource prefix="/xmls">
         <file>resources/xmls/tmp2.xml</file>
