@@ -60,7 +60,7 @@ MCEnv* Environments::getMCEnv(int n){
 }
 
 MCEnv* Environments::getCurrentEnv(){
-    Xml reader(minecraft_dir + "/" +  eachEnvDataXmlName);
+    Xml reader(minecraft_dir + fsp +  eachEnvDataXmlName);
     if(reader.open() == false){
         return NULL;
     }
@@ -75,9 +75,6 @@ MCEnv* Environments::getCurrentEnv(){
 }
 
 bool Environments::createNewEnvironemnt(const QString name,int* v,const QString comment,bool usemod_f){
-    if(!fileutils::rm_R(QString("/Users/opamp/Desktop/testdir"))){
-        std::cout<<"失敗"<<std::endl;
-    }
     init_d data;
     data.name = name;
     data.version[0] = *v;
