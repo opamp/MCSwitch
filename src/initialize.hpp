@@ -7,10 +7,15 @@
 #include"Environments.hpp"
 
 bool initMCSwitchDir(){//init data dir.
-	if(QDir(mcswitch_dir).exists() and QDir(mcswitch_dir_common).exists() and QDir(mcswitch_dir_env).exists()) return true;
-	if(!QDir().mkdir(mcswitch_dir)) return false;
-	if(!QDir().mkdir(mcswitch_dir_common)) return false;
-	if(!QDir().mkdir(mcswitch_dir_env)) return false;
+	if(!QDir(mcswitch_dir).exists()){
+		if(!QDir().mkdir(mcswitch_dir)) return false;
+	}	
+	if(!QDir(mcswitch_dir_env).exists()){
+		if(!QDir().mkdir(mcswitch_dir_env)) return false;
+	}
+	if(!QDir(mcswitch_dir_common).exists()){
+		if(!Qdir().mkdir(mcswitch_dir_common)) return false;
+	}
 	return true;
 }
 
