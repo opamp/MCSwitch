@@ -13,6 +13,8 @@ const QString mcswitch_dir = QDir::homePath() + fsp + ".MCSwitch"; //Application
 const QString mcswitch_dir_common = mcswitch_dir + fsp + "common";
 const QString mcswitch_dir_env = mcswitch_dir + fsp + "env";
 
+const QString mcswitch_dir_env_link = QDir::homePath() + fsp + "MCSwitchEnvironments";
+
 const QString minecraft_dir = QDir::homePath() + "/Library/Application Support/minecraft"; //MacOSX
 
 const QString eachEnvDataXmlName = ".mcswitch.xml";
