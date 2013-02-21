@@ -65,7 +65,6 @@ bool init(){
                               );
 		if(!rm_R(minecraft_dir)) return false;
 		if(!QFile().link(mcswitch_dir_env + fsp + "InitialEnv",minecraft_dir)) return false;
-        //if(!QFile::copy(mcswitch_dir_env + fsp + "InitialEnv" + fsp + eachEnvDataXmlName ,minecraft_dir + fsp + eachEnvDataXmlName)) return false;
     }
 	return true;
 }

@@ -19,14 +19,12 @@ Environments::Environments(const QString path){
 
 int Environments::updateEnvData(){
     QDir dir(this->path);
-    QStringList envList = dir.entryList();
+    QStringList envList = dir.entryList(QDir::NoDotAndDotDot | QDir::AllDirs);
     MCEnv* p;
     for(int i = 0;i < envList.size();++i){
         bool dumpflg = false;
-        //"."と".."は省く
-        if(envList.at(i) == QString(".") || envList.at(i) == QString("..")){
-            continue;
-        }
+        //候補のディレクトリ直下にeachEnvDataXmlNameが存在しない場合はスキップする
+        if(!QFile::exists(mcswitch_dir_env + fsp + envList.at(i) + fsp + eachEnvDataXmlName)) continue;
         //すでに同PATHを表すMCSWitchが登録されてるならスキップする
         for(int n = 0;n < this->getNumberOfEnvironments();++n){
             if(envsVector[n]->getName() == envList.at(i)){
@@ -38,9 +36,9 @@ int Environments::updateEnvData(){
         }
 
         //上記２つに引っかからないものをMCSwitchの環境として認め登録
-        p = new MCEnv(path + "/" + envList.at(i));
+        p = new MCEnv(path + fsp + envList.at(i));
         if(!p->open()){
-            std::cerr<<"IGNORE::Failed to read "<<(path + "/" +envList.at(i)).toStdString()<<std::endl;
+            std::cerr<<"IGNORE::Failed to read "<<(path + fsp +envList.at(i)).toStdString()<<std::endl;
             continue;
         }
         envsVector.push_back(p);
