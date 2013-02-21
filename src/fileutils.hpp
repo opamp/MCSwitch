@@ -35,14 +35,12 @@ namespace fileutils{
         if(!QFileInfo(dirName).isDir()) return false;
 
         QDir dir(dirName);
-        QStringList list = dir.entryList();
+        QStringList list = dir.entryList(QDir::NoDotAndDotDot | QDir::Hidden | QDir::AllEntries);
         QStringListIterator i(list);
         QString b;
 
         while(i.hasNext()){
-            b = i.next();
-            if(b == QString(".") or b == QString("..")) continue;
-            b = dirName + "/" + b;
+            b = dirName + "/" + i.next();
             std::cout<<"b="<<b.toStdString()<<std::endl;
             if(QFileInfo(b).isDir()){
                 if(!rm_R(b)) return false;

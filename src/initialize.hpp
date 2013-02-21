@@ -1,10 +1,36 @@
 #ifndef INITIALIZE_HPP
 #define INITIALIZE_HPP
 #include<QString>
+#include<QStringList>
+#include<QStringListIterator>
 #include<QFile>
+#include<QFileInfo>
 #include<QDir>
 #include"version.hpp"
 #include"Environments.hpp"
+
+#include<iostream>
+
+bool rm_R(const QString dirName){
+    if(!QFileInfo(dirName).isDir()) return false;
+    QDir dir(dirName);
+    QStringList list = dir.entryList(QDir::NoDotAndDotDot | QDir::Hidden | QDir::AllEntries);
+    QStringListIterator i(list);
+    QString b;
+    while(i.hasNext()){
+        b = dirName + fsp + i.next();
+        if(QFileInfo(b).isDir()){
+            if(!rm_R(b)) return false;
+        }else{
+            if(!QFile::remove(b)) return false;
+        }
+    }
+    if((new QDir())->rmdir(dirName)){
+       return true;
+    }
+    return false;
+}
+
 
 bool initMCSwitchDir(){//init data dir.
 	if(!QDir(mcswitch_dir).exists()){
@@ -37,7 +63,9 @@ bool init(){
                               QFile::ReadUser   |
                               QFile::WriteUser
                               );
-        if(!QFile::copy(mcswitch_dir_env + fsp + "InitialEnv" + fsp + eachEnvDataXmlName ,minecraft_dir + fsp + eachEnvDataXmlName)) return false;
+		if(!rm_R(minecraft_dir)) return false;
+		if(!QFile().link(mcswitch_dir_env + fsp + "InitialEnv",minecraft_dir)) return false;
+        //if(!QFile::copy(mcswitch_dir_env + fsp + "InitialEnv" + fsp + eachEnvDataXmlName ,minecraft_dir + fsp + eachEnvDataXmlName)) return false;
     }
 	return true;
 }

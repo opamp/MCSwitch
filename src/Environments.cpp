@@ -97,20 +97,20 @@ bool Environments::installNewEnvironment(const QString name,const QString path){
     QStringListIterator i(envs);
     while(i.hasNext()){
         if(i.next() == name){
-            return false; // あったらfalseを返して終了
+            return false; //同名のEnvironemntがないかチェック
         }
     }
 
 
-    if(!fileutils::cp_R(path, mcswitch_dir_env + "/" + name)) return false;
+    if(!fileutils::cp_R(path, mcswitch_dir_env + fsp + name)) return false; //copy.
 
 
 
     /*以下のifの中でeachEnvDataXmlNameに入っている文字列で設定ファイルを生成*/
-    if(QFile::exists(path + "/" + eachEnvDataXmlName)){
-        QFile::remove(mcswitch_dir_env + "/" + name + "/" + eachEnvDataXmlName);
-        QFile::copy(path + "/" + eachEnvDataXmlName,mcswitch_dir_env + "/" + name + "/" + eachEnvDataXmlName);
-        QFile::setPermissions(mcswitch_dir_env + "/" + name + "/" + eachEnvDataXmlName,
+    if(QFile::exists(path + fsp + eachEnvDataXmlName)){
+        QFile::remove(mcswitch_dir_env + fsp + name + fsp + eachEnvDataXmlName);
+        QFile::copy(path + fsp + eachEnvDataXmlName,mcswitch_dir_env + fsp + name + fsp + eachEnvDataXmlName);
+        QFile::setPermissions(mcswitch_dir_env + fsp + name + fsp + eachEnvDataXmlName,
                                   QFile::ReadOwner  |
                                   QFile::WriteOwner |
                                   QFile::ReadUser   |
