@@ -1,9 +1,6 @@
 MCSwitch  
 ========
 
-	MCSwitch is in development
-
-
 ## About   
 MCSwitch provides you with environment to play plural minecraft versions.   
 
