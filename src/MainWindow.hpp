@@ -11,14 +11,19 @@ public:
     MainWindow();
 
 private:
+	void initMenuBar();
+
     CentralWidget* cwidget;
     AboutWidget* about;
 
     QMenu* aboutBar;
+	QMenu* utilityBar;
     QAction* aboutAction;
+	QAction* remakeSymLink;
 
 private slots:
     void showAboutWidget();
+	void calledRemakeSymlink();
 };
 
 #endif
