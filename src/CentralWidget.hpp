@@ -28,6 +28,7 @@ private slots:
     void AddNewEnvDialogIsSet(AddNewEnvDialog_d*);
     void ExitButtonPushed();
     void OKButtonPushed();
+    void selectEnvBoxChanged(const QString&);
 
 private:
     void initEnvironments();

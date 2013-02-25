@@ -31,7 +31,7 @@ void CentralWidget::update(){
     int i = -1;
     selectEnvBox->clear();
     for(int n = 0;n < mcenvs->getNumberOfEnvironments();n++){
-      selectEnvBox->addItem(mcenvs->getMCEnv(n)->getName() + " (" + mcenvs->getMCEnv(n)->getVersion() +")");
+      selectEnvBox->addItem(mcenvs->getMCEnv(n)->getName());
       if(mcenvs->getMCEnv(n)->getName() == c){
           i = n;
       }
@@ -56,6 +56,7 @@ void CentralWidget::initButtons(){
 
 void CentralWidget::initComboBox(Environments* e_obj){
     selectEnvBox = new QComboBox();
+    connect(selectEnvBox,SIGNAL(currentIndexChanged(const QString&)),this,SLOT(selectEnvBoxChanged(const QString&)));
 	MCEnv* e = mcenvs->getCurrentEnv();
 	e->open();
 	int b = 0;
@@ -113,6 +114,15 @@ void CentralWidget::OKButtonPushed(){
         std::cerr<<"fail to change environment\n";
     }
     this->update();
+}
+
+void CentralWidget::selectEnvBoxChanged(const QString& env_name){
+    for(int n = 0;n < mcenvs->getNumberOfEnvironments();n++){
+        if(mcenvs->getMCEnv(n)->getName() == env_name){
+            MCEnv *e = mcenvs->getMCEnv(n);
+            this->commentViewer->setPlainText(e->getComment());
+        }
+    }
 }
 
 //When AddButton is clicked,this is called.
