@@ -33,12 +33,15 @@ private:
     void initEnvironments();
     void initComboBox(Environments*);
     void initButtons();
+    void initCommentViewer();
     void setupUI();
 
     QComboBox* selectEnvBox;
     QPushButton* OKButton;
-	QPushButton* AddButton;
+    QPushButton* AddButton;
     QPushButton* ExitButton;
+
+    QTextEdit* commentViewer;
 
     QLabel* currentEnvLabel;
     QLineEdit* currentEnvView;

@@ -12,6 +12,7 @@ CentralWidget::CentralWidget(QWidget* parent):
     currentEnvView->setFrame(true);
 
     this->initEnvironments();
+    this->initCommentViewer();
     this->initComboBox(this->mcenvs);
     this->initButtons();
     this->setupUI();
@@ -49,7 +50,7 @@ void CentralWidget::initButtons(){
     connect(OKButton,SIGNAL(clicked()),this,SLOT(OKButtonPushed()));
 	AddButton = new QPushButton("Add");
 	connect(AddButton,SIGNAL(clicked()),this,SLOT(addNewEnvironment()));
-    ExitButton = new QPushButton("EXIT");
+    ExitButton = new QPushButton("QUIT");
     connect(ExitButton,SIGNAL(clicked()),this,SLOT(ExitButtonPushed()));
 }
 
@@ -68,6 +69,11 @@ void CentralWidget::initComboBox(Environments* e_obj){
 	selectEnvBox->setCurrentIndex(b);
 }
 
+void CentralWidget::initCommentViewer(){
+    this->commentViewer = new QTextEdit();
+    this->commentViewer->setReadOnly(true);
+}
+
 void CentralWidget::setupUI(){
     QHBoxLayout* currentEnvLayout = new QHBoxLayout();
     currentEnvLayout->addWidget(currentEnvLabel);
@@ -81,7 +87,8 @@ void CentralWidget::setupUI(){
 	comboBoxLayout->addWidget(AddButton);
 
     QVBoxLayout* mainLayout = new QVBoxLayout();
-	mainLayout->addLayout(comboBoxLayout);
+    mainLayout->addLayout(comboBoxLayout);
+    mainLayout->addWidget(commentViewer);
     mainLayout->addLayout(currentEnvLayout);
     mainLayout->addLayout(buttonLayout);
 
