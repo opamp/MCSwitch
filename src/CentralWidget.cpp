@@ -12,7 +12,7 @@ CentralWidget::CentralWidget(QWidget* parent):
     currentEnvView->setFrame(true);
 
     this->initEnvironments();
-    this->initCommentViewer();
+    this->initInformationViewer();
     this->initComboBox(this->mcenvs);
     this->initButtons();
     this->setupUI();
@@ -70,7 +70,7 @@ void CentralWidget::initComboBox(Environments* e_obj){
 	selectEnvBox->setCurrentIndex(b);
 }
 
-void CentralWidget::initCommentViewer(){
+void CentralWidget::initInformationViewer(){
     this->commentViewer = new QTextEdit();
     this->commentViewer->setReadOnly(true);
 }

@@ -34,7 +34,7 @@ private:
     void initEnvironments();
     void initComboBox(Environments*);
     void initButtons();
-    void initCommentViewer();
+    void initInformationViewer();
     void setupUI();
 
     QComboBox* selectEnvBox;
@@ -42,6 +42,7 @@ private:
     QPushButton* AddButton;
     QPushButton* ExitButton;
 
+    QLabel* versionViewer;
     QTextEdit* commentViewer;
 
     QLabel* currentEnvLabel;
