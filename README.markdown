@@ -9,7 +9,7 @@ MCSwitch provides you with environment to play plural minecraft versions.
 
 
 ## Note  
-##### version 0.0.1-dev   
+##### version 0.0.3-dev   
 
 	*Developer version   
 	*Minimum function   

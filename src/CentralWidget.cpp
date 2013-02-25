@@ -6,7 +6,7 @@ CentralWidget::CentralWidget(QWidget* parent):
     addEnvdlg = new AddNewEnvDialog();
     connect(addEnvdlg,SIGNAL(OKButtonIsPushed(AddNewEnvDialog_d*)),this,SLOT(AddNewEnvDialogIsSet(AddNewEnvDialog_d*)));
     connect(addEnvdlg,SIGNAL(CancelButtonIsPushed()),this,SLOT(setVisibleTrue()));
-    currentEnvLabel = new QLabel("CurrentEnv ");
+    currentEnvLabel = new QLabel("Current Environment ");
     currentEnvView = new QLineEdit();
     currentEnvView->setReadOnly(true);
     currentEnvView->setFrame(true);
