@@ -73,6 +73,8 @@ void CentralWidget::initComboBox(Environments* e_obj){
 void CentralWidget::initInformationViewer(){
     this->commentViewer = new QTextEdit();
     this->commentViewer->setReadOnly(true);
+
+    this->versionViewer = new QLabel("VERSION ");
 }
 
 void CentralWidget::setupUI(){
@@ -89,6 +91,7 @@ void CentralWidget::setupUI(){
 
     QVBoxLayout* mainLayout = new QVBoxLayout();
     mainLayout->addLayout(comboBoxLayout);
+    mainLayout->addWidget(versionViewer);
     mainLayout->addWidget(commentViewer);
     mainLayout->addLayout(currentEnvLayout);
     mainLayout->addLayout(buttonLayout);
@@ -120,7 +123,8 @@ void CentralWidget::selectEnvBoxChanged(const QString& env_name){
     for(int n = 0;n < mcenvs->getNumberOfEnvironments();n++){
         if(mcenvs->getMCEnv(n)->getName() == env_name){
             MCEnv *e = mcenvs->getMCEnv(n);
-            this->commentViewer->setPlainText(e->getComment());
+            this->commentViewer->setPlainText(e->getComment());//set commnet viewer's text.
+            this->versionViewer->setText("VERSION " + e->getVersion());//set version info.
         }
     }
 }
