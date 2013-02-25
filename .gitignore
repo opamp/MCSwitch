@@ -3,4 +3,5 @@ build/
 *.user
 *.2.6pre1
 *.DS_Store
+*.autosave
 Thumbs.db
