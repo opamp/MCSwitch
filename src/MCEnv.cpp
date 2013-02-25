@@ -1,4 +1,4 @@
-#include"MCEnv.hpp"
+#include "MCEnv.hpp"
 
 MCEnv::MCEnv(const QString path){
     if(QFile::exists(path)) this->path = path;

@@ -1,8 +1,8 @@
-#include<iostream>
-#include"Environments.hpp"
-#include"version.hpp"
-#include"fileutils.hpp"
-#include"xml.hpp"
+#include <iostream>
+#include "Environments.hpp"
+#include "version.hpp"
+#include "fileutils.hpp"
+#include "xml.hpp"
 
 
 Environments::Environments(const QString path){

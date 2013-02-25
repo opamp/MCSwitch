@@ -1,11 +1,11 @@
 #ifndef MCENV_HPP
 #define MCENV_HPP
-#include<QObject>
-#include<QDir>
-#include<QFile>
-#include<QString>
-#include"xml.hpp"
-#include"version.hpp"
+#include <QObject>
+#include <QDir>
+#include <QFile>
+#include <QString>
+#include "xml.hpp"
+#include "version.hpp"
 
 struct initData{
     QString name;

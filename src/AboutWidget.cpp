@@ -1,8 +1,8 @@
-#include"AboutWidget.hpp"
-#include"version.hpp"
+#include "AboutWidget.hpp"
+#include "version.hpp"
 
-#include<QTextStream>
-#include<QVBoxLayout>
+#include <QTextStream>
+#include <QVBoxLayout>
 
 AboutWidget::AboutWidget(QWidget* parent):
     QWidget(parent){

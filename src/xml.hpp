@@ -1,12 +1,12 @@
 #ifndef XML_HPP
 #define XML_HPP
-#include<QString>
-#include<QFile>
-#include<QDir>
-#include<QDomDocument>
-#include<QDomElement>
-#include<QDomText>
-#include<QDomNode>
+#include <QString>
+#include <QFile>
+#include <QDir>
+#include <QDomDocument>
+#include <QDomElement>
+#include <QDomText>
+#include <QDomNode>
 
 const QString rootTagName = "MCSwitch_Env";
 const int xml_indent = 4;

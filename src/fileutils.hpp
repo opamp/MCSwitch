@@ -1,11 +1,11 @@
 #ifndef FILEUTILS_HPP
 #define FILEUTILS_HPP
-#include<iostream>
-#include<QString>
-#include<QStringList>
-#include<QFile>
-#include<QFileInfo>
-#include<QDir>
+#include <iostream>
+#include <QString>
+#include <QStringList>
+#include <QFile>
+#include <QFileInfo>
+#include <QDir>
 
 namespace fileutils{
 	/*Directoryのコピーを行う*/

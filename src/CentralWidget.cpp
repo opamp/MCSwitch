@@ -1,5 +1,5 @@
-#include"CentralWidget.hpp"
-#include<iostream>
+#include "CentralWidget.hpp"
+#include <iostream>
 
 CentralWidget::CentralWidget(QWidget* parent):
     QWidget(parent){

@@ -1,9 +1,9 @@
 #ifndef MAINWINDOW_HPP
 #define MAINWINDOW_HPP
-#include<QMainWindow>
-#include<QString>
-#include"CentralWidget.hpp"
-#include"AboutWidget.hpp"
+#include <QMainWindow>
+#include <QString>
+#include "CentralWidget.hpp"
+#include "AboutWidget.hpp"
 
 class MainWindow : public QMainWindow{
 Q_OBJECT

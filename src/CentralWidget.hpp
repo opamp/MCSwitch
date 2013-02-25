@@ -1,11 +1,12 @@
 #ifndef CENTRALWIDGET_HPP
 #define CENTRALWIDGET_HPP
-#include<QtGui>
-#include<QString>
-#include<QComboBox>
-#include<QHBoxLayout>
-#include"Environments.hpp"
-#include"addNewEnvDialog.hpp"
+#include <QtGui>
+#include <QString>
+#include <QComboBox>
+#include <QHBoxLayout>
+#include "Environments.hpp"
+#include "addNewEnvDialog.hpp"
+#include "ChangeEnvDataDialog.hpp"
 
 
 class CentralWidget : public QWidget {
@@ -49,6 +50,7 @@ private:
     QLineEdit* currentEnvView;
 
 	AddNewEnvDialog* addEnvdlg;
+	ChangeEnvDataDialog* changeDataDialog;
 
     Environments* mcenvs;
 };

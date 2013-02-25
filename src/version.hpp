@@ -1,7 +1,7 @@
 #ifndef VERSION_HPP
 #define VERSION_HPP
-#include<QString>
-#include<QDir>
+#include <QString>
+#include <QDir>
 
 #define LOADING_DIR_NAME "loadingenv"
 
