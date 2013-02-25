@@ -16,6 +16,7 @@ SET(MSRC
 	${SRC_DIR}/AboutWidget.cpp
 	${SRC_DIR}/CentralWidget.cpp
 	${SRC_DIR}/AddNewEnvDialog.cpp
+	${SRC_DIR}/ChangeEnvDataDialog.cpp
 	${SRC_DIR}/Environments.cpp
 	${SRC_DIR}/MCEnv.cpp
 	${SRC_DIR}/xml.cpp
@@ -26,6 +27,7 @@ SET(MHED
 	${SRC_DIR}/AboutWidget.hpp
 	${SRC_DIR}/CentralWidget.hpp
 	${SRC_DIR}/AddNewEnvDialog.hpp
+	${SRC_DIR}/ChangeEnvDataDialog.hpp
 	${SRC_DIR}/Environments.hpp
 	${SRC_DIR}/MCEnv.hpp
 	${SRC_DIR}/xml.cpp
