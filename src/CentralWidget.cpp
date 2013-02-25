@@ -30,7 +30,7 @@ void CentralWidget::update(){
     int i = -1;
     selectEnvBox->clear();
     for(int n = 0;n < mcenvs->getNumberOfEnvironments();n++){
-      selectEnvBox->addItem(mcenvs->getMCEnv(n)->getName());
+      selectEnvBox->addItem(mcenvs->getMCEnv(n)->getName() + " (" + mcenvs->getMCEnv(n)->getVersion() +")");
       if(mcenvs->getMCEnv(n)->getName() == c){
           i = n;
       }
