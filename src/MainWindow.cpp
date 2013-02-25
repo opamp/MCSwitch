@@ -1,20 +1,14 @@
-#include"MainWindow.hpp"
-#include<QAction>
-#include<QMenuBar>
-#include<QFile>
+#include "MainWindow.hpp"
+#include <QAction>
+#include <QMenuBar>
+#include <QFile>
+#include <QMessageBox>
 
-#include"version.hpp"
+#include "version.hpp"
 
 
 MainWindow::MainWindow(){
-/*
-    about = new AboutWidget();
-    aboutBar = menuBar()->addMenu(app_name);
-    aboutAction = new QAction(QString("&About"),this);
-    connect(aboutAction,SIGNAL(triggered()),this,SLOT(showAboutWidget()));
-    aboutBar->addAction(aboutAction);
-*/
-	this->initMenuBar();	
+	this->initMenuBar();//init menu bar.
 
     cwidget = new CentralWidget();
     connect(cwidget,SIGNAL(exitSignal()),this,SLOT(close()));
@@ -42,7 +36,17 @@ void MainWindow::initMenuBar(){
 }
 
 void MainWindow::calledRemakeSymlink(){
-	QFile().link(mcswitch_dir_env,mcswitch_dir_env_link);
+	bool b = true;
+	if(!QFile::exists(mcswitch_dir_env_link)){
+		if(QFile().link(mcswitch_dir_env,mcswitch_dir_env_link))
+			b = true;
+		else
+			b = false;
+	}
+	if(b)
+		QMessageBox::information(this,"SUCCESS","Remade symlink to directory of environments.");
+	else
+		QMessageBox::information(this,"Failure","Failed to remake symlink to directory of environments.");
 }
 
 
