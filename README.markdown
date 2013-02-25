@@ -8,7 +8,7 @@ MCSwitch provides you with environment to play plural minecraft versions.
 [TEST BINALY](http://dl.dropbox.com/u/23369413/oss/MCSwitch-dev.zip)   
    
 ## Note  
-##### version 0.0.1-dev   
+##### version 0.0.3-dev   
 
 	*Developer version   
 	*Minimum function   

@@ -12,7 +12,7 @@ AboutWidget::AboutWidget(QWidget* parent):
     licenseViewer = new QTextEdit();
     QFile  licenseFile(":/texts/resources/text/LICENSE.txt");
     if(!licenseFile.open(QFile::Text | QFile::ReadOnly)){
-        licenseViewer->setPlainText("Fail to read license text.Please see LICENSE.txt");
+        licenseViewer->setPlainText("Fail to read license text. Please see LICENSE.txt");
     }else{
         QTextStream op(&licenseFile);
         licenseViewer->setPlainText(op.readAll());

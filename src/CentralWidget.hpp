@@ -28,17 +28,22 @@ private slots:
     void AddNewEnvDialogIsSet(AddNewEnvDialog_d*);
     void ExitButtonPushed();
     void OKButtonPushed();
+    void selectEnvBoxChanged(const QString&);
 
 private:
     void initEnvironments();
     void initComboBox(Environments*);
     void initButtons();
+    void initInformationViewer();
     void setupUI();
 
     QComboBox* selectEnvBox;
     QPushButton* OKButton;
-	QPushButton* AddButton;
+    QPushButton* AddButton;
     QPushButton* ExitButton;
+
+    QLabel* versionViewer;
+    QTextEdit* commentViewer;
 
     QLabel* currentEnvLabel;
     QLineEdit* currentEnvView;

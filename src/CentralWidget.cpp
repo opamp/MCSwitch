@@ -6,12 +6,13 @@ CentralWidget::CentralWidget(QWidget* parent):
     addEnvdlg = new AddNewEnvDialog();
     connect(addEnvdlg,SIGNAL(OKButtonIsPushed(AddNewEnvDialog_d*)),this,SLOT(AddNewEnvDialogIsSet(AddNewEnvDialog_d*)));
     connect(addEnvdlg,SIGNAL(CancelButtonIsPushed()),this,SLOT(setVisibleTrue()));
-    currentEnvLabel = new QLabel("CurrentEnv ");
+    currentEnvLabel = new QLabel("Current Environment ");
     currentEnvView = new QLineEdit();
     currentEnvView->setReadOnly(true);
     currentEnvView->setFrame(true);
 
     this->initEnvironments();
+    this->initInformationViewer();
     this->initComboBox(this->mcenvs);
     this->initButtons();
     this->setupUI();
@@ -49,12 +50,13 @@ void CentralWidget::initButtons(){
     connect(OKButton,SIGNAL(clicked()),this,SLOT(OKButtonPushed()));
 	AddButton = new QPushButton("Add");
 	connect(AddButton,SIGNAL(clicked()),this,SLOT(addNewEnvironment()));
-    ExitButton = new QPushButton("EXIT");
+    ExitButton = new QPushButton("QUIT");
     connect(ExitButton,SIGNAL(clicked()),this,SLOT(ExitButtonPushed()));
 }
 
 void CentralWidget::initComboBox(Environments* e_obj){
     selectEnvBox = new QComboBox();
+    connect(selectEnvBox,SIGNAL(currentIndexChanged(const QString&)),this,SLOT(selectEnvBoxChanged(const QString&)));
 	MCEnv* e = mcenvs->getCurrentEnv();
 	e->open();
 	int b = 0;
@@ -66,6 +68,13 @@ void CentralWidget::initComboBox(Environments* e_obj){
     }
 	delete e;
 	selectEnvBox->setCurrentIndex(b);
+}
+
+void CentralWidget::initInformationViewer(){
+    this->commentViewer = new QTextEdit();
+    this->commentViewer->setReadOnly(true);
+
+    this->versionViewer = new QLabel("VERSION ");
 }
 
 void CentralWidget::setupUI(){
@@ -81,7 +90,9 @@ void CentralWidget::setupUI(){
 	comboBoxLayout->addWidget(AddButton);
 
     QVBoxLayout* mainLayout = new QVBoxLayout();
-	mainLayout->addLayout(comboBoxLayout);
+    mainLayout->addLayout(comboBoxLayout);
+    mainLayout->addWidget(versionViewer);
+    mainLayout->addWidget(commentViewer);
     mainLayout->addLayout(currentEnvLayout);
     mainLayout->addLayout(buttonLayout);
 
@@ -106,6 +117,16 @@ void CentralWidget::OKButtonPushed(){
         std::cerr<<"fail to change environment\n";
     }
     this->update();
+}
+
+void CentralWidget::selectEnvBoxChanged(const QString& env_name){
+    for(int n = 0;n < mcenvs->getNumberOfEnvironments();n++){
+        if(mcenvs->getMCEnv(n)->getName() == env_name){
+            MCEnv *e = mcenvs->getMCEnv(n);
+            this->commentViewer->setPlainText(e->getComment());//set commnet viewer's text.
+            this->versionViewer->setText("VERSION " + e->getVersion());//set version info.
+        }
+    }
 }
 
 //When AddButton is clicked,this is called.

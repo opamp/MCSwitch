@@ -115,8 +115,8 @@ bool Environments::installNewEnvironment(const QString name,const QString path){
 
 
     }else{
-        if(!QFile::copy(tmp_xml1,mcswitch_dir_env + "/" + name + "/" + eachEnvDataXmlName)) return false;
-        QFile::setPermissions(mcswitch_dir_env + "/" + name + "/" + eachEnvDataXmlName,
+        if(!QFile::copy(tmp_xml1,mcswitch_dir_env + fsp + name + fsp + eachEnvDataXmlName)) return false;
+        QFile::setPermissions(mcswitch_dir_env + fsp + name + fsp + eachEnvDataXmlName,
                               QFile::ReadOwner  |
                               QFile::WriteOwner |
                               QFile::ReadUser   |
