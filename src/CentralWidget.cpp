@@ -3,7 +3,10 @@
 
 CentralWidget::CentralWidget(QWidget* parent):
     QWidget(parent){
+    //sub dialogs
     addEnvdlg = new AddNewEnvDialog();
+    changeDataDialog = new ChangeEnvDataDialog();
+
     connect(addEnvdlg,SIGNAL(OKButtonIsPushed(AddNewEnvDialog_d*)),this,SLOT(AddNewEnvDialogIsSet(AddNewEnvDialog_d*)));
     connect(addEnvdlg,SIGNAL(CancelButtonIsPushed()),this,SLOT(setVisibleTrue()));
     currentEnvLabel = new QLabel("Current Environment ");
@@ -49,7 +52,9 @@ void CentralWidget::initButtons(){
     OKButton = new QPushButton("OK");
     connect(OKButton,SIGNAL(clicked()),this,SLOT(OKButtonPushed()));
 	AddButton = new QPushButton("Add");
-	connect(AddButton,SIGNAL(clicked()),this,SLOT(addNewEnvironment()));
+    connect(AddButton,SIGNAL(clicked()),this,SLOT(addNewEnvironment()));
+    ChangeDataButton = new QPushButton("Change Data");
+    connect(ChangeDataButton,SIGNAL(clicked()),this,SLOT(callChangeEnvDataDialog()));
     ExitButton = new QPushButton("QUIT");
     connect(ExitButton,SIGNAL(clicked()),this,SLOT(ExitButtonPushed()));
 }
@@ -93,6 +98,7 @@ void CentralWidget::setupUI(){
 
     QVBoxLayout* mainLayout = new QVBoxLayout();
     mainLayout->addLayout(comboBoxLayout);
+    mainLayout->addWidget(ChangeDataButton);
     mainLayout->addWidget(versionViewer);
     mainLayout->addWidget(mViewer);
     mainLayout->addWidget(commentViewer);
@@ -140,6 +146,10 @@ void CentralWidget::selectEnvBoxChanged(const QString& env_name){
 void CentralWidget::addNewEnvironment(){
     addEnvdlg->show();
     emit requestToInvisible();
+}
+
+void CentralWidget::callChangeEnvDataDialog(){
+    changeDataDialog->show();
 }
 
 

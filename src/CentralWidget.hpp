@@ -29,6 +29,7 @@ private slots:
     void AddNewEnvDialogIsSet(AddNewEnvDialog_d*);
     void ExitButtonPushed();
     void OKButtonPushed();
+    void callChangeEnvDataDialog();
     void selectEnvBoxChanged(const QString&);
 
 private:
@@ -41,6 +42,7 @@ private:
     QComboBox* selectEnvBox;
     QPushButton* OKButton;
     QPushButton* AddButton;
+    QPushButton* ChangeDataButton;
     QPushButton* ExitButton;
 
     QLabel* mViewer;
