@@ -71,6 +71,8 @@ void CentralWidget::initComboBox(Environments* e_obj){
 }
 
 void CentralWidget::initInformationViewer(){
+    this->mViewer = new QLabel("");
+
     this->commentViewer = new QTextEdit();
     this->commentViewer->setReadOnly(true);
 
@@ -92,6 +94,7 @@ void CentralWidget::setupUI(){
     QVBoxLayout* mainLayout = new QVBoxLayout();
     mainLayout->addLayout(comboBoxLayout);
     mainLayout->addWidget(versionViewer);
+    mainLayout->addWidget(mViewer);
     mainLayout->addWidget(commentViewer);
     mainLayout->addLayout(currentEnvLayout);
     mainLayout->addLayout(buttonLayout);
@@ -123,6 +126,10 @@ void CentralWidget::selectEnvBoxChanged(const QString& env_name){
     for(int n = 0;n < mcenvs->getNumberOfEnvironments();n++){
         if(mcenvs->getMCEnv(n)->getName() == env_name){
             MCEnv *e = mcenvs->getMCEnv(n);
+            if(e->getMods())
+                this->mViewer->setText("Mods are being installed to this environment.");
+            else
+                this->mViewer->setText("Mods are not being installed to this environment.");
             this->commentViewer->setPlainText(e->getComment());//set commnet viewer's text.
             this->versionViewer->setText("VERSION " + e->getVersion());//set version info.
         }

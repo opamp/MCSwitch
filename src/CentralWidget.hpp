@@ -43,6 +43,7 @@ private:
     QPushButton* AddButton;
     QPushButton* ExitButton;
 
+    QLabel* mViewer;
     QLabel* versionViewer;
     QTextEdit* commentViewer;
 
