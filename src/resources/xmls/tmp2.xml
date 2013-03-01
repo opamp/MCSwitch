@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <MCSwitch_Env>
-	<name>InitialEnv</name>
-	<version>unknown</version>
+	<name>Main</name>
+	<version>0.0.0</version>
 	<mods enable="false" />
 	<comment></comment>
 </MCSwitch_Env>

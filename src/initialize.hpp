@@ -47,14 +47,16 @@ bool initMCSwitchDir(){//init data dir.
 	}
 	return true;
 }
-
 bool init(){ 
 	if(!initMCSwitchDir()) return false; //init data dirs.
 	if(!QFile::exists(minecraft_dir + fsp + eachEnvDataXmlName)){
-        if(!Environments::installNewEnvironment(QString("InitialEnv"),minecraft_dir)) return false;//error
+		//if(!Environments::installNewEnvironment(QString("InitialEnv"),minecraft_dir)) return false;//error
+		if(!Environments::installNewEnvironment(QString(DEFAULT_ENV_NAME),minecraft_dir)) return false;//error
         /*
           tmp1をもとに生成したxmlをtmp2で生成し直す
         */
+
+		/*
         QFile::remove(mcswitch_dir_env + fsp + "InitialEnv" + fsp + eachEnvDataXmlName);
         if(!QFile::copy(tmp_xml2,mcswitch_dir_env + fsp + "InitialEnv" + fsp + eachEnvDataXmlName)) return false;
         QFile::setPermissions(mcswitch_dir_env + "/InitialEnv/" + eachEnvDataXmlName,
@@ -65,6 +67,18 @@ bool init(){
                               );
 		if(!rm_R(minecraft_dir)) return false;
 		QFile::rename(mcswitch_dir_env + fsp + "InitialEnv",mcswitch_dir + fsp + LOADING_DIR_NAME);
+		if(!QFile::link(mcswitch_dir + fsp + LOADING_DIR_NAME,minecraft_dir)) return false;
+    }*/
+		QFile::remove(mcswitch_dir_env + fsp + DEFAULT_ENV_NAME + fsp + eachEnvDataXmlName);
+        if(!QFile::copy(tmp_xml2,mcswitch_dir_env + fsp + DEFAULT_ENV_NAME + fsp + eachEnvDataXmlName)) return false;
+        QFile::setPermissions(mcswitch_dir_env + fsp + DEFAULT_ENV_NAME +  fsp + eachEnvDataXmlName,
+                              QFile::ReadOwner  |
+                              QFile::WriteOwner |
+                              QFile::ReadUser   |
+                              QFile::WriteUser
+                              );
+		if(!rm_R(minecraft_dir)) return false;
+		QFile::rename(mcswitch_dir_env + fsp + DEFAULT_ENV_NAME,mcswitch_dir + fsp + LOADING_DIR_NAME);
 		if(!QFile::link(mcswitch_dir + fsp + LOADING_DIR_NAME,minecraft_dir)) return false;
     }
 	return true;
