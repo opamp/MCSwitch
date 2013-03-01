@@ -4,6 +4,7 @@
 #include <QDir>
 
 #define LOADING_DIR_NAME "loadingenv"
+#define DEFAULT_ENV_NAME "Main"
 
 const QString fsp = QDir::separator();
 
