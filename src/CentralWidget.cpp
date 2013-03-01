@@ -7,6 +7,7 @@ CentralWidget::CentralWidget(QWidget* parent):
     addEnvdlg = new AddNewEnvDialog();
     changeDataDialog = new ChangeEnvDataDialog();
 
+    connect(changeDataDialog,SIGNAL(changedData()),this,SLOT(update()));
     connect(addEnvdlg,SIGNAL(OKButtonIsPushed(AddNewEnvDialog_d*)),this,SLOT(AddNewEnvDialogIsSet(AddNewEnvDialog_d*)));
     connect(addEnvdlg,SIGNAL(CancelButtonIsPushed()),this,SLOT(setVisibleTrue()));
     currentEnvLabel = new QLabel("Current Environment ");
@@ -149,6 +150,15 @@ void CentralWidget::addNewEnvironment(){
 }
 
 void CentralWidget::callChangeEnvDataDialog(){
+    MCEnv *env;
+    for(int n = 0;n < mcenvs->getNumberOfEnvironments();n++){
+        if(mcenvs->getMCEnv(n)->getName() == selectEnvBox->itemText(selectEnvBox->currentIndex())){
+            env = mcenvs->getMCEnv(n);
+            break;
+        }
+    }
+    changeDataDialog->setTarget(env);
+    changeDataDialog->setupDialog();
     changeDataDialog->show();
 }
 

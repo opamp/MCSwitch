@@ -22,7 +22,7 @@ public:
     bool open();
     bool save();
 
-	QString getPath(){return path;};
+    QString getPath(){return path;};
     QString getName(){return envName;};
     QString getVersion(){return mcVersion;};
     QString getComment(){return comment;};
