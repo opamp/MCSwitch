@@ -10,7 +10,7 @@ class ChangeEnvDataDialog : public QWidget{
 Q_OBJECT
 public:
     ChangeEnvDataDialog(QWidget* parent = 0);
-    void setupDialog();
+    bool setupDialog();
     void setTarget(MCEnv*);
 
 signals:
