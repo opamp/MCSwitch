@@ -8,7 +8,7 @@ MCSwitch provides you with environment to play plural minecraft versions.
 
 ## HowToUse  
 1.You have to start minecraft once before installing MCSwitch.  
-2.Install MCSwtich and start it.
+2.Install MCSwtich and start it.  
 3.Select your environment which you want play.  
 3.Or, you can add new environment.  
 4.Push OK button.  
