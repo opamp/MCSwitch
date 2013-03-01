@@ -18,7 +18,11 @@ signals:
 private slots:
     void pushedOKButton();
     void pushedCancelButton();
+    void cb_stateChanged(int);
 private:
+    void saveNewDatas();
+
+    bool cb_state;
     Ui::ChangeEnvDataDialogUI ui;
     MCEnv* env;
 };

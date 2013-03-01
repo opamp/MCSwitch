@@ -24,6 +24,7 @@ bool MCEnv::save(){
     data.mods = mods;
     data.comment = comment;
     xmlReader->setXmlData(&data);
+    xmlReader->save();
     return true;
 }
 
