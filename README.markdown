@@ -1,7 +1,8 @@
 MCSwitch  
 ========
-
-
+  
+[Download Dmg](http://dl.dropbox.com/u/23369413/oss/MCSwitch.dmg)  
+  
 ## About   
 MCSwitch provides you with environment to play plural minecraft versions.   
    
