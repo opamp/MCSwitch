@@ -1,12 +1,12 @@
 #ifndef ADD_NEW_ENV_DIALOG
 #define ADD_NEW_ENV_DIALOG
-#include<QtGui>
-#include<QTextEdit>
-#include<QSpinBox>
-#include<QLineEdit>
-#include<QCheckBox>
-#include<QLabel>
-#include<QPushButton>
+#include <QtGui>
+#include <QTextEdit>
+#include <QSpinBox>
+#include <QLineEdit>
+#include <QCheckBox>
+#include <QLabel>
+#include <QPushButton>
 
 struct AddNewEnvDialogData{
     QString env_name;

@@ -1,9 +1,13 @@
-#include"CentralWidget.hpp"
-#include<iostream>
+#include "CentralWidget.hpp"
+#include <iostream>
 
 CentralWidget::CentralWidget(QWidget* parent):
     QWidget(parent){
+    //sub dialogs
     addEnvdlg = new AddNewEnvDialog();
+    changeDataDialog = new ChangeEnvDataDialog();
+
+    connect(changeDataDialog,SIGNAL(changedData()),this,SLOT(update()));
     connect(addEnvdlg,SIGNAL(OKButtonIsPushed(AddNewEnvDialog_d*)),this,SLOT(AddNewEnvDialogIsSet(AddNewEnvDialog_d*)));
     connect(addEnvdlg,SIGNAL(CancelButtonIsPushed()),this,SLOT(setVisibleTrue()));
     currentEnvLabel = new QLabel("Current Environment ");
@@ -49,7 +53,9 @@ void CentralWidget::initButtons(){
     OKButton = new QPushButton("OK");
     connect(OKButton,SIGNAL(clicked()),this,SLOT(OKButtonPushed()));
 	AddButton = new QPushButton("Add");
-	connect(AddButton,SIGNAL(clicked()),this,SLOT(addNewEnvironment()));
+    connect(AddButton,SIGNAL(clicked()),this,SLOT(addNewEnvironment()));
+    ChangeDataButton = new QPushButton("Change Data");
+    connect(ChangeDataButton,SIGNAL(clicked()),this,SLOT(callChangeEnvDataDialog()));
     ExitButton = new QPushButton("QUIT");
     connect(ExitButton,SIGNAL(clicked()),this,SLOT(ExitButtonPushed()));
 }
@@ -71,6 +77,8 @@ void CentralWidget::initComboBox(Environments* e_obj){
 }
 
 void CentralWidget::initInformationViewer(){
+    this->mViewer = new QLabel("");
+
     this->commentViewer = new QTextEdit();
     this->commentViewer->setReadOnly(true);
 
@@ -91,7 +99,9 @@ void CentralWidget::setupUI(){
 
     QVBoxLayout* mainLayout = new QVBoxLayout();
     mainLayout->addLayout(comboBoxLayout);
+    mainLayout->addWidget(ChangeDataButton);
     mainLayout->addWidget(versionViewer);
+    mainLayout->addWidget(mViewer);
     mainLayout->addWidget(commentViewer);
     mainLayout->addLayout(currentEnvLayout);
     mainLayout->addLayout(buttonLayout);
@@ -123,6 +133,10 @@ void CentralWidget::selectEnvBoxChanged(const QString& env_name){
     for(int n = 0;n < mcenvs->getNumberOfEnvironments();n++){
         if(mcenvs->getMCEnv(n)->getName() == env_name){
             MCEnv *e = mcenvs->getMCEnv(n);
+            if(e->getMods())
+                this->mViewer->setText("Mods are being installed to this environment.");
+            else
+                this->mViewer->setText("Mods are not being installed to this environment.");
             this->commentViewer->setPlainText(e->getComment());//set commnet viewer's text.
             this->versionViewer->setText("VERSION " + e->getVersion());//set version info.
         }
@@ -133,6 +147,19 @@ void CentralWidget::selectEnvBoxChanged(const QString& env_name){
 void CentralWidget::addNewEnvironment(){
     addEnvdlg->show();
     emit requestToInvisible();
+}
+
+void CentralWidget::callChangeEnvDataDialog(){
+    MCEnv *env;
+    for(int n = 0;n < mcenvs->getNumberOfEnvironments();n++){
+        if(mcenvs->getMCEnv(n)->getName() == selectEnvBox->itemText(selectEnvBox->currentIndex())){
+            env = mcenvs->getMCEnv(n);
+            break;
+        }
+    }
+    changeDataDialog->setTarget(env);
+    changeDataDialog->setupDialog();
+    changeDataDialog->show();
 }
 
 

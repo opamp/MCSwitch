@@ -4,6 +4,8 @@ FIND_PACKAGE(Qt5Widgets REQUIRED)
 SET(CMAKE_AUTOMOC ON)
 SET(CMAKE_INCLUDE_CURRENT_DIR ON)
 
+INCLUDE_DIRECTORIES(${CMAKE_CURRENT_BINARY_DIR})
+
 SET(BINARY_NAME "MCSwitch")
 
 ADD_LIBRARY(mcswitch_xml STATIC ${SRC_DIR}/xml.cpp)
@@ -33,6 +35,11 @@ SET(MHED
 	${SRC_DIR}/xml.cpp
     )
 
+SET(UI
+    ${SRC_DIR}/ChangeEnvDataDialog.ui
+    )
+
+
 QT5_ADD_RESOURCES(QRC ${SRC_DIR}/main.qrc) # Add resources.
 
 # This is for Qt4 -----------------------------------
@@ -43,7 +50,7 @@ QT5_ADD_RESOURCES(QRC ${SRC_DIR}/main.qrc) # Add resources.
 #----------------------------------------------------
 MESSAGE(STATUS "Qt5 --> ${Qt5Widgets_VERSION_STRING}") #Show Qt's version to user.
 
-SET(SRCS ${MSRC} ${HMOD} ${QRC})
+SET(SRCS ${MSRC} ${HMOD} ${QRC} ${UI})
 IF(APPLE) 
 
 	SET(SRCS ${SRCS} ${PROJECT_SOURCE_DIR}/src/resources/icons/mac_icon.icns)
@@ -64,5 +71,7 @@ ELSEIF(UNIX AND NOT APPLE)
 ENDIF()
 
 QT5_USE_MODULES(${BINARY_NAME} Widgets Xml)
+QT5_WRAP_UI(ui_ChangeEnvDataDialog.h ${SRC_DIR}/ChangeEnvDataDialog.ui)
 TARGET_LINK_LIBRARIES(${BINARY_NAME} mcswitch_xml)
 #TARGET_LINK_LIBRARIES(${BINARY_NAME} ${QT_LIBRARIES} mcswitch_xml)#${QT_QTXML_LIBRARY}) #Qt4
+

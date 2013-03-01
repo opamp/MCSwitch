@@ -1,11 +1,11 @@
 #ifndef ENVIRONMENT_HPP
 #define ENVIRONMENT_HPP
-#include<QObject>
-#include<QString>
-#include<QStringList>
-#include<QDir>
-#include<QFile>
-#include<QVector>
+#include <QObject>
+#include <QString>
+#include <QStringList>
+#include <QDir>
+#include <QFile>
+#include <QVector>
 
 #include"MCEnv.hpp"
 

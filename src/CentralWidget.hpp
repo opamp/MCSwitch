@@ -1,11 +1,12 @@
 #ifndef CENTRALWIDGET_HPP
 #define CENTRALWIDGET_HPP
-#include<QtGui>
-#include<QString>
-#include<QComboBox>
-#include<QHBoxLayout>
-#include"Environments.hpp"
-#include"addNewEnvDialog.hpp"
+#include <QtGui>
+#include <QString>
+#include <QComboBox>
+#include <QHBoxLayout>
+#include "Environments.hpp"
+#include "addNewEnvDialog.hpp"
+#include "ChangeEnvDataDialog.hpp"
 
 
 class CentralWidget : public QWidget {
@@ -17,7 +18,7 @@ signals:
     void exitSignal();
     void requestToVisible();
     void requestToInvisible();
-protected:
+protected slots:
     void update();
 
 public slots:
@@ -28,6 +29,7 @@ private slots:
     void AddNewEnvDialogIsSet(AddNewEnvDialog_d*);
     void ExitButtonPushed();
     void OKButtonPushed();
+    void callChangeEnvDataDialog();
     void selectEnvBoxChanged(const QString&);
 
 private:
@@ -40,8 +42,10 @@ private:
     QComboBox* selectEnvBox;
     QPushButton* OKButton;
     QPushButton* AddButton;
+    QPushButton* ChangeDataButton;
     QPushButton* ExitButton;
 
+    QLabel* mViewer;
     QLabel* versionViewer;
     QTextEdit* commentViewer;
 
@@ -49,6 +53,7 @@ private:
     QLineEdit* currentEnvView;
 
 	AddNewEnvDialog* addEnvdlg;
+	ChangeEnvDataDialog* changeDataDialog;
 
     Environments* mcenvs;
 };

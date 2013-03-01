@@ -1,4 +1,4 @@
-#include"MCEnv.hpp"
+#include "MCEnv.hpp"
 
 MCEnv::MCEnv(const QString path){
     if(QFile::exists(path)) this->path = path;
@@ -24,6 +24,7 @@ bool MCEnv::save(){
     data.mods = mods;
     data.comment = comment;
     xmlReader->setXmlData(&data);
+    xmlReader->save();
     return true;
 }
 

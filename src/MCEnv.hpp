@@ -1,11 +1,11 @@
 #ifndef MCENV_HPP
 #define MCENV_HPP
-#include<QObject>
-#include<QDir>
-#include<QFile>
-#include<QString>
-#include"xml.hpp"
-#include"version.hpp"
+#include <QObject>
+#include <QDir>
+#include <QFile>
+#include <QString>
+#include "xml.hpp"
+#include "version.hpp"
 
 struct initData{
     QString name;
@@ -22,7 +22,7 @@ public:
     bool open();
     bool save();
 
-	QString getPath(){return path;};
+    QString getPath(){return path;};
     QString getName(){return envName;};
     QString getVersion(){return mcVersion;};
     QString getComment(){return comment;};

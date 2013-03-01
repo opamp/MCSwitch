@@ -1,9 +1,9 @@
 #ifndef ABOUT_WIDGET_HPP
 #define ABOUT_WIDGET_HPP
-#include<QWidget>
-#include<QTextEdit>
-#include<QPushButton>
-#include<QLabel>
+#include <QWidget>
+#include <QTextEdit>
+#include <QPushButton>
+#include <QLabel>
 
 class AboutWidget : public QWidget{
     Q_OBJECT
