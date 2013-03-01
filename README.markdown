@@ -5,14 +5,11 @@ MCSwitch
 ## About   
 MCSwitch provides you with environment to play plural minecraft versions.   
    
-[TEST BINALY](http://dl.dropbox.com/u/23369413/oss/MCSwitch-dev.zip)   
    
 ## Note  
-##### version 0.0.3-dev   
+##### version 0.1.0   
 
-	*Developer version   
-	*Minimum function   
-	*Many bugs.
+	* first release  
 
 ## Dependencies   
    
