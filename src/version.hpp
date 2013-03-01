@@ -9,7 +9,7 @@
 const QString fsp = QDir::separator();
 
 const QString app_name = "MCSwitch"; // Application Full Name.
-const QString app_ver = "0.1.0"; // Application Version.
+const QString app_ver = "0.1.1"; // Application Version.
 const QString app_license = "MIT"; // Application License.
 
 const QString mcswitch_dir = QDir::homePath() + fsp + ".MCSwitch"; //Application data dir.
