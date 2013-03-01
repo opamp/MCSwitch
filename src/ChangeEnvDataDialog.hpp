@@ -4,10 +4,6 @@
 #include <QWidget>
 
 #include "ui_ChangeEnvDataDialog.h"
-/*
-namespace Ui{
-    class Ui_ChangeEnvDataDialogUI;
-}*/
 
 class ChangeEnvDataDialog : public QWidget{
 Q_OBJECT

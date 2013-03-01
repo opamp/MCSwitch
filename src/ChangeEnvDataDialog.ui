@@ -16,7 +16,7 @@
   <property name="windowTitle">
    <string>Change Env Data</string>
   </property>
-  <widget class="QTextEdit" name="textEdit">
+  <widget class="QTextEdit" name="commentEdit">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -26,7 +26,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QCheckBox" name="checkBox">
+  <widget class="QCheckBox" name="useModCheckBox">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -65,7 +65,7 @@
     <string>Cancel</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label">
+  <widget class="QLabel" name="ckomment_label">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -91,7 +91,7 @@
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QLabel" name="label_2">
+  <widget class="QLabel" name="name_label">
    <property name="geometry">
     <rect>
      <x>30</x>
@@ -104,7 +104,7 @@
     <string>Name</string>
    </property>
   </widget>
-  <widget class="QSpinBox" name="spinBox">
+  <widget class="QSpinBox" name="spinBox_major">
    <property name="geometry">
     <rect>
      <x>110</x>
@@ -114,7 +114,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QSpinBox" name="spinBox_2">
+  <widget class="QSpinBox" name="spinBox_minor">
    <property name="geometry">
     <rect>
      <x>200</x>
@@ -124,7 +124,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QSpinBox" name="spinBox_3">
+  <widget class="QSpinBox" name="spinBox_patch">
    <property name="geometry">
     <rect>
      <x>290</x>
@@ -134,7 +134,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLabel" name="label_3">
+  <widget class="QLabel" name="version_label">
    <property name="geometry">
     <rect>
      <x>30</x>
