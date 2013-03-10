@@ -26,7 +26,7 @@ public:
 
 protected:
     AddNewEnvDialog_d* getDatas();
-
+    void setZero();
 private slots:
     void clickedOKButton();
     void clickedCancelButton();

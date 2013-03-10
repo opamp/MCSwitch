@@ -100,11 +100,13 @@ AddNewEnvDialog_d* AddNewEnvDialog::getDatas(){
 
 void AddNewEnvDialog::clickedOKButton(){
     emit OKButtonIsPushed(this->getDatas());
+    this->setZero();
     this->setVisible(false);
 }
 
 void AddNewEnvDialog::clickedCancelButton(){
     emit CancelButtonIsPushed();
+    this->setZero();
     this->setVisible(false);
 }
 
@@ -114,4 +116,14 @@ void AddNewEnvDialog::changeCheckBox(int state){
     }else{
         data.mod = false;
     }
+}
+
+void AddNewEnvDialog::setZero(){
+    nameEditor->clear();
+    commentEdit->clear();
+    majorVersion->setValue(0);
+    minorVersion->setValue(0);
+    patchVersion->setValue(0);
+    usemodsBox->setCheckState(Qt::Unchecked);
+    copyFromBox->setCurrentIndex(0);
 }
