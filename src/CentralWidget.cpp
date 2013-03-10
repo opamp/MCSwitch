@@ -111,8 +111,15 @@ void CentralWidget::setupUI(){
 }
 
 void CentralWidget::AddNewEnvDialogIsSet(AddNewEnvDialog_d* data){
-    Environments::createNewEnvironemnt(data->env_name,data->version,data->comment,data->mod);
-    mcenvs->updateEnvData();
+    if(!Environments::createNewEnvironemnt(data->env_name,data->version,data->comment,data->mod)){
+        QMessageBox::critical(this, "ERROR", "MCSwitch cannnot create new environment.");
+        emit requestToVisible();
+        mcenvs->updateEnvData();
+        this->update();
+        return ;
+    }else{
+        mcenvs->updateEnvData();
+    }
     if(data->copyFrom != COPYFROM_SELECT_NOTHING){
         if(!mcenvs->copyEnvContents(data->copyFrom,data->env_name)){
             QMessageBox::critical(this, "ERROR", "Failed to copy environment's contents.");
