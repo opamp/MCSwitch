@@ -1,5 +1,6 @@
 #include "CentralWidget.hpp"
 #include <iostream>
+#include <QMessageBox>
 
 CentralWidget::CentralWidget(QWidget* parent):
     QWidget(parent){
@@ -111,6 +112,11 @@ void CentralWidget::setupUI(){
 
 void CentralWidget::AddNewEnvDialogIsSet(AddNewEnvDialog_d* data){
     Environments::createNewEnvironemnt(data->env_name,data->version,data->comment,data->mod);
+    if(data->copyFrom != COPYFROM_SELECT_NOTHING){
+        if(!mcenvs->copyEnvContents(data->copyFrom,data->env_name)){
+            QMessageBox::critical(this, "ERROR", "Failed to copy environment's contents.");
+        }
+    }
     mcenvs->updateEnvData();
     emit requestToVisible();
     this->update();

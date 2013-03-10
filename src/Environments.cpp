@@ -126,6 +126,33 @@ bool Environments::installNewEnvironment(const QString name,const QString path){
     return true;
 }
 
+bool Environments::copyEnvContents(const QString from,const QString to){
+    bool fromExist,toExist;
+    for(int i = 0;i < envsVector.size();i++){
+        if(envsVector[i]->getName() == from){
+            fromExist = true;
+        }
+        if(envsVector[i]->getName() == to){
+            toExist = true;
+        }
+    }
+    if(fromExist != true or toExist != true) return false;
+    QString hfrom,hto;
+    if(getCurrentEnv()->getName() == from){
+        hfrom =  mcswitch_dir + fsp + LOADING_DIR_NAME;
+    }else{
+        hfrom = mcswitch_dir_env + fsp + from;
+    }
+
+    if(getCurrentEnv()->getName() == to){
+        hto = mcswitch_dir + fsp + LOADING_DIR_NAME;
+    }else{
+        hto = mcswitch_dir_env + fsp + to;
+    }
+    this->copyDirectoryAndFiles(hfrom,hto);
+    return true;
+}
+
 bool Environments::changeEnv(QString env_name){
     for(int n = 0;n < envsVector.size();++n){
         if(envsVector[n]->getName() == env_name){
@@ -138,6 +165,26 @@ bool Environments::changeEnv(QString env_name){
             if(!QFile::rename(mcswitch_dir_env + fsp + env_name,mcswitch_dir + fsp + LOADING_DIR_NAME)) return false;
         }
     }
-    this->updateEnvData();
+    if(this->updateEnvData())
+        return true;
+    else
+        return false;
+}
+
+
+bool Environments::copyDirectoryAndFiles(const QString from,const QString to){
+    QDir dir(from);
+    QStringList list = dir.entryList(QDir::NoDotAndDotDot | QDir::Hidden | QDir::AllEntries);
+    QStringListIterator i(list);
+    QString b,bf;
+    while(i.hasNext()){
+        b = i.next();
+        if(b == eachEnvDataXmlName) continue;
+        if(QFileInfo(from + fsp + b).isDir()){
+            copyDirectoryAndFiles(from + fsp + b,to + fsp + b);
+        }else{
+            if(!QFile::copy(from + fsp + b,to + fsp + b)) return false;
+        }
+    }
     return true;
 }

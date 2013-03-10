@@ -80,7 +80,7 @@ AddNewEnvDialog::AddNewEnvDialog(QWidget* parent):
 void AddNewEnvDialog::initCopyFromBox(){
     comboBoxLabel = new QLabel("Copy from ");
     copyFromBox = new QComboBox();
-    copyFromBox->addItem("NOTHING");
+    copyFromBox->addItem(COPYFROM_SELECT_NOTHING);
 
     Environments* evs = new Environments();
     for(int n = 0;n < evs->getNumberOfEnvironments();n++){
@@ -94,6 +94,7 @@ AddNewEnvDialog_d* AddNewEnvDialog::getDatas(){
     data.version[1] = minorVersion->value();
     data.version[2] = patchVersion->value();
     data.comment = commentEdit->toPlainText();
+    data.copyFrom = copyFromBox->itemText(copyFromBox->currentIndex());
     return &data;
 }
 

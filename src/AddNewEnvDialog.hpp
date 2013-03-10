@@ -9,8 +9,11 @@
 #include <QLabel>
 #include <QPushButton>
 
+#define COPYFROM_SELECT_NOTHING "NOTHING"
+
 struct AddNewEnvDialogData{
     QString env_name;
+    QString copyFrom;
     int version[3];//[0]->major,[1]->minor,[2]->patch
     QString comment;
     bool mod;
