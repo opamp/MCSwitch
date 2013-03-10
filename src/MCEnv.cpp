@@ -42,16 +42,16 @@ bool MCEnv::initEnv(init_d *d, const QString dir_path){
         }
     }
 
-    if(!QDir().mkdir(dir_path + "/" + d->name)) return false;
-    if(!QFile::copy(tmp_xml1,dir_path + "/" + d->name + "/" + eachEnvDataXmlName)) return false;
-    QFile::setPermissions(dir_path + "/" + d->name + "/" + eachEnvDataXmlName,
+    if(!QDir().mkdir(dir_path + fsp + d->name)) return false;
+    if(!QFile::copy(tmp_xml1,dir_path + fsp + d->name + fsp + eachEnvDataXmlName)) return false;
+    QFile::setPermissions(dir_path + fsp + d->name + fsp + eachEnvDataXmlName,
                           QFile::ReadOwner  |
                           QFile::WriteOwner |
                           QFile::ReadUser   |
                           QFile::WriteUser
                           );
 
-    Xml writer(dir_path + "/" + d->name + "/" + eachEnvDataXmlName);
+    Xml writer(dir_path + fsp + d->name + fsp + eachEnvDataXmlName);
     writer.open();
     xml_d data;
     data.name = d->name;
