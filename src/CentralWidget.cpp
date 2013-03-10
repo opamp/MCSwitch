@@ -151,6 +151,12 @@ void CentralWidget::selectEnvBoxChanged(const QString& env_name){
 
 //When AddButton is clicked,this is called.
 void CentralWidget::addNewEnvironment(){
+    disconnect(addEnvdlg,SIGNAL(OKButtonIsPushed(AddNewEnvDialog_d*)),this,SLOT(AddNewEnvDialogIsSet(AddNewEnvDialog_d*)));
+    disconnect(addEnvdlg,SIGNAL(CancelButtonIsPushed()),this,SLOT(setVisibleTrue()));
+    delete addEnvdlg;
+    addEnvdlg = new AddNewEnvDialog();
+    connect(addEnvdlg,SIGNAL(OKButtonIsPushed(AddNewEnvDialog_d*)),this,SLOT(AddNewEnvDialogIsSet(AddNewEnvDialog_d*)));
+    connect(addEnvdlg,SIGNAL(CancelButtonIsPushed()),this,SLOT(setVisibleTrue()));
     addEnvdlg->show();
     emit requestToInvisible();
 }
