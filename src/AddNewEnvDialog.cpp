@@ -1,4 +1,5 @@
 #include "AddNewEnvDialog.hpp"
+#include "Environments.hpp"
 #include <QHBoxLayout>
 #include <QVBoxLayout>
 
@@ -6,6 +7,8 @@
 AddNewEnvDialog::AddNewEnvDialog(QWidget* parent):
 	QWidget(parent)
 {
+    this->initCopyFromBox();
+
     data.mod = false;
     /*labels*/
     commentLabel = new QLabel("Comment:");
@@ -39,6 +42,10 @@ AddNewEnvDialog::AddNewEnvDialog(QWidget* parent):
 
 
     /*Layouts*/
+    QHBoxLayout* copyFromLayout = new QHBoxLayout();
+    copyFromLayout->addWidget(comboBoxLabel);
+    copyFromLayout->addWidget(copyFromBox);
+
     QHBoxLayout* nameLayout = new QHBoxLayout();
     nameLayout->addWidget(nameLabel);
     nameLayout->addWidget(nameEditor);
@@ -61,6 +68,7 @@ AddNewEnvDialog::AddNewEnvDialog(QWidget* parent):
 
     QVBoxLayout* mainLayout = new QVBoxLayout();
     mainLayout->addLayout(nameLayout);
+    mainLayout->addLayout(copyFromLayout);
     mainLayout->addLayout(versionMainLayout);
     mainLayout->addLayout(commentLayout);
     mainLayout->addWidget(usemodsBox);
@@ -69,22 +77,36 @@ AddNewEnvDialog::AddNewEnvDialog(QWidget* parent):
     setLayout(mainLayout);
 }
 
+void AddNewEnvDialog::initCopyFromBox(){
+    comboBoxLabel = new QLabel("Copy from ");
+    copyFromBox = new QComboBox();
+    copyFromBox->addItem(COPYFROM_SELECT_NOTHING);
+
+    Environments* evs = new Environments();
+    for(int n = 0;n < evs->getNumberOfEnvironments();n++){
+        copyFromBox->addItem(evs->getMCEnv(n)->getName());
+    }
+}
+
 AddNewEnvDialog_d* AddNewEnvDialog::getDatas(){
     data.env_name = nameEditor->text();
     data.version[0] = majorVersion->value();
     data.version[1] = minorVersion->value();
     data.version[2] = patchVersion->value();
     data.comment = commentEdit->toPlainText();
+    data.copyFrom = copyFromBox->itemText(copyFromBox->currentIndex());
     return &data;
 }
 
 void AddNewEnvDialog::clickedOKButton(){
     emit OKButtonIsPushed(this->getDatas());
+    this->setZero();
     this->setVisible(false);
 }
 
 void AddNewEnvDialog::clickedCancelButton(){
     emit CancelButtonIsPushed();
+    this->setZero();
     this->setVisible(false);
 }
 
@@ -94,4 +116,14 @@ void AddNewEnvDialog::changeCheckBox(int state){
     }else{
         data.mod = false;
     }
+}
+
+void AddNewEnvDialog::setZero(){
+    nameEditor->clear();
+    commentEdit->clear();
+    majorVersion->setValue(0);
+    minorVersion->setValue(0);
+    patchVersion->setValue(0);
+    usemodsBox->setCheckState(Qt::Unchecked);
+    copyFromBox->setCurrentIndex(0);
 }

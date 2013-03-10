@@ -25,6 +25,8 @@ public:
     /*nameには新しく作る環境の名前を、pathにはinstallするminecraftフォルダのPATHを渡す*/
     static bool installNewEnvironment(const QString name, const QString path);
 
+    /*Environmentの内容(.mcswitch.xmlを除く)をfromからtoへコピーする。fromもtoも存在するenvironment名である必要がある*/
+    bool copyEnvContents(const QString,const QString);
     /*envsVectorを読み込み直す*/
     int updateEnvData();
     /*環境の数を返す*/
@@ -37,6 +39,7 @@ public:
     bool changeEnv(QString);
 
 private:
+    bool copyDirectoryAndFiles(const QString,const QString);
     QString path;
     QVector<MCEnv*> envsVector;
 };

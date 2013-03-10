@@ -5,11 +5,15 @@
 #include <QSpinBox>
 #include <QLineEdit>
 #include <QCheckBox>
+#include <QComboBox>
 #include <QLabel>
 #include <QPushButton>
 
+#define COPYFROM_SELECT_NOTHING "NOTHING"
+
 struct AddNewEnvDialogData{
     QString env_name;
+    QString copyFrom;
     int version[3];//[0]->major,[1]->minor,[2]->patch
     QString comment;
     bool mod;
@@ -22,7 +26,7 @@ public:
 
 protected:
     AddNewEnvDialog_d* getDatas();
-
+    void setZero();
 private slots:
     void clickedOKButton();
     void clickedCancelButton();
@@ -33,6 +37,8 @@ signals:
     void CancelButtonIsPushed();
 
 private:
+    void initCopyFromBox();
+
     AddNewEnvDialog_d data;
     QLineEdit* nameEditor;
     QTextEdit* commentEdit;
@@ -40,12 +46,14 @@ private:
     QSpinBox* minorVersion;
     QSpinBox* patchVersion;
     QCheckBox* usemodsBox;
-	QPushButton* OKButton;
+    QPushButton* OKButton;
     QPushButton* CancelButton;
+    QComboBox* copyFromBox;
 
     QLabel* nameLabel;
     QLabel* commentLabel;
     QLabel* versionLabel;
     QLabel* modLabel;
+    QLabel* comboBoxLabel;
 };
 #endif

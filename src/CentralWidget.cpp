@@ -1,5 +1,6 @@
 #include "CentralWidget.hpp"
 #include <iostream>
+#include <QMessageBox>
 
 CentralWidget::CentralWidget(QWidget* parent):
     QWidget(parent){
@@ -26,7 +27,7 @@ CentralWidget::CentralWidget(QWidget* parent):
 void CentralWidget::update(){
     MCEnv* cenv = mcenvs->getCurrentEnv();
     if(cenv == NULL){
-        std::cerr<<"MCSwitch can't load current env."<<std::endl;
+        QMessageBox::critical(this, "ERROR", "MCSwitch cannot load currnet environment.");
         exit(1);
     }
     cenv->open();
@@ -110,8 +111,20 @@ void CentralWidget::setupUI(){
 }
 
 void CentralWidget::AddNewEnvDialogIsSet(AddNewEnvDialog_d* data){
-    Environments::createNewEnvironemnt(data->env_name,data->version,data->comment,data->mod);
-    mcenvs->updateEnvData();
+    if(!Environments::createNewEnvironemnt(data->env_name,data->version,data->comment,data->mod)){
+        QMessageBox::critical(this, "ERROR", "MCSwitch cannnot create new environment.");
+        emit requestToVisible();
+        mcenvs->updateEnvData();
+        this->update();
+        return ;
+    }else{
+        mcenvs->updateEnvData();
+    }
+    if(data->copyFrom != COPYFROM_SELECT_NOTHING){
+        if(!mcenvs->copyEnvContents(data->copyFrom,data->env_name)){
+            QMessageBox::critical(this, "ERROR", "Failed to copy environment's contents.");
+        }
+    }
     emit requestToVisible();
     this->update();
 }
@@ -124,7 +137,7 @@ void CentralWidget::ExitButtonPushed(){
 void CentralWidget::OKButtonPushed(){
     //When OKButton is pushed,this is called.
     if(!mcenvs->changeEnv(selectEnvBox->itemText(selectEnvBox->currentIndex()))){
-        std::cerr<<"fail to change environment\n";
+        QMessageBox::critical(this, "ERROR", "Failed to change environment.");
     }
     this->update();
 }
@@ -145,6 +158,12 @@ void CentralWidget::selectEnvBoxChanged(const QString& env_name){
 
 //When AddButton is clicked,this is called.
 void CentralWidget::addNewEnvironment(){
+    disconnect(addEnvdlg,SIGNAL(OKButtonIsPushed(AddNewEnvDialog_d*)),this,SLOT(AddNewEnvDialogIsSet(AddNewEnvDialog_d*)));
+    disconnect(addEnvdlg,SIGNAL(CancelButtonIsPushed()),this,SLOT(setVisibleTrue()));
+    delete addEnvdlg;
+    addEnvdlg = new AddNewEnvDialog();
+    connect(addEnvdlg,SIGNAL(OKButtonIsPushed(AddNewEnvDialog_d*)),this,SLOT(AddNewEnvDialogIsSet(AddNewEnvDialog_d*)));
+    connect(addEnvdlg,SIGNAL(CancelButtonIsPushed()),this,SLOT(setVisibleTrue()));
     addEnvdlg->show();
     emit requestToInvisible();
 }
