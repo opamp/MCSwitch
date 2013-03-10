@@ -136,7 +136,8 @@ bool Environments::copyEnvContents(const QString from,const QString to){
             toExist = true;
         }
     }
-    if(fromExist != true or toExist != true) return false;
+    if(fromExist == false || toExist == false) return false;
+    std::cout<<"RUN!!"<<std::endl;
     QString hfrom,hto;
     if(getCurrentEnv()->getName() == from){
         hfrom =  mcswitch_dir + fsp + LOADING_DIR_NAME;
