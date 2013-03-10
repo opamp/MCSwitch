@@ -5,6 +5,7 @@
 #include <QSpinBox>
 #include <QLineEdit>
 #include <QCheckBox>
+#include <QComboBox>
 #include <QLabel>
 #include <QPushButton>
 
@@ -33,6 +34,8 @@ signals:
     void CancelButtonIsPushed();
 
 private:
+    void initCopyFromBox();
+
     AddNewEnvDialog_d data;
     QLineEdit* nameEditor;
     QTextEdit* commentEdit;
@@ -40,12 +43,14 @@ private:
     QSpinBox* minorVersion;
     QSpinBox* patchVersion;
     QCheckBox* usemodsBox;
-	QPushButton* OKButton;
+    QPushButton* OKButton;
     QPushButton* CancelButton;
+    QComboBox* copyFromBox;
 
     QLabel* nameLabel;
     QLabel* commentLabel;
     QLabel* versionLabel;
     QLabel* modLabel;
+    QLabel* comboBoxLabel;
 };
 #endif

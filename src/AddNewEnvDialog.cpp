@@ -1,4 +1,5 @@
 #include "AddNewEnvDialog.hpp"
+#include "Environments.hpp"
 #include <QHBoxLayout>
 #include <QVBoxLayout>
 
@@ -6,6 +7,8 @@
 AddNewEnvDialog::AddNewEnvDialog(QWidget* parent):
 	QWidget(parent)
 {
+    this->initCopyFromBox();
+
     data.mod = false;
     /*labels*/
     commentLabel = new QLabel("Comment:");
@@ -39,6 +42,10 @@ AddNewEnvDialog::AddNewEnvDialog(QWidget* parent):
 
 
     /*Layouts*/
+    QHBoxLayout* copyFromLayout = new QHBoxLayout();
+    copyFromLayout->addWidget(comboBoxLabel);
+    copyFromLayout->addWidget(copyFromBox);
+
     QHBoxLayout* nameLayout = new QHBoxLayout();
     nameLayout->addWidget(nameLabel);
     nameLayout->addWidget(nameEditor);
@@ -61,12 +68,24 @@ AddNewEnvDialog::AddNewEnvDialog(QWidget* parent):
 
     QVBoxLayout* mainLayout = new QVBoxLayout();
     mainLayout->addLayout(nameLayout);
+    mainLayout->addLayout(copyFromLayout);
     mainLayout->addLayout(versionMainLayout);
     mainLayout->addLayout(commentLayout);
     mainLayout->addWidget(usemodsBox);
     mainLayout->addLayout(buttonsLayout);
 
     setLayout(mainLayout);
+}
+
+void AddNewEnvDialog::initCopyFromBox(){
+    comboBoxLabel = new QLabel("Copy from ");
+    copyFromBox = new QComboBox();
+    copyFromBox->addItem("NOTHING");
+
+    Environments* evs = new Environments();
+    for(int n = 0;n < evs->getNumberOfEnvironments();n++){
+        copyFromBox->addItem(evs->getMCEnv(n)->getName());
+    }
 }
 
 AddNewEnvDialog_d* AddNewEnvDialog::getDatas(){
