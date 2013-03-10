@@ -137,7 +137,6 @@ bool Environments::copyEnvContents(const QString from,const QString to){
         }
     }
     if(fromExist == false || toExist == false) return false;
-    std::cout<<"RUN!!"<<std::endl;
     QString hfrom,hto;
     if(getCurrentEnv()->getName() == from){
         hfrom =  mcswitch_dir + fsp + LOADING_DIR_NAME;
@@ -175,6 +174,12 @@ bool Environments::changeEnv(QString env_name){
 
 bool Environments::copyDirectoryAndFiles(const QString from,const QString to){
     QDir dir(from);
+
+    QDir toDir(to);
+    if(!toDir.exists()){
+        toDir.mkdir(to);
+    }
+
     QStringList list = dir.entryList(QDir::NoDotAndDotDot | QDir::Hidden | QDir::AllEntries);
     QStringListIterator i(list);
     QString b,bf;
