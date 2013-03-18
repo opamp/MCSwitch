@@ -1,7 +1,7 @@
 MCSwitch  
 ========
   
-[Download Dmg](http://dl.dropbox.com/u/23369413/oss/MCSwitch.dmg)  
+[Download OSX binary](http://dl.dropbox.com/u/23369413/oss/MCSwitch.tar.gz)
   
 ## About   
 MCSwitch provides you with environment to play plural minecraft versions.   
