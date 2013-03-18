@@ -15,12 +15,9 @@ MCSwitch provides you with environment to play plural minecraft versions.
 5.Close MCSwtich and launch minecraft!  
    
 ## Note  
-##### version 0.2.0   
+##### version 0.2.1   
 
-	* Strengthened AddNewEnvironmentDialog's function  
-	* Improved error dialog   
 	* bug fix  
-
 
 ## Dependencies   
    
