@@ -138,18 +138,21 @@ bool Environments::copyEnvContents(const QString from,const QString to){
     }
     if(fromExist == false || toExist == false) return false;
     QString hfrom,hto;
-    if(getCurrentEnv()->getName() == from){
+    MCEnv* cenv = getCurrentEnv();
+    cenv->open();
+    if(cenv->getName() == from){
         hfrom =  mcswitch_dir + fsp + LOADING_DIR_NAME;
     }else{
         hfrom = mcswitch_dir_env + fsp + from;
     }
 
-    if(getCurrentEnv()->getName() == to){
+    if(cenv->getName() == to){
         hto = mcswitch_dir + fsp + LOADING_DIR_NAME;
     }else{
         hto = mcswitch_dir_env + fsp + to;
     }
     this->copyDirectoryAndFiles(hfrom,hto);
+    delete cenv;
     return true;
 }
 
