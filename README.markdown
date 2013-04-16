@@ -1,10 +1,13 @@
 MCSwitch  
 ========
   
-[Download OSX binary](http://dl.dropbox.com/u/23369413/oss/MCSwitch.tar.gz)
-  
+[Download OSX binary](http://dl.dropbox.com/u/23369413/oss/MCSwitch.tar.gz)   
+ 
+
 ## About   
 MCSwitch provides you with environment to play plural minecraft versions.   
+   
+![alt text](https://dl.dropboxusercontent.com/u/23369413/pictures/MCSwitch/MCSwitch_sc.png)   
 
 ## How to use  
 1.You have to start minecraft once before installing MCSwitch.  
