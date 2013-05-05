@@ -10,6 +10,7 @@ class DeleteEnvDialog : public QWidget{
     Q_OBJECT
 public:
     DeleteEnvDialog(QWidget* parent = 0);
+    void updateSelector();
 
 private slots:
     void targetChanged(const QString&);

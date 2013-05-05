@@ -11,10 +11,7 @@ DeleteEnvDialog::DeleteEnvDialog(QWidget* parent):
     dirList = dir.entryList(QDir::NoDotAndDotDot | QDir::AllDirs);
     selector = new QComboBox();
 
-    for(int i = 0;i < dirList.size();i++){
-        if(!QFile::exists(mcswitch_dir_env + fsp + dirList.at(i) + fsp + eachEnvDataXmlName)) continue;
-        selector->addItem(dirList.at(i));
-    }
+    this->updateSelector();
 
     okButton = new QPushButton("Delete");
     cancelButton = new QPushButton("Cancel");
@@ -31,6 +28,15 @@ DeleteEnvDialog::DeleteEnvDialog(QWidget* parent):
     mainLayout->addWidget(msgLabel);
     mainLayout->addWidget(selector);
     mainLayout->addLayout(buttonLayout);
+    setLayout(mainLayout);
+}
+
+void DeleteEnvDialog::updateSelector(){
+    selector->clear();
+    for(int i = 0;i < dirList.size();i++){
+        if(!QFile::exists(mcswitch_dir_env + fsp + dirList.at(i) + fsp + eachEnvDataXmlName)) continue;
+        selector->addItem(dirList.at(i));
+    }
 }
 
 void DeleteEnvDialog::targetChanged(const QString & name){
@@ -38,8 +44,9 @@ void DeleteEnvDialog::targetChanged(const QString & name){
 }
 
 void DeleteEnvDialog::pushedOKButton(){
-    this->rm_R(this->target);
+    this->rm_R(mcswitch_dir_env + fsp + this->target);
     emit finished();
+    this->hide();
 }
 
 void DeleteEnvDialog::pushedCancelButton(){
