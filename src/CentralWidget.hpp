@@ -18,7 +18,7 @@ signals:
     void exitSignal();
     void requestToVisible();
     void requestToInvisible();
-protected slots:
+public slots:
     void update();
 
 public slots:
