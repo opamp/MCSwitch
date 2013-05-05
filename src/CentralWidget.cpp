@@ -147,9 +147,9 @@ void CentralWidget::selectEnvBoxChanged(const QString& env_name){
         if(mcenvs->getMCEnv(n)->getName() == env_name){
             MCEnv *e = mcenvs->getMCEnv(n);
             if(e->getMods())
-                this->mViewer->setText("Mods are being installed to this environment.");
+                this->mViewer->setText("using Mods");
             else
-                this->mViewer->setText("Mods are not being installed to this environment.");
+                this->mViewer->setText("Vanilla");
             this->commentViewer->setPlainText(e->getComment());//set commnet viewer's text.
             this->versionViewer->setText("VERSION " + e->getVersion());//set version info.
         }
