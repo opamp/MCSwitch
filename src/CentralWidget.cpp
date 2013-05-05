@@ -25,6 +25,7 @@ CentralWidget::CentralWidget(QWidget* parent):
 }
 
 void CentralWidget::update(){
+    mcenvs->updateEnvData();
     MCEnv* cenv = mcenvs->getCurrentEnv();
     if(cenv == NULL){
         QMessageBox::critical(this, "ERROR", "MCSwitch cannot load currnet environment.");
