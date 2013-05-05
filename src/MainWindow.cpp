@@ -8,9 +8,9 @@
 
 
 MainWindow::MainWindow(){
-	this->initMenuBar();//init menu bar.
-
     cwidget = new CentralWidget();
+    this->initMenuBar();//init menu bar.
+
     connect(cwidget,SIGNAL(exitSignal()),this,SLOT(close()));
     connect(cwidget,SIGNAL(requestToVisible()),this,SLOT(show()));
     connect(cwidget,SIGNAL(requestToInvisible()),this,SLOT(hide()));
@@ -33,6 +33,16 @@ void MainWindow::initMenuBar(){
 	connect(remakeSymLink,SIGNAL(triggered()),this,SLOT(calledRemakeSymlink()));
 	utilityBar->addAction(remakeSymLink);
 
+    deleter = new DeleteEnvDialog();
+    deleteEnvDialogAction = new QAction(QString("Delete Environemnt"),this);
+    connect(deleteEnvDialogAction,SIGNAL(triggered()),this,SLOT(showDeleteEnvDialog()));
+    connect(deleter,SIGNAL(finished()),cwidget,SLOT(update()));
+    utilityBar->addAction(deleteEnvDialogAction);
+}
+
+void MainWindow::showDeleteEnvDialog(){
+    deleter->updateSelector();
+    deleter->show();
 }
 
 void MainWindow::calledRemakeSymlink(){

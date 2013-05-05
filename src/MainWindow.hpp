@@ -3,6 +3,7 @@
 #include <QMainWindow>
 #include <QString>
 #include "CentralWidget.hpp"
+#include "DeleteEnvDialog.hpp"
 #include "AboutWidget.hpp"
 
 class MainWindow : public QMainWindow{
@@ -15,15 +16,18 @@ private:
 
     CentralWidget* cwidget;
     AboutWidget* about;
+    DeleteEnvDialog* deleter;
 
     QMenu* aboutBar;
-	QMenu* utilityBar;
+    QMenu* utilityBar;
     QAction* aboutAction;
-	QAction* remakeSymLink;
+    QAction* remakeSymLink;
+    QAction* deleteEnvDialogAction;
 
 private slots:
     void showAboutWidget();
 	void calledRemakeSymlink();
+    void showDeleteEnvDialog();
 };
 
 #endif

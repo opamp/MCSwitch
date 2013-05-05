@@ -31,7 +31,7 @@ int Environments::updateEnvData(){
     for(int i = 0;i < envList.size();++i){
         bool dumpflg = false;
         //候補のディレクトリ直下にeachEnvDataXmlNameが存在しない場合はスキップする
-        if(!QFile::exists(mcswitch_dir_env + fsp + envList.at(i) + fsp + eachEnvDataXmlName)) continue;
+        if(!QFile::exists(this->path + fsp + envList.at(i) + fsp + eachEnvDataXmlName)) continue;
         //すでに同PATHを表すMCSWitchが登録されてるならスキップする
         for(int n = 0;n < this->getNumberOfEnvironments();++n){
             if(envsVector[n]->getName() == envList.at(i)){
@@ -50,6 +50,12 @@ int Environments::updateEnvData(){
         }
         envsVector.push_back(p);
 
+    }
+
+    for(int n = 0; n < this->getNumberOfEnvironments();n++){
+        if(!envList.contains(envsVector[n]->getName())){
+            envsVector.remove(n);
+        }
     }
     return getNumberOfEnvironments();
 }
