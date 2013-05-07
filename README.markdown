@@ -38,6 +38,7 @@ If you will build this application from source code,you have to install [CMake](
 
 I think you might as well imitate general cmake way.   
 
+
 ##### Clone my source  
 Run this command...
 
