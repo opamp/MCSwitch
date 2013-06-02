@@ -21,7 +21,7 @@ struct xml_data{
 
 class Xml{
 public:
-    Xml(const QString);
+    Xml(const QString&);
 
     bool open(); // file path.
     void getXmlData(xml_d*);

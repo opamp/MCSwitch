@@ -10,24 +10,26 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 #include <QApplication>
 #include <QMessageBox>
-#include <iostream>
 #include "MainWindow.hpp"
 #include "initialize.hpp"
+
+#include<iostream>
 
 
 int main(int argc,char** argv){
     QApplication mcswitch(argc,argv);
 
-	mcswitch.setApplicationName(app_name);
+
+    mcswitch.setApplicationName(app_name);
     mcswitch.setApplicationVersion(app_ver);
 
-    MainWindow* window = new MainWindow();
 
     if(!init()){ //Initialize if MCSwitch data dir is not initialized yet.
        std::cerr<<"ERROR::MCSwitch failed in initialization."<<std::endl;
-       QMessageBox::critical(window, "ERROR", "Failed to initialize. You should delete all MCSwitch's data files and directory.");
+       QMessageBox::critical(new QWidget(), "ERROR", "Failed to initialize. You should delete all MCSwitch's data files and directory.");
        return 1;//error exit.
     }
+    MainWindow* window = new MainWindow();
     window->show();
 
 	return mcswitch.exec();

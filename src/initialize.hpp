@@ -6,6 +6,7 @@
 #include<QFile>
 #include<QFileInfo>
 #include<QDir>
+
 #include"version.hpp"
 #include"Environments.hpp"
 
@@ -47,7 +48,7 @@ bool initMCSwitchDir(){//init data dir.
 	}
 	return true;
 }
-bool init(){ 
+bool init(){
 	if(!initMCSwitchDir()) return false; //init data dirs.
 	if(!QFile::exists(minecraft_dir + fsp + eachEnvDataXmlName)){
 		//if(!Environments::installNewEnvironment(QString("InitialEnv"),minecraft_dir)) return false;//error

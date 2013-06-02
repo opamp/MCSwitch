@@ -1,6 +1,6 @@
 #include "CentralWidget.hpp"
-#include <iostream>
 #include <QMessageBox>
+#include<iostream>
 
 CentralWidget::CentralWidget(QWidget* parent):
     QWidget(parent){
@@ -66,8 +66,8 @@ void CentralWidget::initComboBox(Environments* e_obj){
     selectEnvBox = new QComboBox();
     connect(selectEnvBox,SIGNAL(currentIndexChanged(const QString&)),this,SLOT(selectEnvBoxChanged(const QString&)));
 	MCEnv* e = mcenvs->getCurrentEnv();
-	e->open();
-	int b = 0;
+    e->open();
+    int b = 0;
     for(int i = 0;i < e_obj->getNumberOfEnvironments();i++){
         selectEnvBox->addItem(e_obj->getMCEnv(i)->getName());
 		if(e_obj->getMCEnv(i)->getName() == e->getName()){
