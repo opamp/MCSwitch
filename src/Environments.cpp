@@ -94,7 +94,6 @@ bool Environments::createNewEnvironemnt(const QString name,int* v,const QString 
 }
 
 bool Environments::installNewEnvironment(const QString name,const QString path){
-    std::cout<<"hello world"<<std::endl;
     if(path.isEmpty() or !QDir().exists(path)) return false;
     QStringList envs = QDir(mcswitch_dir_env).entryList();
     QStringListIterator i(envs);

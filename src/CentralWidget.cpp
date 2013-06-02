@@ -1,6 +1,5 @@
 #include "CentralWidget.hpp"
 #include <QMessageBox>
-#include<iostream>
 
 CentralWidget::CentralWidget(QWidget* parent):
     QWidget(parent){

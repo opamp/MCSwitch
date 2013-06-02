@@ -13,8 +13,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #include "MainWindow.hpp"
 #include "initialize.hpp"
 
-#include<iostream>
-
 
 int main(int argc,char** argv){
     QApplication mcswitch(argc,argv);
