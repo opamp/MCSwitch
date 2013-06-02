@@ -6,7 +6,6 @@
 
 #include "version.hpp"
 
-
 MainWindow::MainWindow(){
     cwidget = new CentralWidget();
     this->initMenuBar();//init menu bar.

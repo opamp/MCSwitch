@@ -1,7 +1,7 @@
 MCSwitch  
 ========
   
-[Download OSX binary](http://dl.dropbox.com/u/23369413/oss/MCSwitch.tar.gz)   
+[Download OSX binary](http://dl.dropbox.com/u/23369413/oss/MCSwitch.zip)   
  
 
 ## About   
@@ -18,11 +18,9 @@ MCSwitch provides you with environment to play plural minecraft versions.
 5.Close MCSwtich and launch minecraft!  
    
 ## Note  
-##### version 0.3.0   
+##### version 0.3.1  
 
-	* Added new Utility(Delete environment)  
-	* Improved some function.  
-	* Fixed some text.  
+	* Fix critical bug  
 
 
 ## Dependencies   
