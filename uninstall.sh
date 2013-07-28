@@ -6,6 +6,7 @@ if [ -L $HOME/Library/Application\ Support/minecraft ];then
 	mv $HOME/.MCSwitch/env $HOME/Desktop/MCSwitchEnvs
 	rm -f $HOME/Library/Application\ Support/minecraft/.mcswitch.xml
 	rm -fr $HOME/.MCSwitch
+	rm -f $HOME/MCSwitchEnvironments
 	echo "FINISHED"
 else
 	echo "ERROR"
