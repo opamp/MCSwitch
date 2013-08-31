@@ -6,7 +6,12 @@ MCSwitch
 
 ## About   
 MCSwitch provides you with environment to play plural minecraft versions.   
-   
+
+
+	I think this application is not useful any longer now.  
+	Please run uninstall.sh script if you want to uninstall it.  
+
+
 ![alt text](https://dl.dropboxusercontent.com/u/23369413/pictures/MCSwitch/MCSwitch_sc.png)   
 
 ## How to use  
@@ -60,6 +65,10 @@ Second,run cmake command. Please also attach options to command if necesarry.
 
 	$ make  
 
+## Uninstall it  
+Run uninstall.sh from your terminal.  
+
+    $ ./uninstall.sh
 
 ## License  
 MCSwitch is released under a MIT License.   
