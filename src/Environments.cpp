@@ -15,12 +15,12 @@ Environments::Environments(const QString path){
     QStringList envList = dir.entryList();
     this->updateEnvData();
 
-	/*起動時にloadingenvにEnvironmentがあれば読みこんでvectorに追加 (無理矢理感しかない)*/
-	if(QFile::exists(mcswitch_dir + fsp + LOADING_DIR_NAME)){
-		MCEnv* e = new MCEnv(mcswitch_dir + fsp + LOADING_DIR_NAME);
-		e->open();
-		this->envsVector.push_back(e);
-	}
+    /*起動時にloadingenvにEnvironmentがあれば読みこんでvectorに追加 (無理矢理感しかない)*/
+    if(QFile::exists(mcswitch_dir + fsp + LOADING_DIR_NAME)){
+        MCEnv* e = new MCEnv(mcswitch_dir + fsp + LOADING_DIR_NAME);
+        e->open();
+        this->envsVector.push_back(e);
+    }
 
 }
 

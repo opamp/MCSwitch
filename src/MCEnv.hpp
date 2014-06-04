@@ -38,10 +38,10 @@ public:
 //  static bool initEnv(const QString name,const QString dir_path = mcswitch_dir_env);
     static bool initEnv(init_d*,const QString dir_path = mcswitch_dir_env);
 private:
-	QString path;
+    QString path;
     QString envName;
-	QString mcVersion;
-	QString comment;
+    QString mcVersion;
+    QString comment;
     bool mods;
 
     Xml *xmlReader;

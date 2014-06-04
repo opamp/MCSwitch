@@ -12,7 +12,7 @@ public:
     MainWindow();
 
 private:
-	void initMenuBar();
+    void initMenuBar();
 
     CentralWidget* cwidget;
     AboutWidget* about;
@@ -26,7 +26,7 @@ private:
 
 private slots:
     void showAboutWidget();
-	void calledRemakeSymlink();
+    void calledRemakeSymlink();
     void showDeleteEnvDialog();
 };
 

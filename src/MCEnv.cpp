@@ -2,7 +2,7 @@
 
 MCEnv::MCEnv(const QString path){
     if(QFile::exists(path)) this->path = path;
-	mods = false;
+    mods = false;
 }
 
 bool MCEnv::open(){
@@ -11,8 +11,8 @@ bool MCEnv::open(){
     xml_d data;
     xmlReader->getXmlData(&data);
     envName = data.name;
-	mcVersion = data.version;
-	mods = data.mods;
+    mcVersion = data.version;
+    mods = data.mods;
     comment = data.comment;
     return true;
 }

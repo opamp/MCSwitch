@@ -5,7 +5,7 @@
 
 
 AddNewEnvDialog::AddNewEnvDialog(QWidget* parent):
-	QWidget(parent)
+    QWidget(parent)
 {
     this->initCopyFromBox();
 
@@ -20,7 +20,7 @@ AddNewEnvDialog::AddNewEnvDialog(QWidget* parent):
     connect(usemodsBox,SIGNAL(stateChanged(int)),this,SLOT(changeCheckBox(int)));
 
     /*buttons*/
-	OKButton = new QPushButton("OK");
+    OKButton = new QPushButton("OK");
     CancelButton = new QPushButton("Cancel");
     connect(OKButton,SIGNAL(clicked()),this,SLOT(clickedOKButton()));
     connect(CancelButton,SIGNAL(clicked()),this,SLOT(clickedCancelButton()));
@@ -63,8 +63,8 @@ AddNewEnvDialog::AddNewEnvDialog(QWidget* parent):
     commentLayout->addWidget(commentEdit);
 
     QHBoxLayout* buttonsLayout = new QHBoxLayout();
-	buttonsLayout->addWidget(OKButton);
-	buttonsLayout->addWidget(CancelButton);
+    buttonsLayout->addWidget(OKButton);
+    buttonsLayout->addWidget(CancelButton);
 
     QVBoxLayout* mainLayout = new QVBoxLayout();
     mainLayout->addLayout(nameLayout);

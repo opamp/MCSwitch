@@ -8,27 +8,27 @@
 #include <QDir>
 
 namespace fileutils{
-	/*Directoryのコピーを行う*/
+    /*Directoryのコピーを行う*/
     bool cp_R(const QString from,const QString to){
-		if(!QFileInfo(from).isDir())return false;
-		if(to.isEmpty()) return false;
-		if(!QDir().mkdir(to)) return false;
+        if(!QFileInfo(from).isDir())return false;
+        if(to.isEmpty()) return false;
+        if(!QDir().mkdir(to)) return false;
 
-		QDir dir(from);
-		QStringList list = dir.entryList();
-		QStringListIterator i(list);
-		QString b,bf;
-		while(i.hasNext()){
-			b = i.next();
-			bf = from + "/" + b;
-			if(bf == from + "/" + QString(".") or bf == from + "/" + QString("..")) continue;
-			if(QFileInfo(bf).isDir()){
-				cp_R(bf,to + "/" + b);
-			}else{
-				if(!QFile::copy(bf,to + "/" + b)) return false;
-			}
-		}
-		return true;
+        QDir dir(from);
+        QStringList list = dir.entryList();
+        QStringListIterator i(list);
+        QString b,bf;
+        while(i.hasNext()){
+            b = i.next();
+            bf = from + "/" + b;
+            if(bf == from + "/" + QString(".") or bf == from + "/" + QString("..")) continue;
+            if(QFileInfo(bf).isDir()){
+                cp_R(bf,to + "/" + b);
+            }else{
+                if(!QFile::copy(bf,to + "/" + b)) return false;
+            }
+        }
+        return true;
     }
 
     bool rm_R(const QString dirName){

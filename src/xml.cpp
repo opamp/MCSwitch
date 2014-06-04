@@ -2,8 +2,8 @@
 #include "xml.hpp"
 
 Xml::Xml(const QString &f){
-	data.mods = false;
-	filename = f;
+    data.mods = false;
+    filename = f;
 }
 
 bool Xml::open(){
@@ -60,7 +60,7 @@ void Xml::getXmlData(xml_d* d){
 }
 
 void Xml::setXmlData(xml_d* d){
-	data = *d;
+    data = *d;
 }
 
 bool Xml::save(){
@@ -68,26 +68,26 @@ bool Xml::save(){
     if(data.version.isEmpty()) return false;
 
     QDomDocument doc;
-	QDomElement newroot = doc.createElement(rootTagName);
-	doc.appendChild(newroot);
+    QDomElement newroot = doc.createElement(rootTagName);
+    doc.appendChild(newroot);
 
-	QDomElement E_name = doc.createElement("name");
-	QDomElement E_version = doc.createElement("version");
-	QDomElement E_mods = doc.createElement("mods");
-	QDomElement E_comment = doc.createElement("comment");
+    QDomElement E_name = doc.createElement("name");
+    QDomElement E_version = doc.createElement("version");
+    QDomElement E_mods = doc.createElement("mods");
+    QDomElement E_comment = doc.createElement("comment");
 
 
-	QDomText name_text = doc.createTextNode(data.name);
+    QDomText name_text = doc.createTextNode(data.name);
     QDomText version_text = doc.createTextNode(data.version);
     QDomText comment_test = doc.createTextNode(data.comment);
-	E_name.appendChild(name_text);
+    E_name.appendChild(name_text);
     E_version.appendChild(version_text);
     E_comment.appendChild(comment_test);
 
-	if(data.mods == true)
-		E_mods.setAttribute(QString("enable"),QString("true"));
-	else
-		E_mods.setAttribute(QString("enable"),QString("false"));
+    if(data.mods == true)
+        E_mods.setAttribute(QString("enable"),QString("true"));
+    else
+        E_mods.setAttribute(QString("enable"),QString("false"));
 
     newroot.appendChild(E_name);
     newroot.appendChild(E_version);
@@ -95,9 +95,9 @@ bool Xml::save(){
     newroot.appendChild(E_comment);
 
     QFile file(filename);file.open(QIODevice::WriteOnly);
-	QTextStream out(&file);
-	doc.save(out,xml_indent);
+    QTextStream out(&file);
+    doc.save(out,xml_indent);
 
-	file.close();
+    file.close();
     return true;
 }

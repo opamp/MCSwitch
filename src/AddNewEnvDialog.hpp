@@ -20,7 +20,7 @@ struct AddNewEnvDialogData{
 };typedef struct AddNewEnvDialogData AddNewEnvDialog_d;
 
 class AddNewEnvDialog : public QWidget{
-	Q_OBJECT
+    Q_OBJECT
 public:
     AddNewEnvDialog(QWidget* parent = 0);
 

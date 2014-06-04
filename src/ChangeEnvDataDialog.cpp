@@ -2,7 +2,7 @@
 #include <iostream>
 
 ChangeEnvDataDialog::ChangeEnvDataDialog(QWidget* parent):
-	QWidget(parent)
+    QWidget(parent)
 {
     ui.setupUi(this);
 

@@ -52,8 +52,8 @@ private:
     QLabel* currentEnvLabel;
     QLineEdit* currentEnvView;
 
-	AddNewEnvDialog* addEnvdlg;
-	ChangeEnvDataDialog* changeDataDialog;
+    AddNewEnvDialog* addEnvdlg;
+    ChangeEnvDataDialog* changeDataDialog;
 
     Environments* mcenvs;
 };

@@ -53,7 +53,7 @@ void CentralWidget::initEnvironments(){
 void CentralWidget::initButtons(){
     OKButton = new QPushButton("OK");
     connect(OKButton,SIGNAL(clicked()),this,SLOT(OKButtonPushed()));
-	AddButton = new QPushButton("Add");
+    AddButton = new QPushButton("Add");
     connect(AddButton,SIGNAL(clicked()),this,SLOT(addNewEnvironment()));
     ChangeDataButton = new QPushButton("Change Data");
     connect(ChangeDataButton,SIGNAL(clicked()),this,SLOT(callChangeEnvDataDialog()));
@@ -64,17 +64,17 @@ void CentralWidget::initButtons(){
 void CentralWidget::initComboBox(Environments* e_obj){
     selectEnvBox = new QComboBox();
     connect(selectEnvBox,SIGNAL(currentIndexChanged(const QString&)),this,SLOT(selectEnvBoxChanged(const QString&)));
-	MCEnv* e = mcenvs->getCurrentEnv();
+    MCEnv* e = mcenvs->getCurrentEnv();
     e->open();
     int b = 0;
     for(int i = 0;i < e_obj->getNumberOfEnvironments();i++){
         selectEnvBox->addItem(e_obj->getMCEnv(i)->getName());
-		if(e_obj->getMCEnv(i)->getName() == e->getName()){
-			b = i;
-		}
+        if(e_obj->getMCEnv(i)->getName() == e->getName()){
+            b = i;
+        }
     }
-	delete e;
-	selectEnvBox->setCurrentIndex(b);
+    delete e;
+    selectEnvBox->setCurrentIndex(b);
 }
 
 void CentralWidget::initInformationViewer(){
@@ -94,9 +94,9 @@ void CentralWidget::setupUI(){
     buttonLayout->addWidget(OKButton);
     buttonLayout->addWidget(ExitButton);
 
-	QHBoxLayout* comboBoxLayout = new QHBoxLayout();
-	comboBoxLayout->addWidget(selectEnvBox);
-	comboBoxLayout->addWidget(AddButton);
+    QHBoxLayout* comboBoxLayout = new QHBoxLayout();
+    comboBoxLayout->addWidget(selectEnvBox);
+    comboBoxLayout->addWidget(AddButton);
 
     QVBoxLayout* mainLayout = new QVBoxLayout();
     mainLayout->addLayout(comboBoxLayout);
