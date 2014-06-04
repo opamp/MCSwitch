@@ -11,7 +11,7 @@ MESSAGE(STATUS "MCSWITCH VERSION -> ${MCSWITCH_VERSION}")
 SET(SRC_DIR ${PROJECT_SOURCE_DIR}/src)
 
 IF(NOT APPLE)
-	MESSAGE(WARNING "Your Platform isn't supported!!") #cmake warn user,but continue.
+    MESSAGE(WARNING "Your Platform isn't supported!!") #cmake warn user,but continue.
 ENDIF(NOT APPLE)
 
 INCLUDE(${SRC_DIR}/CMakeLists.txt)
