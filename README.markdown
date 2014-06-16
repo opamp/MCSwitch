@@ -9,7 +9,7 @@ MCSwitch provides environment for you to play plural minecraft versions.
 ## How to use  
 1.You have to start minecraft once before installing MCSwitch.  
 2.Install MCSwtich and start it.  
-3.Select your environment which you want play.  
+3.Select your environment which you want to play.  
 3.Or, you can add new environment.  
 4.Push OK button.  
 5.Close MCSwtich and launch minecraft!  
@@ -62,7 +62,7 @@ Second,run cmake command. Please also attach options to command if necesarry.
 	$ make  
 
 ## Uninstall it  
-Run uninstall.sh from your terminal.  
+Run uninstall.sh on your terminal.  
 
     $ ./uninstall.sh
 
