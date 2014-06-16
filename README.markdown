@@ -4,7 +4,7 @@ MCSwitch
 ## About   
 MCSwitch provides environment for you to play plural minecraft versions.   
 
-	I think this application is not useful any longer now.  
+	I think this application is not useful any longer.  
 	Please run uninstall.sh script if you want to uninstall it.  
 	However, you can use it even now.  
 
@@ -20,6 +20,10 @@ MCSwitch provides environment for you to play plural minecraft versions.
 5.Close MCSwtich and launch minecraft!  
    
 ## Note  
+##### version 0.4.0 plan
+
+	* Support both osx and linux.
+
 ##### version 0.3.1  
 
 	* Fix critical bug  
