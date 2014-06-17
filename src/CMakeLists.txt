@@ -41,24 +41,20 @@ QT5_ADD_RESOURCES(QRC ${SRC_DIR}/main.qrc) # Add resources.
 
 MESSAGE(STATUS "Qt5 --> ${Qt5Widgets_VERSION_STRING}") #Show Qt's version to user.
 
+# Compile section
 SET(SRCS ${MSRC} ${HMOD} ${QRC} ${UI})
 IF(APPLE) 
-
     SET(SRCS ${SRCS} ${PROJECT_SOURCE_DIR}/src/resources/icons/mac_icon.icns)
     SET(MACOSX_BUNDLE_ICON_FILE ${PROJECT_SOURCE_DIR}/src/resources/icons/mac_icon.icns)
     SET_SOURCE_FILES_PROPERTIES(mac_icon.icns PROPERTIES 
         MACOSX_PACKAGE_LOCATION Resources)
     ADD_EXECUTABLE(${BINARY_NAME} MACOSX_BUNDLE ${SRCS})
-
 ELSEIF(WIN32)
-
-
     #SET(SRCS ${SRCS} ${PROJECT_SOURCE_DIR}/src/resource/win/WinPICON.rc)
     ADD_EXECUTABLE(${BINARY_NAME} WIN32 ${SRCS})
-
 ELSEIF(UNIX AND NOT APPLE)
-
     ADD_EXECUTABLE(${BINARY_NAME} ${SRCS})
+    INSTALL(TARGETS ${BINARY_NAME} RUNTIME DESTINATION bin)
 ENDIF()
 
 QT5_USE_MODULES(${BINARY_NAME} Widgets Xml)
