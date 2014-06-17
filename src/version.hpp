@@ -2,6 +2,7 @@
 #define VERSION_HPP
 #include <QString>
 #include <QDir>
+#include <config.hpp>
 
 #define LOADING_DIR_NAME "loadingenv"
 #define DEFAULT_ENV_NAME "Main"
@@ -18,7 +19,12 @@ const QString mcswitch_dir_env = mcswitch_dir + fsp + "env";
 
 const QString mcswitch_dir_env_link = QDir::homePath() + fsp + "MCSwitchEnvironments";
 
+#ifdef P_OSX
 const QString minecraft_dir = QDir::homePath() + "/Library/Application Support/minecraft"; //MacOSX
+#endif
+#ifdef P_LINUX
+const QString minecraft_dir = QDir::homePath() + fsp + ".minecraft"; // linux(unix)
+#endif
 
 const QString eachEnvDataXmlName = ".mcswitch.xml";
 /*resource*/

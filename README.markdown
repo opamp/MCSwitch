@@ -20,7 +20,7 @@ MCSwitch provides environment for you to play plural minecraft versions.
 5.Close MCSwtich and launch minecraft!  
    
 ## Note  
-##### version 0.4.0 plan
+##### version 0.4.0  
 
 	* Support both osx and linux.
 

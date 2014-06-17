@@ -5,7 +5,7 @@
 #include <QComboBox>
 #include <QHBoxLayout>
 #include "Environments.hpp"
-#include "addNewEnvDialog.hpp"
+#include "AddNewEnvDialog.hpp"
 #include "ChangeEnvDataDialog.hpp"
 
 
