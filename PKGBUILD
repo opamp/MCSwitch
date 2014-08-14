@@ -11,11 +11,13 @@ makedepends=('cmake')
 
 build() {
     cd ${srcdir}/MCSwitch-$pkgver
-    cmake .
+    cmake -DCMAKE_INSTALL_PREFIX=$pkgdir .
     make
 }
 
 package(){
     cd ${srcdir}/MCSwitch-$pkgver
-    make DESTDIR="$pkgdir" install
+    make install
 }
+
+md5sums=('7c2db1ee9eba7ec2bb4fecbd7a6414b9')
