@@ -28,7 +28,7 @@ MCSwitch provides environment for you to play plural minecraft versions.
    
 [Qt5](http://qt.nokia.com/)  
 License is [LGPLv2](http://www.gnu.org/licenses/lgpl-2.1.html)  
-You can build it if you rewrite CMakeLists.txt for Qt4.
+This app is based on QWidget system. Therefore, You can build it on Qt4 if you rewrite CMakeLists.txt.
 
 If you will build this application from source code,you have to install [CMake](http://www.cmake.org/).  
 
